@@ -44,7 +44,7 @@ export function render({ cat, main }) {
       <dt>Inicio del plan</dt><dd>${plan.fechaInicio}</dd>
       <dt>Semana</dt><dd>${plan.semanaActual} de ${plan.duracionSemanas}</dd>
       <dt>Nivel actual</dt><dd>${plan.nivelActual} · ${cat.nivel(plan.nivelActual)?.nombre ?? ''} (inicial ${plan.nivelInicial})</dd>
-      <dt>Adherencia global</dt><dd>${Math.round(r.adherenciaGlobal * 100)} %</dd>
+      <dt>Adherencia global (semanas terminadas)</dt><dd>${Math.round(r.adherenciaGlobal * 100)} %</dd>
       <dt>Plan</dt><dd>${plan.motivo}</dd>
     </dl>` : html`<p>Sin plan activo.</p>`}
 

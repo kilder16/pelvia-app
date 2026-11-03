@@ -19,7 +19,8 @@ test('rf13_adherenciaSemanal', () => {
     assert.equal(a.planificadas, s.planificadas, `planificadas semana ${s.semana}`);
     assert.equal(a.hechas, s.hechas, `hechas semana ${s.semana}`);
   }
-  assert.ok(r.adherenciaGlobal > 0.6 && r.adherenciaGlobal < 1);
+  assert.equal(r.adherenciaGlobal, 50 / 56, 'solo semanas terminadas (1–4)');
+  assert.match(r.texto, /50 de 56 sesiones planificadas en semanas terminadas/);
   assert.match(r.texto, /Adherencia global/);
   assert.match(r.texto, /Incontinencia urinaria de esfuerzo/);
 });

@@ -18,7 +18,7 @@ export function bloqueGraficas(r, plan, { conAdherencia = true } = {}) {
     ${conAdherencia ? html`<div class="tarjeta"><h3>Adherencia por semana</h3>
       ${graficaBarras(r.adherenciaPorSemana.map((a) => ({ etiqueta: `S${a.semana}`, valor: a.fraccion, texto: `${a.hechas} de ${a.planificadas} (${Math.round(a.fraccion * 100)} %)` })),
         { titulo: 'Adherencia por semana', linea: 0.7, etiquetaLinea: 'meta 70 %' })}
-      <p class="texto-suave">Global: ${Math.round(r.adherenciaGlobal * 100)} % de las sesiones planificadas.</p></div>` : ''}
+      <p class="texto-suave">Global: ${Math.round(r.adherenciaGlobal * 100)} % de las sesiones planificadas en semanas terminadas.</p></div>` : ''}
     <div class="tarjeta"><h3>Sostén (E)</h3>${graficaLinea(r.series.E, { titulo: 'Segundos de sostén', unidad: 's', yMin: 0, yMax: 10, color: 'var(--primario)' })}</div>
     <div class="tarjeta"><h3>Rápidas (F)</h3>${graficaLinea(r.series.F, { titulo: 'Contracciones rápidas', unidad: '', yMin: 0, yMax: 10, color: 'var(--relaja-texto)' })}</div>
     <div class="tarjeta"><h3>Intensidad usada (mA)</h3>${graficaLinea(r.series.mA, { titulo: 'Intensidad de electroestimulación', unidad: 'mA', yMin: 0, color: 'var(--acento-texto)' })}

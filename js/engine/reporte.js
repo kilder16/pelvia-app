@@ -31,7 +31,10 @@ export function resumen({ evaluaciones = [], sesiones = [], plan = null, cambios
 
   const historialNiveles = [...cambiosNivel].sort(porFecha);
   const nivelActual = plan?.nivelActual ?? null;
-  const total = adherenciaPorSemana.reduce((a, x) => ({ h: a.h + x.hechas, p: a.p + x.planificadas }), { h: 0, p: 0 });
+  // La global cuenta solo semanas terminadas (la semana en curso aún puede completarse); si no hay ninguna, la actual.
+  const terminadas = adherenciaPorSemana.filter((x) => x.semana < ultimaSemana);
+  const base = terminadas.length ? terminadas : adherenciaPorSemana;
+  const total = base.reduce((a, x) => ({ h: a.h + x.hechas, p: a.p + x.planificadas }), { h: 0, p: 0 });
   const adherenciaGlobal = total.p ? total.h / total.p : 0;
 
   const nombreNivel = (n) => catalogo?.nivel(n)?.nombre ?? '';
@@ -43,7 +46,7 @@ export function resumen({ evaluaciones = [], sesiones = [], plan = null, cambios
     lineas.push(`Perfil: ${nombrePerfil}. Plan iniciado el ${plan.fechaInicio}; semana ${plan.semanaActual} de ${plan.duracionSemanas}.`);
     lineas.push(`Nivel actual: ${nivelActual}${nombreNivel(nivelActual) ? ` (${nombreNivel(nivelActual)})` : ''}; nivel inicial: ${plan.nivelInicial}.`);
   }
-  lineas.push(`Adherencia global: ${Math.round(adherenciaGlobal * 100)} % (${total.h} de ${total.p} sesiones planificadas).`);
+  lineas.push(`Adherencia global: ${Math.round(adherenciaGlobal * 100)} % (${total.h} de ${total.p} sesiones planificadas${terminadas.length ? ' en semanas terminadas' : ''}).`);
   if (ini && fin && ini !== fin) lineas.push(`ICIQ-UI SF: de ${ini.valor} (${ini.fecha}) a ${fin.valor} (${fin.fecha}).`);
   else if (ini) lineas.push(`ICIQ-UI SF inicial: ${ini.valor} (${ini.fecha}).`);
   const eU = series.E[series.E.length - 1];

@@ -50,12 +50,17 @@ import { ajustes, guardarAjustes } from '../../store/repo.js';
 export function montarPin(cont, { modo = 'verificar', titulo, alExito, alRestablecer, alCancelar }) {
   let pin = '';
   let primero = null;
+  let verificando = false;
+  const bloqueadoAhora = () => modo === 'verificar' && (ajustes().pinFallos ?? 0) >= MAX_FALLOS;
+  // Limpieza explícita del teclado físico: en éxito, bloqueo y cancelación (no depende de isConnected).
+  const limpiar = () => document.removeEventListener('keydown', teclado);
   const tituloBase = titulo ?? (modo === 'crear' ? 'Elige un PIN de 4 dígitos' : 'Escribe tu PIN');
 
   function pintar(mensaje = '', error = false) {
     const fallos = ajustes().pinFallos ?? 0;
     const bloqueado = modo === 'verificar' && fallos >= MAX_FALLOS;
     if (bloqueado) {
+      limpiar();
       montar(cont, html`<section class="pin" aria-labelledby="pin-t">
         <h1 id="pin-t">Demasiados intentos</h1>
         <p>Fallaste el PIN ${MAX_FALLOS} veces. La única salida es restablecer los datos (se borra todo lo guardado en este celular).</p>
@@ -79,33 +84,43 @@ export function montarPin(cont, { modo = 'verificar', titulo, alExito, alRestabl
     </section>`);
     $$('[data-d]', cont).forEach((b) => b.addEventListener('click', () => tecla(b.dataset.d)));
     $('[data-accion="borrar"]', cont).addEventListener('click', () => { pin = pin.slice(0, -1); pintar(); });
-    $('[data-accion="cancelar"]', cont)?.addEventListener('click', () => alCancelar?.());
+    $('[data-accion="cancelar"]', cont)?.addEventListener('click', () => { limpiar(); alCancelar?.(); });
     $('.pin-tecla', cont)?.focus();
   }
 
   async function tecla(d) {
-    if (pin.length >= 4) return;
+    if (bloqueadoAhora()) { pintar(); return; } // tras 5 fallos no se aceptan más intentos
+    if (verificando || pin.length >= 4) return;
     pin += d;
     if (pin.length < 4) { pintar(); return; }
     if (modo === 'crear') {
       if (!primero) { primero = pin; pin = ''; pintar(); return; }
       if (primero !== pin) { primero = null; pin = ''; pintar('Los PIN no coinciden. Empieza de nuevo.', true); return; }
+      limpiar();
       alExito(pin);
       return;
     }
-    const ok = await verificarPin(pin, ajustes().pinHash);
+    verificando = true;
+    let ok;
+    try {
+      ok = await verificarPin(pin, ajustes().pinHash);
+    } finally {
+      verificando = false;
+    }
     const r = registrarIntento({ fallos: ajustes().pinFallos ?? 0 }, ok);
     guardarAjustes({ pinFallos: r.fallos });
     pin = '';
-    if (ok) alExito();
+    if (ok) { limpiar(); alExito(); }
     else pintar(r.ofrecerRestablecer ? '' : `PIN incorrecto. Te quedan ${r.restantes} intento(s).`, true);
   }
 
-  const teclado = (ev) => {
-    if (!cont.isConnected) { document.removeEventListener('keydown', teclado); return; }
+  function teclado(ev) {
+    if (!cont.isConnected) { limpiar(); return; }
+    const t = ev.target;
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
     if (/^\d$/.test(ev.key)) tecla(ev.key);
     else if (ev.key === 'Backspace') { pin = pin.slice(0, -1); pintar(); }
-  };
+  }
   document.addEventListener('keydown', teclado);
   pintar();
 }

@@ -184,3 +184,25 @@ test('rf06_negativo_semana13_mantenimientoODerivar', () => {
   const prev = generarPlan(base({ perfil: 'PREVENCION', iciqInicial: 0 }), catalogo);
   assert.equal(planMantenimiento(prev, { iciqFinal: 0 }, catalogo).decision, 'mantenimiento');
 });
+
+test('rf17_v2_planificador_parametrosFijosYCambioDeEquipo', async () => {
+  const { equipoDesdeConocido } = await import('../js/ui/vistas/equipo.js');
+  const { construirLineaTiempo } = await import('../js/engine/sesion.js');
+  // Innovo (estimulación externa, parámetros fijos): el plan conserva las EST-* y la sesión usa 5/5 × 30 min.
+  const inn = equipoDesdeConocido(catalogo, 'Innovo (Atlantic Therapeutics)', 'Innovo shorts');
+  const plan = generarPlan(base({ equipo: inn }), catalogo);
+  assert.ok(tiposDia(plan, 1, 'L').includes('EST-IUE'));
+  const lt = construirLineaTiempo('EST-IUE', { nivel: 2, semana: 1, equipo: inn }, catalogo);
+  assert.equal(lt.parametros.fijadosPorEquipo, true);
+  assert.equal(lt.parametros.frecuenciaHz, 50);
+  assert.equal(lt.totalSeg, 1800);
+  // Cambiar a un sensor sin estimulación en la semana 3 quita las EST-* desde ahí, no antes.
+  const sensor = equipoDesdeConocido(catalogo, 'Biofeedback Bluetooth sin estimulación', 'Perifit');
+  const nuevo = regenerarConEquipo({ ...plan, semanaActual: 3 }, sensor, catalogo);
+  assert.ok(tiposDia(nuevo, 2, 'L').includes('EST-IUE'), 'semana pasada intacta');
+  assert.ok(!tiposDia(nuevo, 3, 'L').includes('EST-IUE'));
+  assert.equal(nuevo.entrada.equipo.tieneEstimulacion, false);
+  // Y volver a un estimulador las recupera.
+  const vuelta = regenerarConEquipo({ ...nuevo, semanaActual: 4 }, equipoVaginalEMG(), catalogo);
+  assert.ok(tiposDia(vuelta, 4, 'L').includes('EST-IUE'));
+});

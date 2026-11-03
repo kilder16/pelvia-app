@@ -30,9 +30,9 @@ Lee PROMPT-CLAUDE-CODE.md y ejecútalo completo en modo autónomo, sin pedirme c
 Cuando pida permisos para comandos repetidos e inofensivos (`node --test`, `git add`, lecturas), elige la opción 2 ("no volver a preguntar"); nunca para patrones amplios.
 
 ## Paso 4 — Revisar el informe final (LAPTOP PERSONAL)
-Claude Code termina con la tabla de avance, la matriz de trazabilidad y los 3 pasos siguientes. Verifica que `node --test tests/` salga en verde:
+Claude Code termina con la tabla de avance, la matriz de trazabilidad y los 3 pasos siguientes. Verifica que `node --test "tests/*.test.js"` salga en verde (Node 22 no acepta un directorio; las comillas son necesarias):
 ```powershell
-node --test tests/
+node --test "tests/*.test.js"
 ```
 
 ## Paso 5 — Probarla en la PC antes de publicar (LAPTOP PERSONAL)

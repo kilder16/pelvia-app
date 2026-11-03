@@ -1,0 +1,20 @@
+{
+  "name": "PELVIA — Terapia de suelo pélvico guiada",
+  "short_name": "PELVIA",
+  "description": "Guía de ejercicios, biofeedback y electroestimulación del suelo pélvico. No sustituye la valoración de un profesional de salud.",
+  "lang": "es",
+  "dir": "ltr",
+  "start_url": "./index.html#/hoy",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F7F9F8",
+  "theme_color": "#2A7F7A",
+  "categories": ["health", "medical", "fitness"],
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "assets/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

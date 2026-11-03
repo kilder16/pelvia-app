@@ -1,0 +1,16 @@
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+# Editores
+.vscode/
+.idea/
+*.swp
+# Node (no se usa npm; por si acaso)
+node_modules/
+coverage/
+# Temporales
+*.tmp
+*.log
+# Respaldos con datos reales: nunca al repo
+pelvia-respaldo-*.json

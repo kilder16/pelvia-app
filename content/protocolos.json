@@ -1,0 +1,769 @@
+{
+  "meta": {
+    "nombre": "Catálogo clínico PELVIA",
+    "version": "1.0.0",
+    "esquema": 1,
+    "fecha": "2026-11-03",
+    "idioma": "es-PE",
+    "aviso": "PELVIA es una herramienta de apoyo para la rehabilitación conservadora del suelo pélvico. No diagnostica, no sustituye la valoración de un médico ni de un fisioterapeuta especializado y no controla el electroestimulador. Si tienes dudas, dolor, sangrado o no mejoras, consulta a un profesional.",
+    "avisoCorto": "No sustituye la valoración de un profesional de salud.",
+    "revisionProfesionalPendiente": true,
+    "notaRevision": "Los parámetros provienen de guías y ensayos publicados (ver fuentes). Antes de usar la app con la usuaria, se recomienda que un fisioterapeuta de suelo pélvico revise este catálogo."
+  },
+
+  "fuentes": [
+    { "id": "NICE-NG123", "cita": "NICE (2019). Urinary incontinence and pelvic organ prolapse in women: management. Guideline NG123.", "url": "https://www.nice.org.uk/guidance/ng123", "uso": "PFMT supervisado ≥ 3 meses, ≥ 8 contracciones × 3 veces/día; estimulación/biofeedback cuando no se logra contraer; entrenamiento vesical ≥ 6 semanas." },
+    { "id": "POGP-2021", "cita": "Pelvic, Obstetric and Gynaecological Physiotherapy (2021). Good practice statement: Safety and best practice in NMES for pelvic floor muscle dysfunction. J POGP 128:68-76.", "url": "https://thepogp.co.uk/_userfiles/pages/files/journals/128/11_good_practice_statement.pdf", "uso": "≤ 10 Hz para vejiga hiperactiva; 35–50 Hz para fortalecer; 200–250 µs rango más cómodo; ON:OFF mínimo 1:2; rampa 0,5–2 s; 10–30 min; de diaria a 3×/semana; contraindicaciones y precauciones." },
+    { "id": "LAYCOCK-2001", "cita": "Laycock J, Jerwood D (2001). Pelvic floor muscle assessment: the PERFECT scheme. Physiotherapy 87(12):631-642.", "url": "https://doi.org/10.1016/S0031-9406(05)61108-X", "uso": "Esquema PERFECT (P, E, R, F) y Escala de Oxford modificada 0–5." },
+    { "id": "DUMOULIN-2018", "cita": "Dumoulin C, Cacciari LP, Hay-Smith EJC (2018). Pelvic floor muscle training versus no treatment for urinary incontinence in women. Cochrane CD005654.", "url": "https://doi.org/10.1002/14651858.CD005654.pub4", "uso": "Eficacia del PFMT como primera línea." },
+    { "id": "STEWART-2017", "cita": "Stewart F, Berghmans B, Bø K, Glazener CM (2017). Electrical stimulation with non-implanted devices for stress urinary incontinence in women. Cochrane CD012390.", "url": "https://doi.org/10.1002/14651858.CD012390.pub2", "uso": "Electroestimulación en IUE: mejor que no tratar; parámetros óptimos no establecidos." },
+    { "id": "STEWART-2016", "cita": "Stewart F et al. (2016). Electrical stimulation with non-implanted electrodes for overactive bladder in adults. Cochrane CD010098.", "url": "https://doi.org/10.1002/14651858.CD010098.pub4", "uso": "Electroestimulación en vejiga hiperactiva: evidencia moderada de beneficio." },
+    { "id": "IVES-OAB-2021", "cita": "Universidad Pamukkale (2021). Bladder training with and without intravaginal electrical stimulation in women with idiopathic overactive bladder (NCT04389307) y ensayo de frecuencia de tratamiento (NCT04734301).", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8486445", "uso": "10 Hz, ciclo trabajo/descanso 5 s/10 s, 20 min por sesión, 2–5 sesiones/semana, 20 sesiones." },
+    { "id": "IVES-SUI-2024", "cita": "Frontiers in Neuroscience (2024). Effect of intra-vaginal electric stimulation on bladder compliance in SUI patients.", "url": "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2024.1432616/full", "uso": "35 Hz, 250 µs, 5 s trabajo / 10 s descanso, 20 min, intensidad justo por debajo del máximo tolerable." },
+    { "id": "DMOCHOWSKI-2019", "cita": "Dmochowski R et al. (2019). External electrical stimulation compared with intravaginal electrical stimulation for SUI in women. Neurourol Urodyn.", "url": "https://cdn.shopify.com/s/files/1/0594/4308/5486/files/Dmochowski-et-al-2019-External-Electrical-Stimulation-for-the-treatment-of-SUI-in-women.pdf", "uso": "Dispositivo intravaginal comparador: 50 Hz, 300 µs, rampa 1 s." },
+    { "id": "NORTON-2006", "cita": "Norton C, Gibbs A, Kamm MA (2006). Randomized controlled trial of anal electrical stimulation for fecal incontinence. Dis Colon Rectum.", "url": "https://findanexpert.unimelb.edu.au/scholarlywork/312180-randomized--controlled-trial-of-anal-electrical-stimulation-for-fecal-incontinence", "uso": "Estimulación anal a 35 Hz, uso diario en casa, 8 semanas." },
+    { "id": "VONTHEIN-2013", "cita": "Vonthein R et al. (2013). Electrical stimulation and biofeedback for the treatment of fecal incontinence: a systematic review. Int J Colorectal Dis 28:1567-1577.", "url": "https://doi.org/10.1007/s00384-013-1739-0", "uso": "Biofeedback + estimulación es superior a biofeedback solo; vigilar irritación con baja frecuencia." },
+    { "id": "KLOVNING-2009", "cita": "Klovning A, Avery K, Sandvik H, Hunskaar S (2009). Comparison of two questionnaires for assessing the severity of urinary incontinence: the ICIQ-UI SF versus the ISI. Neurourol Urodyn 28(5):411-415.", "url": "https://doi.org/10.1002/nau.20674", "uso": "Severidad ICIQ-UI SF: leve 1–5, moderada 6–12, severa 13–18, muy severa 19–21." },
+    { "id": "ICIQ", "cita": "Avery K et al. (2004). ICIQ: a brief and robust measure for evaluating the symptoms and impact of urinary incontinence. Neurourol Urodyn.", "url": "https://iciq.net/iciq-ui-sf", "uso": "Estructura del ICIQ-UI SF (3 ítems puntuados 0–21 + situaciones). En PELVIA se usa una adaptación libre; para uso clínico formal, obtener la versión validada en español con licencia." },
+    { "id": "TERZONI-2023", "cita": "Terzoni S et al. (2023). TENS for pelvic pain: a scoping review of treatment protocols. Neurourol Urodyn 42(3):631-640.", "url": "https://pubmed.ncbi.nlm.nih.gov/36701176/", "uso": "Colocación de electrodos, forma de onda, duración, frecuencia de sesiones de TENS en dolor pélvico." },
+    { "id": "ICS-2025-TENS", "cita": "Babazadeh-Zavieh S et al. (2025). Effects of TENS on chronic pelvic pain in women: systematic review and meta-analysis. ICS 2025, abstract 454.", "url": "https://www.ics.org/2025/abstract/454", "uso": "TENS ≥ 20 min, 50–400 µs, 2–120 Hz; alta frecuencia con intensidad máxima tolerable fue más efectiva." },
+    { "id": "IUJ-2021", "cita": "Int Urogynecol J (2021). Pelvic floor muscle training: prescription for novice exercisers.", "url": "https://link.springer.com/10.1007/s00192-021-04804-z", "uso": "Prescripción genérica mínima: 8 contracciones, sostén 8 s, 3 veces/día, 3 días/semana, ≥ 3 meses." },
+    { "id": "TENSCARE-SUREPRO", "cita": "TensCare (2025). Sure Pro — Instructions for use (programas STRESS, URGE, MIXED, etc.).", "url": "https://tenscare.co.uk/cdn/shop/files/I-SP2-ML_UK_ES_FR_DE_IT_Rev_6.0_12.25.pdf", "uso": "Nombres de programas preconfigurados y contraindicaciones del fabricante." }
+  ],
+
+  "seguridad": {
+    "vigenciaDias": 90,
+    "contraindicacionesAbsolutas": [
+      { "id": "CI-EMBARAZO", "pregunta": "¿Estás embarazada, podrías estarlo o estás buscando embarazo?", "motivo": "La electroestimulación pélvica está contraindicada en el embarazo (efecto sobre el feto desconocido; riesgo de contracciones uterinas).", "fuentes": ["POGP-2021", "TENSCARE-SUREPRO"] },
+      { "id": "CI-MARCAPASOS", "pregunta": "¿Tienes marcapasos, desfibrilador u otro dispositivo electrónico implantado?", "motivo": "La corriente puede interferir con el dispositivo.", "fuentes": ["POGP-2021"] },
+      { "id": "CI-POSTPARTO-12", "pregunta": "¿Diste a luz o tuviste una cirugía pélvica, perineal o abdominal hace menos de 12 semanas?", "motivo": "Las contracciones inducidas y el aumento de flujo sanguíneo pueden alterar la cicatrización.", "fuentes": ["POGP-2021"] },
+      { "id": "CI-INFECCION", "pregunta": "¿Tienes ahora infección urinaria, vaginal o anal (ardor, flujo anormal, fiebre)?", "motivo": "La sonda puede agravar la infección; tratar primero.", "fuentes": ["POGP-2021", "TENSCARE-SUREPRO"] },
+      { "id": "CI-SANGRADO", "pregunta": "¿Tienes sangrado vaginal o anal fuera de lo normal y sin causa conocida?", "motivo": "La estimulación aumenta el flujo sanguíneo local y puede empeorar el sangrado; requiere evaluación.", "fuentes": ["POGP-2021"] },
+      { "id": "CI-CANCER", "pregunta": "¿Tienes un cáncer pélvico o abdominal en tratamiento, o has recibido radioterapia en la pelvis en los últimos 6 meses?", "motivo": "No se debe estimular tejido tumoral ni recientemente irradiado.", "fuentes": ["POGP-2021"] },
+      { "id": "CI-CITOLOGIA", "pregunta": "¿Tienes un Papanicolaou (citología) anormal pendiente de tratamiento o de control?", "motivo": "Se recomienda esperar a un resultado normal antes de usar sonda con corriente.", "fuentes": ["POGP-2021"] },
+      { "id": "CI-LESION", "pregunta": "¿Tienes heridas, fisuras, fístulas o hemorroides sangrantes en la zona donde iría la sonda?", "motivo": "La piel o mucosa dañada conduce la corriente de forma irregular y puede lesionarse más.", "fuentes": ["POGP-2021"] },
+      { "id": "CI-SONDA", "pregunta": "¿Te resulta imposible o muy doloroso colocar la sonda?", "motivo": "Sin una colocación correcta y cómoda no se debe usar la estimulación interna.", "fuentes": ["TENSCARE-SUREPRO"] }
+    ],
+    "precauciones": [
+      { "id": "PR-EPILEPSIA", "pregunta": "¿Tienes epilepsia?", "mensaje": "Consulta con tu médico antes de usar electroestimulación; empieza con intensidades bajas y nunca la uses sola en casa.", "fuentes": ["POGP-2021"] },
+      { "id": "PR-SENSIBILIDAD", "pregunta": "¿Tienes la sensibilidad reducida en la zona pélvica (por ejemplo diabetes con daño en nervios, lesión neurológica)?", "mensaje": "Podrías no notar una intensidad excesiva: sube la intensidad muy despacio y usa el mínimo que produzca contracción.", "fuentes": ["POGP-2021"] },
+      { "id": "PR-PROLAPSO", "pregunta": "¿Te han diagnosticado un prolapso (descenso de vejiga, útero o recto)?", "mensaje": "Con prolapso moderado o severo la sonda puede no sostenerse bien; confirma con tu profesional antes de usar estimulación interna.", "fuentes": ["POGP-2021"] },
+      { "id": "PR-PESARIO", "pregunta": "¿Usas pesario vaginal?", "mensaje": "Retíralo antes de la sesión si tu profesional te enseñó a hacerlo; si no, consúltale.", "fuentes": ["POGP-2021"] },
+      { "id": "PR-NIQUEL", "pregunta": "¿Eres alérgica al níquel o a metales?", "mensaje": "Muchas sondas son de acero inoxidable con níquel; existen sondas con baño de oro.", "fuentes": ["POGP-2021"] },
+      { "id": "PR-COAGULACION", "pregunta": "¿Tienes un trastorno de coagulación o tomas anticoagulantes?", "mensaje": "Inserta la sonda con cuidado y abundante gel; suspende si hay sangrado.", "fuentes": ["POGP-2021"] },
+      { "id": "PR-DIU", "pregunta": "¿Usas DIU (T de cobre o hormonal)?", "mensaje": "Con corriente bifásica (la de los equipos domésticos) no hay efecto térmico y puede usarse; si notas molestias, consulta.", "fuentes": ["POGP-2021"] },
+      { "id": "PR-MENSTRUACION", "pregunta": "¿Prefieres no usar la sonda durante la menstruación?", "mensaje": "Es tu decisión: puedes posponer las sesiones con sonda esos días y hacer solo los ejercicios.", "fuentes": ["POGP-2021"] }
+    ],
+    "banderasRojas": [
+      { "id": "BR-HEMATURIA", "pregunta": "¿Has visto sangre en la orina?", "mensaje": "Consulta con un médico antes de continuar." },
+      { "id": "BR-DOLOR-FIEBRE", "pregunta": "¿Tienes dolor pélvico intenso o acompañado de fiebre?", "mensaje": "Consulta con un médico antes de continuar." },
+      { "id": "BR-NEURO", "pregunta": "¿Has notado adormecimiento en la zona genital o perineal, o debilidad en las piernas de inicio reciente?", "mensaje": "Consulta con un médico de inmediato." },
+      { "id": "BR-RETENCION", "pregunta": "¿No consigues orinar o vacías muy poco con dolor?", "mensaje": "Consulta con un médico de inmediato." },
+      { "id": "BR-BULTO", "pregunta": "¿Notas o ves un bulto que sale por la vagina?", "mensaje": "Necesitas valoración ginecológica antes de seguir un programa por tu cuenta." },
+      { "id": "BR-PESO", "pregunta": "¿Has perdido peso sin explicación en los últimos meses?", "mensaje": "Consulta con un médico." }
+    ],
+    "checklistSesionEST": [
+      "No tengo infección urinaria ni vaginal/anal activa.",
+      "No tengo dolor ni sangrado hoy.",
+      "La sonda está limpia y con gel a base de agua.",
+      "La intensidad del equipo está en 0 antes de colocar la sonda.",
+      "Estoy en una posición cómoda y no voy a dormirme con el equipo encendido.",
+      "Si siento dolor, ardor o molestia fuerte, bajo la intensidad o detengo la sesión."
+    ],
+    "reglasIntensidad": [
+      "Sube la intensidad de a poco hasta sentir una contracción clara (como si apretaras y elevaras), nunca dolor.",
+      "Más intensidad no es mejor: la meta es la contracción, no el máximo del equipo.",
+      "Apaga el equipo antes de colocar o retirar la sonda.",
+      "Lava la sonda con agua tibia y jabón neutro después de cada uso y sécala antes de guardarla.",
+      "No compartas la sonda con nadie."
+    ],
+    "mensajes": {
+      "contraindicacion": "Hay al menos una condición en la que la electroestimulación no es segura. Tu plan incluirá solo ejercicios y hábitos. Consulta con tu profesional antes de usar el equipo.",
+      "banderaRoja": "Alguna respuesta requiere evaluación médica antes de continuar. Mientras tanto, la app solo te propondrá ejercicios suaves sin equipo.",
+      "vencida": "Tu cuestionario de seguridad tiene más de 90 días. Respóndelo de nuevo antes de usar el electroestimulador."
+    }
+  },
+
+  "cuestionarioSintomas": {
+    "escala": [
+      { "valor": 0, "texto": "Nunca" },
+      { "valor": 1, "texto": "A veces (menos de una vez por semana)" },
+      { "valor": 2, "texto": "Frecuente (varias veces por semana)" },
+      { "valor": 3, "texto": "Casi siempre o a diario" }
+    ],
+    "umbral": 2,
+    "preguntas": [
+      { "id": "esf", "dimension": "esfuerzo", "texto": "¿Se te escapa orina al toser, estornudar, reír, saltar, correr o levantar peso?", "ayuda": "Pérdidas con esfuerzo físico, sin aviso previo de ganas." },
+      { "id": "urg", "dimension": "urgencia", "texto": "¿Sientes ganas repentinas y muy fuertes de orinar, a veces sin llegar a tiempo al baño?", "ayuda": "Urgencia súbita, con o sin escape." },
+      { "id": "frec", "dimension": "frecuencia", "texto": "¿Orinas más de 8 veces al día o te levantas 2 o más veces en la noche?", "ayuda": "Frecuencia y nocturia." },
+      { "id": "fec", "dimension": "fecal", "texto": "¿Se te escapan gases o heces sin poder controlarlo?", "ayuda": "Incontinencia anal." },
+      { "id": "prol", "dimension": "prolapso", "texto": "¿Sientes pesadez, presión o un bulto en la vagina, sobre todo al final del día o de pie?", "ayuda": "Síntomas de prolapso." },
+      { "id": "dol", "dimension": "dolor", "texto": "¿Tienes dolor pélvico, dolor en las relaciones sexuales o te cuesta relajar la zona (sensación de tensión constante)?", "ayuda": "Dolor o suelo pélvico tenso (hipertonía)." },
+      { "id": "vac", "dimension": "vaciado", "texto": "¿Te cuesta empezar a orinar, el chorro es débil o sientes que no vacías por completo?", "ayuda": "Dificultad de vaciado." }
+    ],
+    "contexto": [
+      { "id": "ctxPostparto", "texto": "¿Diste a luz en los últimos 12 meses?", "tipo": "si-no" },
+      { "id": "ctxMenopausia", "texto": "¿Estás en la perimenopausia o menopausia?", "tipo": "si-no" },
+      { "id": "ctxDiagnostico", "texto": "¿Un profesional ya te dio un diagnóstico? Escríbelo (opcional).", "tipo": "texto" }
+    ],
+    "iciq": {
+      "nota": "Adaptación libre del ICIQ-UI SF (3 ítems puntuados; el ítem de situaciones no puntúa). Puntaje total 0–21.",
+      "items": [
+        { "id": "q1", "texto": "¿Con qué frecuencia se te escapa la orina?", "opciones": [ { "valor": 0, "texto": "Nunca" }, { "valor": 1, "texto": "Una vez por semana o menos" }, { "valor": 2, "texto": "Dos o tres veces por semana" }, { "valor": 3, "texto": "Una vez al día" }, { "valor": 4, "texto": "Varias veces al día" }, { "valor": 5, "texto": "Todo el tiempo" } ] },
+        { "id": "q2", "texto": "¿Cuánta orina crees que se te escapa normalmente (uses o no protección)?", "opciones": [ { "valor": 0, "texto": "Nada" }, { "valor": 2, "texto": "Una cantidad pequeña" }, { "valor": 4, "texto": "Una cantidad moderada" }, { "valor": 6, "texto": "Una cantidad grande" } ] },
+        { "id": "q3", "texto": "En general, ¿cuánto afectan los escapes de orina tu vida diaria? (0 = nada, 10 = muchísimo)", "min": 0, "max": 10 }
+      ],
+      "situaciones": {
+        "texto": "¿Cuándo se te escapa la orina? (marca todas las que correspondan; no puntúa)",
+        "opciones": ["Nunca", "Antes de llegar al baño", "Al toser o estornudar", "Mientras duermo", "Al hacer ejercicio", "Al terminar de orinar y vestirme", "Sin motivo evidente", "Todo el tiempo"]
+      },
+      "severidad": [
+        { "id": "sin", "min": 0, "max": 0, "nombre": "Sin escapes" },
+        { "id": "leve", "min": 1, "max": 5, "nombre": "Leve" },
+        { "id": "moderada", "min": 6, "max": 12, "nombre": "Moderada" },
+        { "id": "severa", "min": 13, "max": 18, "nombre": "Severa" },
+        { "id": "muy_severa", "min": 19, "max": 21, "nombre": "Muy severa" }
+      ],
+      "mejoraMinimaPuntos": 2,
+      "fuentes": ["ICIQ", "KLOVNING-2009"]
+    }
+  },
+
+  "perfiles": [
+    { "id": "IUE", "nombre": "Incontinencia urinaria de esfuerzo", "descripcion": "Escapes de orina al toser, reír, saltar o levantar peso, por debilidad del suelo pélvico y del cierre de la uretra.", "objetivo": "Aumentar fuerza, resistencia y rapidez de reacción del suelo pélvico; aprender a contraer antes del esfuerzo (Knack).", "programaId": "PROG-IUE", "derivarSiempre": false, "icono": "IL-13-esfuerzo", "fuentes": ["NICE-NG123", "DUMOULIN-2018", "STEWART-2017"] },
+    { "id": "URGENCIA", "nombre": "Urgencia / vejiga hiperactiva", "descripcion": "Ganas repentinas e intensas de orinar, frecuencia alta y a veces escapes antes de llegar al baño.", "objetivo": "Calmar la vejiga (neuromodulación a baja frecuencia), reentrenar el intervalo entre micciones y usar el suelo pélvico para suprimir la urgencia.", "programaId": "PROG-URG", "derivarSiempre": false, "icono": "IL-13-urgencia", "fuentes": ["NICE-NG123", "STEWART-2016", "IVES-OAB-2021"] },
+    { "id": "MIXTA", "nombre": "Incontinencia mixta", "descripcion": "Combina escapes con esfuerzo y urgencia. El plan trabaja ambos componentes y prioriza el predominante.", "objetivo": "Fortalecer y calmar la vejiga; entrenamiento vesical y Knack.", "programaId": "PROG-MIX", "derivarSiempre": false, "icono": "IL-13-mixta", "fuentes": ["NICE-NG123", "POGP-2021"] },
+    { "id": "FECAL", "nombre": "Incontinencia anal (gases o heces)", "descripcion": "Escapes de gases o heces por debilidad del esfínter y del suelo pélvico.", "objetivo": "Fortalecer el esfínter anal externo y el suelo pélvico con estimulación anal + biofeedback; hábitos intestinales.", "programaId": "PROG-FEC", "derivarSiempre": true, "mensajeDerivacion": "La incontinencia anal debe ser evaluada por un especialista (coloproctólogo o fisioterapeuta de suelo pélvico); la app te acompaña, no reemplaza esa consulta.", "icono": "IL-13-fecal", "fuentes": ["NORTON-2006", "VONTHEIN-2013"] },
+    { "id": "DOLOR_HIPERTONIA", "nombre": "Dolor pélvico / suelo pélvico tenso", "descripcion": "Dolor, molestia en las relaciones o sensación de tensión constante. Aquí el suelo pélvico no está débil: está demasiado tenso y necesita aprender a relajarse.", "objetivo": "Relajación, respiración, posturas de descarga y TENS analgésico. Sin fortalecimiento con electroestimulación hasta que baje el dolor.", "programaId": "PROG-DOLOR", "derivarSiempre": true, "mensajeDerivacion": "El dolor pélvico requiere valoración profesional (ginecología/urología y fisioterapia de suelo pélvico). No hagas fortalecimiento con sonda mientras haya dolor.", "icono": "IL-13-dolor", "fuentes": ["TERZONI-2023", "ICS-2025-TENS"] },
+    { "id": "PROLAPSO", "nombre": "Prolapso (pesadez o bulto)", "descripcion": "Descenso de vejiga, útero o recto. En grados leves el entrenamiento del suelo pélvico mejora los síntomas.", "objetivo": "Fortalecer sin empujar hacia abajo; hábitos para no aumentar la presión abdominal; confirmar el grado con un profesional.", "programaId": "PROG-PROLAPSO", "derivarSiempre": true, "mensajeDerivacion": "Un profesional debe confirmar el grado del prolapso antes de usar sonda con corriente.", "icono": "IL-13-prolapso", "fuentes": ["NICE-NG123", "POGP-2021"] },
+    { "id": "POSTPARTO", "nombre": "Recuperación postparto", "descripcion": "Reconexión y fortalecimiento progresivo después del parto (a partir de las 12 semanas o con alta médica).", "objetivo": "Recuperar la conciencia y la fuerza del suelo pélvico y prevenir escapes.", "programaId": "PROG-POSTPARTO", "derivarSiempre": false, "icono": "IL-13-postparto", "fuentes": ["NICE-NG123", "POGP-2021"] },
+    { "id": "PREVENCION", "nombre": "Prevención y mantenimiento", "descripcion": "Sin síntomas relevantes. Entrenar el suelo pélvico previene problemas a lo largo de la vida.", "objetivo": "Rutina breve y sostenible de ejercicios y hábitos.", "programaId": "PROG-PREVENCION", "derivarSiempre": false, "icono": "IL-13-prevencion", "fuentes": ["NICE-NG123"] }
+  ],
+
+  "reglasClasificacion": {
+    "descripcion": "Se evalúan en orden; la primera regla cuya condición se cumple asigna el perfil. Las condiciones usan los puntajes 0–3 del cuestionario y las respuestas de contexto.",
+    "orden": [
+      { "perfil": "DOLOR_HIPERTONIA", "si": [["dol", ">=", 2]], "motivo": "Dolor o tensión pélvica frecuente: primero relajar, nunca fortalecer con sonda." },
+      { "perfil": "PROLAPSO", "si": [["prol", ">=", 3]], "motivo": "Síntomas de prolapso casi diarios." },
+      { "perfil": "FECAL", "si": [["fec", ">=", 2]], "motivo": "Escapes de gases o heces frecuentes." },
+      { "perfil": "MIXTA", "si": [["esf", ">=", 2], ["urg", ">=", 2]], "motivo": "Escapes con esfuerzo y urgencia, ambos frecuentes." },
+      { "perfil": "IUE", "si": [["esf", ">=", 2]], "motivo": "Escapes con esfuerzo frecuentes." },
+      { "perfil": "URGENCIA", "si": [["urg", ">=", 2]], "motivo": "Urgencia frecuente." },
+      { "perfil": "URGENCIA", "si": [["frec", ">=", 2]], "motivo": "Frecuencia o nocturia elevadas." },
+      { "perfil": "POSTPARTO", "si": [["ctxPostparto", "==", true]], "motivo": "Parto en los últimos 12 meses sin síntomas frecuentes." },
+      { "perfil": "PREVENCION", "si": [], "motivo": "Sin síntomas frecuentes." }
+    ],
+    "predominioMixta": "El componente con mayor puntaje; en empate, ESFUERZO.",
+    "derivar": {
+      "perfiles": ["DOLOR_HIPERTONIA", "PROLAPSO", "FECAL"],
+      "severidades": ["severa", "muy_severa"],
+      "condicionesExtra": [["vac", ">=", 2]],
+      "mensaje": "Por tu nivel de síntomas te recomendamos una valoración con un fisioterapeuta de suelo pélvico o tu médico. Puedes usar PELVIA mientras tanto como apoyo."
+    }
+  },
+
+  "autoevaluacionFuerza": {
+    "instrucciones": "Acostada boca arriba con las rodillas flexionadas. Respira normal. Vas a hacer 3 pruebas cortas: fuerza, resistencia y rapidez. Si tu equipo tiene biofeedback (EMG), puedes usarlo para ver la contracción; si no, guíate por lo que sientes.",
+    "P": {
+      "nombre": "Fuerza (P)",
+      "escala": [
+        { "valor": 0, "texto": "No siento nada al intentar contraer." },
+        { "valor": 1, "texto": "Siento apenas un parpadeo o leve movimiento." },
+        { "valor": 2, "texto": "Siento que aprieto un poco, pero sin elevar." },
+        { "valor": 3, "texto": "Aprieto y noto que se eleva hacia adentro." },
+        { "valor": 4, "texto": "Aprieto con fuerza y elevo; podría aguantar algo de resistencia." },
+        { "valor": 5, "texto": "Contracción muy fuerte, clara y sostenida." }
+      ],
+      "nota": "Adaptación lega de la Escala de Oxford modificada (0–5); la valoración exacta la hace un profesional por palpación."
+    },
+    "E": { "nombre": "Resistencia (E)", "instruccion": "Contrae lo más fuerte que puedas y mantén. Cuenta los segundos hasta que la fuerza baje claramente. Máximo 10.", "min": 0, "max": 10 },
+    "R": { "nombre": "Repeticiones (R)", "instruccion": "Descansa 1 minuto. Repite contracciones de la duración que lograste en E, descansando el doble entre cada una. ¿Cuántas logras con la misma fuerza? Máximo 10.", "min": 0, "max": 10 },
+    "F": { "nombre": "Rápidas (F)", "instruccion": "Descansa 1 minuto. Haz contracciones rápidas y fuertes (1 segundo apretar, 1 segundo soltar). ¿Cuántas logras antes de cansarte? Máximo 10.", "min": 0, "max": 10 },
+    "reglasNivel": {
+      "descripcion": "Se evalúan de abajo hacia arriba y se asigna el nivel más bajo cuya condición se cumple (criterio conservador).",
+      "orden": [
+        { "nivel": 0, "si": [["P", "<=", 1]], "motivo": "Todavía no se percibe una contracción clara." },
+        { "nivel": 1, "si": [["E", "<", 3]], "motivo": "La contracción se mantiene menos de 3 segundos." },
+        { "nivel": 2, "si": [["E", "<=", 5]], "motivo": "Sostén de 3 a 5 segundos." },
+        { "nivel": 2, "si": [["F", "<", 5]], "motivo": "Menos de 5 contracciones rápidas." },
+        { "nivel": 3, "si": [["E", "<=", 8]], "motivo": "Sostén de 6 a 8 segundos." },
+        { "nivel": 3, "si": [["F", "<", 10]], "motivo": "Menos de 10 rápidas." },
+        { "nivel": 3, "si": [["P", "<", 4]], "motivo": "Fuerza percibida moderada." },
+        { "nivel": 3, "si": [["R", "<", 8]], "motivo": "Menos de 8 repeticiones." },
+        { "nivel": 4, "si": [], "motivo": "Sostén ≥ 9 s, ≥ 10 rápidas, fuerza buena y ≥ 8 repeticiones." }
+      ],
+      "nivelMaximoInicial": 4
+    },
+    "fuentes": ["LAYCOCK-2001"]
+  },
+
+  "niveles": [
+    { "id": 0, "nombre": "Conciencia", "objetivo": "Encontrar y sentir el suelo pélvico; aprender a contraer sin usar glúteos ni abdomen y a relajar por completo.", "pfmt": { "sostenS": 3, "descansoS": 6, "reps": 5, "series": 2, "rapidas": 0, "rapidasOnS": 1, "rapidasOffS": 1, "posiciones": ["acostada"], "ilustraciones": ["IL-03", "IL-02", "IL-06"] }, "sesionesExtra": ["PFMT-CONCIENCIA", "RELAJ-RESP"], "estSugerida": "EST-SENS", "metas": { "P": 2, "E": 2, "F": 2 }, "minSemanas": 2, "fuentes": ["NICE-NG123", "POGP-2021"] },
+    { "id": 1, "nombre": "Iniciación", "objetivo": "Contracciones cortas y correctas, con descanso del doble.", "pfmt": { "sostenS": 3, "descansoS": 6, "reps": 8, "series": 2, "rapidas": 3, "rapidasOnS": 1, "rapidasOffS": 1, "posiciones": ["acostada"], "ilustraciones": ["IL-03", "IL-02"] }, "metas": { "E": 3, "F": 3 }, "minSemanas": 2, "fuentes": ["NICE-NG123"] },
+    { "id": 2, "nombre": "Fuerza básica", "objetivo": "Sostener 5 segundos, 8 repeticiones, 3 series al día; empezar las rápidas.", "pfmt": { "sostenS": 5, "descansoS": 10, "reps": 8, "series": 3, "rapidas": 5, "rapidasOnS": 1, "rapidasOffS": 1, "posiciones": ["acostada", "sentada"], "ilustraciones": ["IL-03", "IL-04"] }, "metas": { "E": 6, "F": 5 }, "minSemanas": 2, "fuentes": ["NICE-NG123", "IUJ-2021"] },
+    { "id": 3, "nombre": "Resistencia", "objetivo": "Sostener 8 segundos con descanso igual, 10 repeticiones, en posición sentada y de pie.", "pfmt": { "sostenS": 8, "descansoS": 8, "reps": 10, "series": 3, "rapidas": 10, "rapidasOnS": 1, "rapidasOffS": 1, "posiciones": ["sentada", "de pie"], "ilustraciones": ["IL-04", "IL-05"] }, "metas": { "E": 9, "F": 10 }, "minSemanas": 2, "fuentes": ["IUJ-2021"] },
+    { "id": 4, "nombre": "Potencia", "objetivo": "Sostener 10 segundos, 15 rápidas, y aprender el Knack (contraer antes de toser o levantar peso).", "pfmt": { "sostenS": 10, "descansoS": 10, "reps": 10, "series": 3, "rapidas": 15, "rapidasOnS": 1, "rapidasOffS": 1, "posiciones": ["de pie"], "ilustraciones": ["IL-05", "IL-10"] }, "sesionesExtra": ["PFMT-KNACK"], "metas": { "E": 10, "F": 10 }, "minSemanas": 2, "fuentes": ["NICE-NG123"] },
+    { "id": 5, "nombre": "Funcional", "objetivo": "Integrar la contracción en movimientos de la vida diaria: sentadillas, levantar peso, caminar, toser.", "pfmt": { "sostenS": 10, "descansoS": 5, "reps": 10, "series": 3, "rapidas": 15, "rapidasOnS": 1, "rapidasOffS": 1, "posiciones": ["de pie", "en movimiento"], "ilustraciones": ["IL-05", "IL-10"] }, "sesionesExtra": ["PFMT-KNACK", "PFMT-FUNCIONAL"], "metas": { "E": 10, "F": 15 }, "minSemanas": 2, "fuentes": ["NICE-NG123"] },
+    { "id": 9, "nombre": "Mantenimiento", "objetivo": "Conservar lo ganado con una rutina corta, de por vida.", "pfmt": { "sostenS": 8, "descansoS": 8, "reps": 10, "series": 1, "rapidas": 10, "rapidasOnS": 1, "rapidasOffS": 1, "posiciones": ["de pie"], "ilustraciones": ["IL-05"] }, "sesionesExtra": ["PFMT-KNACK"], "metas": {}, "minSemanas": 0, "fuentes": ["NICE-NG123"] }
+  ],
+
+  "tiposSesion": [
+    {
+      "id": "EST-SENS", "categoria": "electroestimulacion", "nombre": "Estimulación de activación (reeducación sensitiva)",
+      "resumen": "Para cuando todavía no se siente la contracción: la corriente la produce y ayuda al cerebro a reconectar con el músculo.",
+      "paraQue": "Niveles 0 (fuerza percibida 0–1). Máximo 4 semanas; luego se pasa a fortalecimiento.",
+      "perfilesRecomendados": ["IUE", "MIXTA", "POSTPARTO", "PROLAPSO", "FECAL"],
+      "perfilesNoRecomendados": [ { "perfil": "DOLOR_HIPERTONIA", "motivo": "Con dolor o tensión no se estimula para contraer." } ],
+      "requiere": { "equipo": "sonda-vaginal-o-anal" }, "nivelMin": 0, "nivelMax": 0, "duracionMin": 12,
+      "parametros": { "frecuenciaHz": 35, "anchoPulsoUs": 200, "onS": 5, "offS": 10, "rampaS": 1, "duracionMin": 12, "formaOnda": "bifásica simétrica", "intensidad": { "guia": "Sube hasta la primera contracción visible o perceptible y quédate ahí.", "nunca": "Nunca dolor ni ardor." }, "sonda": "vaginal (o anal según indicación)", "posicion": "acostada con rodillas flexionadas", "participacionActiva": true, "instruccionActiva": "Cuando el equipo contraiga, intenta acompañar la contracción; cuando pare, suelta del todo." },
+      "rangosAceptables": { "frecuenciaHz": [30, 50], "anchoPulsoUs": [150, 300], "onS": [4, 6], "offS": [8, 12] },
+      "progresionSemanal": [ { "semanas": [1, 2], "duracionMin": 10 }, { "semanas": [3, 4], "duracionMin": 12 } ],
+      "frecuenciaSemanal": { "veces": 3, "diasAlternos": true, "maxPorDia": 1 },
+      "pasos": [ "Vacía la vejiga.", "Acuéstate con rodillas flexionadas (IL-03).", "Con el equipo en 0, coloca la sonda con gel (IL-07).", "Configura el programa indicado y sube la intensidad despacio hasta sentir la contracción.", "Sigue el temporizador: CONTRAE con el equipo, RELAJA cuando pare.", "Al terminar, baja a 0, apaga, retira y lava la sonda." ],
+      "seguridad": [ "Si no sientes nada a intensidad media-alta, no sigas subiendo: consulta a tu profesional.", "Máximo 4 semanas con este programa." ],
+      "ilustraciones": ["IL-03", "IL-07", "IL-09"], "fuentes": ["POGP-2021"]
+    },
+    {
+      "id": "EST-IUE", "categoria": "electroestimulacion", "nombre": "Estimulación de fortalecimiento (esfuerzo)",
+      "resumen": "Corriente a 35–50 Hz que produce contracciones completas del suelo pélvico para ganar fuerza; se acompaña con contracción voluntaria.",
+      "paraQue": "Incontinencia de esfuerzo, componente de esfuerzo de la mixta, postparto con debilidad.",
+      "perfilesRecomendados": ["IUE", "MIXTA", "POSTPARTO", "PROLAPSO"],
+      "perfilesNoRecomendados": [ { "perfil": "DOLOR_HIPERTONIA", "motivo": "No fortalecer un suelo pélvico tenso o doloroso." }, { "perfil": "URGENCIA", "motivo": "La urgencia se trata con baja frecuencia (10 Hz), no con fortalecimiento." } ],
+      "requiere": { "equipo": "sonda-vaginal" }, "nivelMin": 1, "nivelMax": 5, "duracionMin": 20,
+      "parametros": { "frecuenciaHz": 35, "anchoPulsoUs": 250, "onS": 5, "offS": 10, "rampaS": 1, "duracionMin": 20, "formaOnda": "bifásica simétrica", "intensidad": { "guia": "Sube hasta sentir una contracción clara (aprieta y eleva), fuerte pero cómoda, justo por debajo de lo que te molestaría.", "nunca": "Nunca dolor." }, "sonda": "vaginal", "posicion": "acostada con rodillas flexionadas; desde nivel 3 puede ser sentada", "participacionActiva": true, "instruccionActiva": "Contrae tú también durante el ON (aprieta y eleva) y relaja por completo durante el OFF." },
+      "rangosAceptables": { "frecuenciaHz": [30, 50], "anchoPulsoUs": [200, 500], "onS": [4, 8], "offS": [8, 16] },
+      "progresionSemanal": [ { "semanas": [1, 2], "frecuenciaHz": 35, "duracionMin": 15 }, { "semanas": [3, 4], "frecuenciaHz": 35, "duracionMin": 20 }, { "semanas": [5, 12], "frecuenciaHz": 50, "duracionMin": 20, "nota": "Si tu equipo no permite cambiar a 50 Hz, mantén 35 Hz y sube intensidad." } ],
+      "frecuenciaSemanal": { "veces": 3, "diasAlternos": true, "maxPorDia": 1, "semanas": 12 },
+      "equivalenciaProgramas": ["STRESS", "STRE", "SUI", "Stress incontinence", "P1"],
+      "pasos": [ "Vacía la vejiga.", "Acuéstate con rodillas flexionadas (IL-03).", "Con el equipo en 0, coloca la sonda con gel (IL-07).", "Configura: 35 Hz (50 Hz desde la semana 5), 250 µs, ON 5 s / OFF 10 s, rampa 1 s, 20 min — o el programa equivalente de tu equipo.", "Sube la intensidad poco a poco hasta la contracción clara.", "Sigue el temporizador: CONTRAE junto con el equipo, RELAJA del todo en el OFF (IL-09).", "Al terminar, baja a 0, apaga, retira, lava y seca la sonda.", "Registra la intensidad usada y cómo te sentiste." ],
+      "seguridad": [ "Días alternos: el músculo necesita descansar.", "Si aparece ardor, irritación o sangrado, suspende y consulta." ],
+      "ilustraciones": ["IL-03", "IL-07", "IL-09", "IL-12"], "fuentes": ["POGP-2021", "IVES-SUI-2024", "DMOCHOWSKI-2019", "STEWART-2017"]
+    },
+    {
+      "id": "EST-URG", "categoria": "electroestimulacion", "nombre": "Estimulación calmante de vejiga (urgencia)",
+      "resumen": "Corriente a 10 Hz que, a través de los nervios del suelo pélvico, inhibe las contracciones involuntarias de la vejiga.",
+      "paraQue": "Urgencia, frecuencia, vejiga hiperactiva; componente de urgencia de la mixta.",
+      "perfilesRecomendados": ["URGENCIA", "MIXTA"],
+      "perfilesNoRecomendados": [ { "perfil": "DOLOR_HIPERTONIA", "motivo": "Solo bajo indicación profesional." } ],
+      "requiere": { "equipo": "sonda-vaginal" }, "nivelMin": 0, "nivelMax": 9, "duracionMin": 20,
+      "parametros": { "frecuenciaHz": 10, "anchoPulsoUs": 200, "onS": 5, "offS": 10, "rampaS": 1, "duracionMin": 20, "formaOnda": "bifásica simétrica", "intensidad": { "guia": "Sensación clara de hormigueo o latido con una contracción leve; cómoda. No busca una contracción fuerte.", "nunca": "Nunca dolor." }, "sonda": "vaginal", "posicion": "acostada con rodillas flexionadas", "participacionActiva": false, "instruccionActiva": "Relájate y respira; no es necesario contraer." },
+      "rangosAceptables": { "frecuenciaHz": [5, 20], "anchoPulsoUs": [100, 300], "onS": [5, 1200], "offS": [0, 10] },
+      "progresionSemanal": [ { "semanas": [1, 12], "duracionMin": 20 } ],
+      "frecuenciaSemanal": { "veces": 3, "diasAlternos": true, "maxPorDia": 1, "semanas": 10, "nota": "Los ensayos usaron 2–5 sesiones/semana hasta completar 20 sesiones." },
+      "equivalenciaProgramas": ["URGE", "OAB", "Urge incontinence", "P2"],
+      "pasos": [ "Vacía la vejiga.", "Acuéstate cómoda (IL-03).", "Con el equipo en 0, coloca la sonda con gel (IL-07).", "Configura: 10 Hz, 200 µs, ON 5 s / OFF 10 s (o continuo si tu programa URGE es continuo), 20 min.", "Sube la intensidad hasta un hormigueo claro y cómodo.", "Respira lento durante toda la sesión.", "Al terminar, baja a 0, apaga, retira y lava la sonda." ],
+      "seguridad": [ "Combina siempre con el entrenamiento vesical: la estimulación sola no corrige los hábitos." ],
+      "ilustraciones": ["IL-03", "IL-07", "IL-12"], "fuentes": ["POGP-2021", "IVES-OAB-2021", "STEWART-2016"]
+    },
+    {
+      "id": "EST-MIX", "categoria": "electroestimulacion", "nombre": "Estimulación combinada (mixta)",
+      "resumen": "Dos bloques en una sesión: 10 min calmantes a 10 Hz y 10 min de fortalecimiento a 35–50 Hz.",
+      "paraQue": "Incontinencia mixta.",
+      "perfilesRecomendados": ["MIXTA"],
+      "perfilesNoRecomendados": [ { "perfil": "DOLOR_HIPERTONIA", "motivo": "No fortalecer con dolor." } ],
+      "requiere": { "equipo": "sonda-vaginal" }, "nivelMin": 1, "nivelMax": 5, "duracionMin": 20,
+      "bloques": [
+        { "nombre": "Bloque 1 — calmar", "parametros": { "frecuenciaHz": 10, "anchoPulsoUs": 200, "onS": 5, "offS": 10, "rampaS": 1, "duracionMin": 10, "participacionActiva": false } },
+        { "nombre": "Bloque 2 — fortalecer", "parametros": { "frecuenciaHz": 35, "anchoPulsoUs": 250, "onS": 5, "offS": 10, "rampaS": 1, "duracionMin": 10, "participacionActiva": true } }
+      ],
+      "parametros": { "frecuenciaHz": 10, "anchoPulsoUs": 200, "onS": 5, "offS": 10, "rampaS": 1, "duracionMin": 20, "formaOnda": "bifásica simétrica", "intensidad": { "guia": "Bloque 1: hormigueo cómodo. Bloque 2: contracción clara y cómoda.", "nunca": "Nunca dolor." }, "sonda": "vaginal", "posicion": "acostada con rodillas flexionadas", "participacionActiva": true, "instruccionActiva": "Relaja en el bloque 1; contrae con el equipo en el bloque 2." },
+      "rangosAceptables": { "frecuenciaHz": [5, 50], "anchoPulsoUs": [100, 500], "onS": [4, 8], "offS": [8, 16] },
+      "progresionSemanal": [ { "semanas": [1, 4], "nota": "Bloque 2 a 35 Hz" }, { "semanas": [5, 12], "nota": "Bloque 2 a 50 Hz si el equipo lo permite" } ],
+      "frecuenciaSemanal": { "veces": 3, "diasAlternos": true, "maxPorDia": 1, "semanas": 12 },
+      "equivalenciaProgramas": ["MIXED", "MIX", "Mixed incontinence", "P3"],
+      "pasos": [ "Vacía la vejiga.", "Acuéstate cómoda y coloca la sonda con el equipo en 0 (IL-07).", "Bloque 1 (10 min): programa URGE o 10 Hz / 200 µs.", "La app te avisa a los 10 min: pausa, cambia al programa STRESS (35–50 Hz / 250 µs) y reanuda.", "Bloque 2 (10 min): contrae con el equipo en cada ON.", "Baja a 0, apaga, retira y lava la sonda." ],
+      "seguridad": [ "Si tu equipo tiene programa MIXED, úsalo y sigue solo el temporizador." ],
+      "ilustraciones": ["IL-03", "IL-07", "IL-09", "IL-12"], "fuentes": ["POGP-2021", "TENSCARE-SUREPRO"]
+    },
+    {
+      "id": "EST-FEC", "categoria": "electroestimulacion", "nombre": "Estimulación anal de fortalecimiento",
+      "resumen": "Corriente a 35 Hz con sonda anal para fortalecer el esfínter anal externo, combinada con biofeedback.",
+      "paraQue": "Incontinencia de gases o heces por debilidad.",
+      "perfilesRecomendados": ["FECAL"],
+      "perfilesNoRecomendados": [ { "perfil": "DOLOR_HIPERTONIA", "motivo": "No con dolor." } ],
+      "requiere": { "equipo": "sonda-anal" }, "nivelMin": 0, "nivelMax": 9, "duracionMin": 20,
+      "parametros": { "frecuenciaHz": 35, "anchoPulsoUs": 250, "onS": 5, "offS": 10, "rampaS": 1, "duracionMin": 20, "formaOnda": "bifásica simétrica", "intensidad": { "guia": "Hasta sentir que el ano se cierra y eleva con claridad; cómoda.", "nunca": "Nunca dolor, ardor ni sangrado." }, "sonda": "anal", "posicion": "de lado con rodillas flexionadas o acostada", "participacionActiva": true, "instruccionActiva": "Aprieta el ano junto con el equipo y suelta por completo en el OFF." },
+      "rangosAceptables": { "frecuenciaHz": [30, 50], "anchoPulsoUs": [200, 300], "onS": [4, 8], "offS": [8, 16] },
+      "progresionSemanal": [ { "semanas": [1, 2], "duracionMin": 15 }, { "semanas": [3, 12], "duracionMin": 20 } ],
+      "frecuenciaSemanal": { "veces": 3, "diasAlternos": true, "maxPorDia": 1, "semanas": 12, "nota": "En el ensayo de Norton se usó a diario 8 semanas; en casa se recomienda empezar con 3 y aumentar si no hay irritación." },
+      "equivalenciaProgramas": ["FAECAL", "FECAL", "ANAL", "STRESS con sonda anal"],
+      "pasos": [ "Evacúa si es posible antes de la sesión.", "Acuéstate de lado con rodillas al pecho (IL-08).", "Equipo en 0; coloca la sonda anal con gel.", "Configura 35 Hz, 250 µs, ON 5 / OFF 10, 20 min (o programa equivalente).", "Sube la intensidad hasta la contracción clara.", "Aprieta con el equipo en cada ON.", "Baja a 0, apaga, retira y lava la sonda." ],
+      "seguridad": [ "Suspende si aparece dolor, sangrado o irritación anal y consulta.", "No usar con fisura, fístula o hemorroides sangrantes." ],
+      "ilustraciones": ["IL-08", "IL-09", "IL-12"], "fuentes": ["NORTON-2006", "VONTHEIN-2013", "POGP-2021"]
+    },
+    {
+      "id": "EST-TONO", "categoria": "electroestimulacion", "nombre": "Estimulación de mantenimiento (tono)",
+      "resumen": "Sesión corta a 50 Hz para conservar el tono una vez terminado el programa.",
+      "paraQue": "Mantenimiento opcional tras las 12 semanas (si la usuaria lo desea).",
+      "perfilesRecomendados": ["IUE", "MIXTA", "POSTPARTO", "PREVENCION"],
+      "perfilesNoRecomendados": [ { "perfil": "DOLOR_HIPERTONIA", "motivo": "No con dolor." } ],
+      "requiere": { "equipo": "sonda-vaginal" }, "nivelMin": 3, "nivelMax": 9, "duracionMin": 15,
+      "parametros": { "frecuenciaHz": 50, "anchoPulsoUs": 250, "onS": 5, "offS": 10, "rampaS": 1, "duracionMin": 15, "formaOnda": "bifásica simétrica", "intensidad": { "guia": "Contracción clara y cómoda.", "nunca": "Nunca dolor." }, "sonda": "vaginal", "posicion": "acostada o sentada", "participacionActiva": true, "instruccionActiva": "Contrae con el equipo." },
+      "rangosAceptables": { "frecuenciaHz": [35, 50], "anchoPulsoUs": [200, 500], "onS": [4, 8], "offS": [8, 16] },
+      "frecuenciaSemanal": { "veces": 1, "diasAlternos": true, "maxPorDia": 1, "semanas": 4, "nota": "1 vez por semana durante 4 semanas, luego solo ejercicios." },
+      "equivalenciaProgramas": ["TONE", "TONING", "P4"],
+      "pasos": [ "Igual que la estimulación de fortalecimiento, 15 minutos." ],
+      "seguridad": [], "ilustraciones": ["IL-09", "IL-12"], "fuentes": ["POGP-2021", "TENSCARE-SUREPRO"]
+    },
+    {
+      "id": "TENS-ALTA", "categoria": "tens", "nombre": "TENS analgésico de alta frecuencia",
+      "resumen": "Hormigueo intenso pero agradable con electrodos sobre la piel (sacro o bajo vientre) que bloquea la señal de dolor.",
+      "paraQue": "Dolor pélvico crónico, suelo pélvico tenso. Alivio durante y después de la sesión.",
+      "perfilesRecomendados": ["DOLOR_HIPERTONIA"],
+      "perfilesNoRecomendados": [ { "perfil": "IUE", "motivo": "No es un tratamiento de fortalecimiento." } ],
+      "requiere": { "equipo": "electrodos-adhesivos" }, "nivelMin": 0, "nivelMax": 9, "duracionMin": 25,
+      "parametros": { "frecuenciaHz": 100, "anchoPulsoUs": 150, "onS": 0, "offS": 0, "rampaS": 0, "continuo": true, "duracionMin": 25, "formaOnda": "bifásica", "intensidad": { "guia": "Hormigueo fuerte y claro, sin contracción muscular y sin dolor; sube a lo máximo cómodo.", "nunca": "Nunca dolor ni quemazón." }, "sonda": "2 electrodos adhesivos a cada lado del sacro (zona S2–S4, justo encima del pliegue de los glúteos) o según indique tu fisioterapeuta", "posicion": "sentada o acostada", "participacionActiva": false, "instruccionActiva": "Respira lento; deja la pelvis suelta." },
+      "rangosAceptables": { "frecuenciaHz": [80, 120], "anchoPulsoUs": [50, 200] },
+      "frecuenciaSemanal": { "veces": 7, "diasAlternos": false, "maxPorDia": 2, "semanas": 12, "nota": "1–2 veces al día, mínimo 20 min, en el momento de más dolor." },
+      "equivalenciaProgramas": ["PAIN", "TENS", "Pelvic pain"],
+      "pasos": [ "Piel limpia y seca; coloca los electrodos como indica la ficha.", "Configura 100 Hz, 150 µs, continuo, 25 min (o programa PAIN/TENS).", "Sube hasta un hormigueo intenso y cómodo.", "Respira lento y relaja la pelvis durante la sesión.", "Al terminar baja a 0 y retira los electrodos." ],
+      "seguridad": [ "No colocar electrodos sobre piel lesionada ni sobre el abdomen si hay posibilidad de embarazo.", "El TENS alivia; no sustituye la fisioterapia manual ni el tratamiento médico del dolor." ],
+      "ilustraciones": ["IL-12"], "fuentes": ["TERZONI-2023", "ICS-2025-TENS"]
+    },
+    {
+      "id": "TENS-BAJA", "categoria": "tens", "nombre": "TENS de baja frecuencia (tipo endorfinas)",
+      "resumen": "Pulsos lentos (2–5 Hz) que producen pequeñas sacudidas musculares y liberan analgésicos naturales.",
+      "paraQue": "Dolor pélvico crónico; alternar con el TENS de alta frecuencia.",
+      "perfilesRecomendados": ["DOLOR_HIPERTONIA"],
+      "perfilesNoRecomendados": [],
+      "requiere": { "equipo": "electrodos-adhesivos" }, "nivelMin": 0, "nivelMax": 9, "duracionMin": 25,
+      "parametros": { "frecuenciaHz": 4, "anchoPulsoUs": 200, "onS": 0, "offS": 0, "rampaS": 0, "continuo": true, "duracionMin": 25, "formaOnda": "bifásica", "intensidad": { "guia": "Sacudidas suaves visibles y tolerables.", "nunca": "Nunca dolor." }, "sonda": "electrodos adhesivos (misma colocación que TENS-ALTA)", "posicion": "sentada o acostada", "participacionActiva": false, "instruccionActiva": "Respira lento." },
+      "rangosAceptables": { "frecuenciaHz": [2, 10], "anchoPulsoUs": [150, 300] },
+      "frecuenciaSemanal": { "veces": 3, "diasAlternos": true, "maxPorDia": 1, "semanas": 12 },
+      "equivalenciaProgramas": ["PAIN 2", "LOW", "Endorphin"],
+      "pasos": [ "Misma colocación que el TENS de alta frecuencia.", "Configura 4 Hz, 200 µs, continuo, 25 min.", "Sube hasta sacudidas suaves y tolerables." ],
+      "seguridad": [ "Si el dolor aumenta con este programa, usa solo el de alta frecuencia." ],
+      "ilustraciones": ["IL-12"], "fuentes": ["TERZONI-2023", "ICS-2025-TENS"]
+    },
+    {
+      "id": "BIO-LENTAS", "categoria": "biofeedback", "nombre": "Biofeedback: contracciones lentas",
+      "resumen": "Con la sonda en modo EMG, ves en la pantalla del equipo cuánto contraes; la app marca el ritmo y anota tu pico.",
+      "paraQue": "Aprender a contraer bien y medir el progreso de fuerza.",
+      "perfilesRecomendados": ["IUE", "MIXTA", "URGENCIA", "POSTPARTO", "PROLAPSO", "FECAL", "PREVENCION"],
+      "perfilesNoRecomendados": [ { "perfil": "DOLOR_HIPERTONIA", "motivo": "Usar en su lugar el biofeedback de relajación." } ],
+      "requiere": { "equipo": "emg" }, "nivelMin": 1, "nivelMax": 9, "duracionMin": 8,
+      "estructura": { "usaPfmtNivel": true, "series": 1, "registra": ["emgPicoUV", "emgReposoUV", "repsLogradas"] },
+      "pasos": [ "Coloca la sonda y pon el equipo en modo EMG/biofeedback.", "Observa el valor en reposo durante 30 s y anótalo al final.", "Sigue el temporizador: contrae lo más fuerte que puedas durante el sostén de tu nivel y suelta por completo en el descanso.", "Intenta que la curva vuelva a cero en cada descanso.", "Al terminar anota el pico máximo (µV) y el reposo." ],
+      "seguridad": [ "Si tu equipo no muestra EMG, la app usará la serie de ejercicios sin equipo." ],
+      "ilustraciones": ["IL-02", "IL-09"], "fuentes": ["NICE-NG123", "LAYCOCK-2001"]
+    },
+    {
+      "id": "BIO-RAPIDAS", "categoria": "biofeedback", "nombre": "Biofeedback: contracciones rápidas",
+      "resumen": "Contracciones de 1 segundo, soltando por completo entre cada una, viendo la curva en el equipo.",
+      "paraQue": "Fibras rápidas: reaccionar a toses, estornudos y urgencias.",
+      "perfilesRecomendados": ["IUE", "MIXTA", "URGENCIA", "POSTPARTO", "FECAL", "PREVENCION"],
+      "perfilesNoRecomendados": [ { "perfil": "DOLOR_HIPERTONIA", "motivo": "Primero relajar." } ],
+      "requiere": { "equipo": "emg" }, "nivelMin": 2, "nivelMax": 9, "duracionMin": 5,
+      "estructura": { "usaRapidasNivel": true, "series": 2, "descansoEntreSeriesS": 60, "registra": ["repsLogradas"] },
+      "pasos": [ "Modo EMG.", "Al pitido, aprieta fuerte 1 s y suelta 1 s; que la curva suba rápido y baje a cero.", "Dos series con 1 min de descanso." ],
+      "seguridad": [], "ilustraciones": ["IL-09"], "fuentes": ["LAYCOCK-2001"]
+    },
+    {
+      "id": "BIO-RESIST", "categoria": "biofeedback", "nombre": "Biofeedback: resistencia",
+      "resumen": "Contracciones más largas que tu meta actual, manteniendo la curva lo más estable posible.",
+      "paraQue": "Aumentar los segundos de sostén.",
+      "perfilesRecomendados": ["IUE", "MIXTA", "FECAL", "PROLAPSO"],
+      "perfilesNoRecomendados": [ { "perfil": "DOLOR_HIPERTONIA", "motivo": "Primero relajar." } ],
+      "requiere": { "equipo": "emg" }, "nivelMin": 2, "nivelMax": 9, "duracionMin": 6,
+      "estructura": { "sostenS": "metaE + 2", "descansoS": "igual al sostén", "reps": 5, "series": 1, "registra": ["emgPicoUV", "repsLogradas"] },
+      "pasos": [ "Modo EMG.", "Contrae al 70 % de tu fuerza y mantén la curva estable el tiempo indicado.", "Suelta por completo el mismo tiempo." ],
+      "seguridad": [], "ilustraciones": ["IL-09"], "fuentes": ["LAYCOCK-2001"]
+    },
+    {
+      "id": "BIO-RELAJ", "categoria": "biofeedback", "nombre": "Biofeedback: relajación",
+      "resumen": "Con la sonda en modo EMG, aprendes a bajar la actividad de reposo del suelo pélvico con la respiración.",
+      "paraQue": "Suelo pélvico tenso o doloroso; también útil al inicio en nivel 0.",
+      "perfilesRecomendados": ["DOLOR_HIPERTONIA", "URGENCIA"],
+      "perfilesNoRecomendados": [],
+      "requiere": { "equipo": "emg" }, "nivelMin": 0, "nivelMax": 9, "duracionMin": 8,
+      "estructura": { "bloques": [ { "nombre": "Reposo inicial", "seg": 60 }, { "nombre": "Respiración 4-6", "seg": 300, "inhalarS": 4, "exhalarS": 6 }, { "nombre": "Reposo final", "seg": 60 } ], "registra": ["emgReposoUV"] },
+      "pasos": [ "Modo EMG; sonda colocada con el equipo apagado de corriente (solo lectura).", "Observa el valor de reposo 1 min.", "Respira 4 s inhalando (barriga se expande, suelo pélvico se suelta) y 6 s exhalando.", "Intenta que el valor de reposo baje al final de la sesión; anótalo." ],
+      "seguridad": [ "Si la sonda te produce dolor, no la uses: haz la respiración sin equipo." ],
+      "ilustraciones": ["IL-06", "IL-11"], "fuentes": ["TERZONI-2023"]
+    },
+    {
+      "id": "PFMT-CONCIENCIA", "categoria": "ejercicio", "nombre": "Encontrar el suelo pélvico",
+      "resumen": "Sesión suave para identificar los músculos: contraer como si cerraras y elevaras la vagina y el ano, sin apretar glúteos ni abdomen.",
+      "paraQue": "Nivel 0 y primeras semanas del postparto.",
+      "perfilesRecomendados": ["IUE", "MIXTA", "URGENCIA", "POSTPARTO", "PROLAPSO", "FECAL", "PREVENCION", "DOLOR_HIPERTONIA"],
+      "perfilesNoRecomendados": [],
+      "requiere": { "equipo": "ninguno" }, "nivelMin": 0, "nivelMax": 1, "duracionMin": 8,
+      "estructura": { "sostenS": 3, "descansoS": 10, "reps": 5, "series": 2, "descansoEntreSeriesS": 60, "registra": ["repsLogradas"] },
+      "pasos": [ "Acostada con rodillas flexionadas (IL-03), una mano en el abdomen para comprobar que no se endurece.", "Exhala y contrae como si evitaras escapar gases y orina a la vez; siente que se cierra y se eleva (IL-02).", "Mantén 3 s respirando; suelta por completo 10 s.", "Si no sientes nada, prueba sentada en una toalla enrollada y nota la presión; o usa el biofeedback del equipo.", "No practiques cortando el chorro de orina: solo sirve como prueba una vez." ],
+      "seguridad": [ "Si te mareas o tensas el cuello y los hombros, descansa: estás haciendo demasiada fuerza." ],
+      "ilustraciones": ["IL-01", "IL-02", "IL-03", "IL-06"], "fuentes": ["NICE-NG123"]
+    },
+    {
+      "id": "PFMT-SERIE", "categoria": "ejercicio", "nombre": "Serie de ejercicios del nivel (lentas + rápidas)",
+      "resumen": "La serie base del programa: contracciones sostenidas y luego rápidas, con los tiempos y repeticiones de tu nivel. 3 series repartidas en el día.",
+      "paraQue": "Todos los perfiles excepto dolor en fase inicial. Es el tratamiento de primera línea.",
+      "perfilesRecomendados": ["IUE", "MIXTA", "URGENCIA", "POSTPARTO", "PROLAPSO", "FECAL", "PREVENCION"],
+      "perfilesNoRecomendados": [ { "perfil": "DOLOR_HIPERTONIA", "motivo": "Se introduce solo desde la semana 5 y si el dolor ha bajado." } ],
+      "requiere": { "equipo": "ninguno" }, "nivelMin": 1, "nivelMax": 9, "duracionMin": 6,
+      "estructura": { "usaPfmtNivel": true, "registra": ["repsLogradas"] },
+      "pasos": [ "Adopta la posición de tu nivel (IL-03, IL-04 o IL-05).", "Lentas: contrae (aprieta y eleva) el tiempo indicado, respirando; suelta por completo el descanso indicado.", "Rápidas: aprieta fuerte 1 s y suelta 1 s.", "Si no completas las repeticiones con buena calidad, detente: calidad antes que cantidad.", "Haz 3 series al día (mañana, tarde, noche); en días de electroestimulación, 2." ],
+      "seguridad": [ "Glúteos, muslos y abdomen relajados; no aguantes la respiración.", "Si sientes que empujas hacia abajo, detente y vuelve al ejercicio de conciencia." ],
+      "ilustraciones": ["IL-02", "IL-03", "IL-04", "IL-05"], "fuentes": ["NICE-NG123", "DUMOULIN-2018", "IUJ-2021"]
+    },
+    {
+      "id": "PFMT-KNACK", "categoria": "ejercicio", "nombre": "El Knack: contraer antes del esfuerzo",
+      "resumen": "Aprender a apretar el suelo pélvico justo antes y durante una tos, un estornudo o levantar peso.",
+      "paraQue": "Escapes con esfuerzo; niveles 4–5 y mantenimiento.",
+      "perfilesRecomendados": ["IUE", "MIXTA", "POSTPARTO", "PROLAPSO", "PREVENCION"],
+      "perfilesNoRecomendados": [ { "perfil": "DOLOR_HIPERTONIA", "motivo": "Primero relajar." } ],
+      "requiere": { "equipo": "ninguno" }, "nivelMin": 4, "nivelMax": 9, "duracionMin": 3,
+      "estructura": { "reps": 5, "series": 1, "registra": ["repsLogradas"] },
+      "pasos": [ "De pie (IL-05).", "Contrae fuerte el suelo pélvico y, manteniendo, tose suavemente una vez; suelta.", "Repite 5 veces.", "Durante el día: antes de toser, estornudar, reír o levantar algo, contrae primero (IL-10)." ],
+      "seguridad": [], "ilustraciones": ["IL-05", "IL-10"], "fuentes": ["NICE-NG123"]
+    },
+    {
+      "id": "PFMT-FUNCIONAL", "categoria": "ejercicio", "nombre": "Entrenamiento funcional",
+      "resumen": "Contracciones integradas en movimientos: sentadillas, puente, caminar con pre-contracción.",
+      "paraQue": "Nivel 5 y mantenimiento.",
+      "perfilesRecomendados": ["IUE", "MIXTA", "POSTPARTO", "PREVENCION"],
+      "perfilesNoRecomendados": [ { "perfil": "DOLOR_HIPERTONIA", "motivo": "Primero relajar." }, { "perfil": "PROLAPSO", "motivo": "Evitar cargas de pie hasta indicación profesional." } ],
+      "requiere": { "equipo": "ninguno" }, "nivelMin": 5, "nivelMax": 9, "duracionMin": 10,
+      "estructura": { "ejercicios": [ { "nombre": "Sentadilla con contracción al subir", "reps": 8, "series": 2 }, { "nombre": "Puente de glúteos con contracción al elevar", "reps": 8, "series": 2 }, { "nombre": "Caminar 2 min contrayendo cada 10 pasos durante 3 s", "reps": 1, "series": 1 } ], "registra": ["repsLogradas"] },
+      "pasos": [ "Exhala y contrae al hacer el esfuerzo (subir, elevar); inhala y relaja al volver." ],
+      "seguridad": [ "Sin dolor lumbar ni pesadez; si aparece, vuelve al nivel anterior." ],
+      "ilustraciones": ["IL-05", "IL-10"], "fuentes": ["NICE-NG123"]
+    },
+    {
+      "id": "RELAJ-RESP", "categoria": "relajacion", "nombre": "Respiración diafragmática",
+      "resumen": "Respiración lenta que relaja el suelo pélvico con cada inhalación.",
+      "paraQue": "Dolor/tensión, nivel 0, y como cierre de cualquier sesión.",
+      "perfilesRecomendados": ["DOLOR_HIPERTONIA", "URGENCIA", "IUE", "MIXTA", "POSTPARTO", "PROLAPSO", "FECAL", "PREVENCION"],
+      "perfilesNoRecomendados": [],
+      "requiere": { "equipo": "ninguno" }, "nivelMin": 0, "nivelMax": 9, "duracionMin": 6,
+      "estructura": { "bloques": [ { "nombre": "Respiración 4-6", "seg": 360, "inhalarS": 4, "exhalarS": 6 } ], "registra": [] },
+      "pasos": [ "Acostada o sentada, una mano en el abdomen (IL-06).", "Inhala 4 s por la nariz: el abdomen se expande y el suelo pélvico se suelta hacia abajo.", "Exhala 6 s por la boca: el abdomen baja; no fuerces nada.", "Sigue el ritmo de la app durante 6 min." ],
+      "seguridad": [], "ilustraciones": ["IL-06"], "fuentes": ["TERZONI-2023"]
+    },
+    {
+      "id": "RELAJ-POSTURAS", "categoria": "relajacion", "nombre": "Posturas de relajación del suelo pélvico",
+      "resumen": "Tres posturas de descarga que alargan y relajan la musculatura pélvica.",
+      "paraQue": "Dolor/tensión pélvica.",
+      "perfilesRecomendados": ["DOLOR_HIPERTONIA"],
+      "perfilesNoRecomendados": [],
+      "requiere": { "equipo": "ninguno" }, "nivelMin": 0, "nivelMax": 9, "duracionMin": 8,
+      "estructura": { "bloques": [ { "nombre": "Mariposa acostada (plantas de los pies juntas, rodillas abiertas)", "seg": 150 }, { "nombre": "Bebé feliz (rodillas al pecho, pies hacia el techo)", "seg": 150 }, { "nombre": "Postura del niño (sentada sobre los talones, frente al suelo)", "seg": 150 } ], "registra": [] },
+      "pasos": [ "En cada postura respira lento (4-6) y deja que el suelo pélvico se suelte con cada inhalación (IL-11).", "Sin rebotes ni dolor; si una postura molesta, sáltala." ],
+      "seguridad": [], "ilustraciones": ["IL-11", "IL-06"], "fuentes": ["TERZONI-2023"]
+    },
+    {
+      "id": "VES-DIARIO", "categoria": "vesical", "nombre": "Diario miccional de 3 días",
+      "resumen": "Anota durante 3 días cada vez que orinas, cada urgencia y cada escape; la app calcula tu intervalo promedio y tu objetivo.",
+      "paraQue": "Urgencia y mixta: punto de partida del entrenamiento vesical. Semanas 0, 4 y 8.",
+      "perfilesRecomendados": ["URGENCIA", "MIXTA"],
+      "perfilesNoRecomendados": [],
+      "requiere": { "equipo": "ninguno" }, "nivelMin": 0, "nivelMax": 9, "duracionMin": 1,
+      "estructura": { "dias": 3, "registra": ["micciones", "urgencias", "escapes", "intervaloMedioMin"] },
+      "pasos": [ "Cada vez que orines, toca el botón en la app (o anota la hora).", "Marca si fue por urgencia fuerte y si hubo escape.", "A los 3 días verás tu intervalo promedio entre micciones." ],
+      "seguridad": [], "ilustraciones": ["IL-14"], "fuentes": ["NICE-NG123"]
+    },
+    {
+      "id": "VES-SUPRESION", "categoria": "vesical", "nombre": "Técnica de supresión de la urgencia",
+      "resumen": "Qué hacer cuando llega la urgencia: parar, apretar, respirar, distraerse y recién entonces ir al baño caminando.",
+      "paraQue": "Urgencia y mixta; se practica a diario y se usa cada vez que aparece la urgencia.",
+      "perfilesRecomendados": ["URGENCIA", "MIXTA"],
+      "perfilesNoRecomendados": [],
+      "requiere": { "equipo": "ninguno" }, "nivelMin": 0, "nivelMax": 9, "duracionMin": 4,
+      "estructura": { "practica": { "rapidas": 5, "sostenS": 10, "reps": 3 }, "registra": ["repsLogradas"] },
+      "pasos": [ "Detente y, si puedes, siéntate; no corras al baño.", "Haz 5 contracciones rápidas o una sostenida de 10 s.", "Respira lento 3 veces y piensa en otra cosa (cuenta hacia atrás, mira el celular).", "Cuando la urgencia baje, camina con calma al baño.", "Practica la secuencia 3 veces al día aunque no tengas urgencia." ],
+      "seguridad": [], "ilustraciones": ["IL-14", "IL-02"], "fuentes": ["NICE-NG123"]
+    },
+    {
+      "id": "HAB-SEMANAL", "categoria": "habitos", "nombre": "Revisión semanal de hábitos",
+      "resumen": "Lista de hábitos que protegen el suelo pélvico y la vejiga.",
+      "paraQue": "Todos los perfiles, una vez por semana.",
+      "perfilesRecomendados": ["IUE", "MIXTA", "URGENCIA", "POSTPARTO", "PROLAPSO", "FECAL", "PREVENCION", "DOLOR_HIPERTONIA"],
+      "perfilesNoRecomendados": [],
+      "requiere": { "equipo": "ninguno" }, "nivelMin": 0, "nivelMax": 9, "duracionMin": 3,
+      "estructura": { "checklist": [ "Tomé 1,5–2 litros de líquido al día, sobre todo agua.", "Reduje café, té negro, gaseosas, alcohol y edulcorantes.", "No fui al baño «por si acaso»: fui con ganas reales.", "Comí fibra y evité el estreñimiento; no hice fuerza para evacuar.", "Contraje el suelo pélvico antes de toser, estornudar o levantar peso.", "Evité cargar peso excesivo o abdominales con impacto.", "Dormí lo suficiente y manejé el estrés (respiración)." ], "registra": ["checklist"] },
+      "pasos": [ "Marca lo que cumpliste esta semana y elige un hábito para mejorar la próxima." ],
+      "seguridad": [], "ilustraciones": [], "fuentes": ["NICE-NG123"]
+    }
+  ],
+
+  "programas": [
+    {
+      "id": "PROG-IUE", "perfil": "IUE", "duracionSemanas": 12,
+      "resumenFrecuencias": [
+        { "tipo": "Electroestimulación de fortalecimiento (EST-IUE)", "frecuencia": "3 veces por semana, días alternos (L-X-V)", "duracion": "15 min las 2 primeras semanas, luego 20 min", "semanas": "1–12" },
+        { "tipo": "Serie de ejercicios (PFMT-SERIE)", "frecuencia": "Todos los días, 3 series (2 en días de estimulación)", "duracion": "6–8 min por serie", "semanas": "1–12 y mantenimiento" },
+        { "tipo": "Biofeedback lentas / rápidas", "frecuencia": "2 veces por semana (M-J)", "duracion": "8 min", "semanas": "1–12" },
+        { "tipo": "Knack y funcional", "frecuencia": "Diario desde nivel 4", "duracion": "3–10 min", "semanas": "según nivel" },
+        { "tipo": "Autoevaluación de fuerza", "frecuencia": "Cada 2 semanas", "duracion": "5 min", "semanas": "2, 4, 6, 8, 10, 12" },
+        { "tipo": "ICIQ (síntomas)", "frecuencia": "Semanas 4, 8 y 12", "duracion": "2 min", "semanas": "4, 8, 12" }
+      ],
+      "semanaTipo": {
+        "L": [ { "tipo": "EST-IUE" }, { "tipo": "PFMT-SERIE", "series": 2 } ],
+        "M": [ { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "BIO-LENTAS" } ],
+        "X": [ { "tipo": "EST-IUE" }, { "tipo": "PFMT-SERIE", "series": 2 } ],
+        "J": [ { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "BIO-RAPIDAS", "nivelMin": 2 } ],
+        "V": [ { "tipo": "EST-IUE" }, { "tipo": "PFMT-SERIE", "series": 2 } ],
+        "S": [ { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "PFMT-KNACK", "nivelMin": 4 }, { "tipo": "PFMT-FUNCIONAL", "nivelMin": 5 } ],
+        "D": [ { "tipo": "PFMT-SERIE", "series": 1 }, { "tipo": "RELAJ-RESP" }, { "tipo": "HAB-SEMANAL" } ]
+      },
+      "reevaluaciones": { "fuerza": [2, 4, 6, 8, 10, 12], "iciq": [4, 8, 12], "diario": [] },
+      "despues12": { "siMejora": "PROG-MANTENIMIENTO", "siNoMejora": "DERIVAR" }
+    },
+    {
+      "id": "PROG-URG", "perfil": "URGENCIA", "duracionSemanas": 12,
+      "resumenFrecuencias": [
+        { "tipo": "Estimulación calmante (EST-URG)", "frecuencia": "3 veces por semana (L-X-V)", "duracion": "20 min", "semanas": "1–10 (20 sesiones)" },
+        { "tipo": "Entrenamiento vesical", "frecuencia": "Diario: intervalo objetivo +15 min cada semana", "duracion": "todo el día", "semanas": "1–12" },
+        { "tipo": "Técnica de supresión", "frecuencia": "Práctica 3 veces al día y ante cada urgencia", "duracion": "4 min", "semanas": "1–12" },
+        { "tipo": "Serie de ejercicios (PFMT-SERIE)", "frecuencia": "Todos los días", "duracion": "6–8 min por serie", "semanas": "1–12" },
+        { "tipo": "Diario miccional", "frecuencia": "3 días", "duracion": "—", "semanas": "0, 4, 8" },
+        { "tipo": "Autoevaluación de fuerza / ICIQ", "frecuencia": "Cada 2 semanas / semanas 4, 8, 12", "duracion": "5 min", "semanas": "según calendario" }
+      ],
+      "semanaTipo": {
+        "L": [ { "tipo": "EST-URG" }, { "tipo": "PFMT-SERIE", "series": 2 }, { "tipo": "VES-SUPRESION" } ],
+        "M": [ { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "VES-SUPRESION" }, { "tipo": "BIO-LENTAS" } ],
+        "X": [ { "tipo": "EST-URG" }, { "tipo": "PFMT-SERIE", "series": 2 }, { "tipo": "VES-SUPRESION" } ],
+        "J": [ { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "VES-SUPRESION" }, { "tipo": "BIO-RAPIDAS", "nivelMin": 2 } ],
+        "V": [ { "tipo": "EST-URG" }, { "tipo": "PFMT-SERIE", "series": 2 }, { "tipo": "VES-SUPRESION" } ],
+        "S": [ { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "VES-SUPRESION" } ],
+        "D": [ { "tipo": "PFMT-SERIE", "series": 1 }, { "tipo": "RELAJ-RESP" }, { "tipo": "HAB-SEMANAL" } ]
+      },
+      "reevaluaciones": { "fuerza": [2, 4, 6, 8, 10, 12], "iciq": [4, 8, 12], "diario": [0, 4, 8] },
+      "despues12": { "siMejora": "PROG-MANTENIMIENTO", "siNoMejora": "DERIVAR" }
+    },
+    {
+      "id": "PROG-MIX", "perfil": "MIXTA", "duracionSemanas": 12,
+      "resumenFrecuencias": [
+        { "tipo": "Estimulación combinada (EST-MIX)", "frecuencia": "3 veces por semana (L-X-V)", "duracion": "20 min (10 + 10)", "semanas": "1–12" },
+        { "tipo": "Serie de ejercicios + Knack", "frecuencia": "Diario", "duracion": "6–10 min por serie", "semanas": "1–12" },
+        { "tipo": "Entrenamiento vesical + supresión", "frecuencia": "Diario", "duracion": "4 min práctica", "semanas": "1–12" },
+        { "tipo": "Biofeedback", "frecuencia": "2 veces por semana", "duracion": "8 min", "semanas": "1–12" }
+      ],
+      "semanaTipo": {
+        "L": [ { "tipo": "EST-MIX" }, { "tipo": "PFMT-SERIE", "series": 2 }, { "tipo": "VES-SUPRESION" } ],
+        "M": [ { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "BIO-LENTAS" }, { "tipo": "VES-SUPRESION" } ],
+        "X": [ { "tipo": "EST-MIX" }, { "tipo": "PFMT-SERIE", "series": 2 }, { "tipo": "VES-SUPRESION" } ],
+        "J": [ { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "BIO-RAPIDAS", "nivelMin": 2 }, { "tipo": "VES-SUPRESION" } ],
+        "V": [ { "tipo": "EST-MIX" }, { "tipo": "PFMT-SERIE", "series": 2 }, { "tipo": "VES-SUPRESION" } ],
+        "S": [ { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "PFMT-KNACK", "nivelMin": 4 }, { "tipo": "VES-SUPRESION" } ],
+        "D": [ { "tipo": "PFMT-SERIE", "series": 1 }, { "tipo": "RELAJ-RESP" }, { "tipo": "HAB-SEMANAL" } ]
+      },
+      "reevaluaciones": { "fuerza": [2, 4, 6, 8, 10, 12], "iciq": [4, 8, 12], "diario": [0, 4, 8] },
+      "despues12": { "siMejora": "PROG-MANTENIMIENTO", "siNoMejora": "DERIVAR" }
+    },
+    {
+      "id": "PROG-FEC", "perfil": "FECAL", "duracionSemanas": 12,
+      "resumenFrecuencias": [
+        { "tipo": "Estimulación anal (EST-FEC)", "frecuencia": "3 veces por semana (L-X-V); puede subir a diario si no hay irritación", "duracion": "15 min las 2 primeras semanas, luego 20 min", "semanas": "1–12" },
+        { "tipo": "Biofeedback lentas / resistencia", "frecuencia": "2 veces por semana (M-J)", "duracion": "8 min", "semanas": "1–12" },
+        { "tipo": "Serie de ejercicios (PFMT-SERIE)", "frecuencia": "Diario", "duracion": "6–8 min por serie", "semanas": "1–12" },
+        { "tipo": "Hábitos intestinales", "frecuencia": "Semanal", "duracion": "3 min", "semanas": "1–12" }
+      ],
+      "semanaTipo": {
+        "L": [ { "tipo": "EST-FEC" }, { "tipo": "PFMT-SERIE", "series": 2 } ],
+        "M": [ { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "BIO-LENTAS" } ],
+        "X": [ { "tipo": "EST-FEC" }, { "tipo": "PFMT-SERIE", "series": 2 } ],
+        "J": [ { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "BIO-RESIST", "nivelMin": 2 } ],
+        "V": [ { "tipo": "EST-FEC" }, { "tipo": "PFMT-SERIE", "series": 2 } ],
+        "S": [ { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "BIO-RAPIDAS", "nivelMin": 2 } ],
+        "D": [ { "tipo": "PFMT-SERIE", "series": 1 }, { "tipo": "RELAJ-RESP" }, { "tipo": "HAB-SEMANAL" } ]
+      },
+      "reevaluaciones": { "fuerza": [2, 4, 6, 8, 10, 12], "iciq": [4, 8, 12], "diario": [] },
+      "despues12": { "siMejora": "PROG-MANTENIMIENTO", "siNoMejora": "DERIVAR" }
+    },
+    {
+      "id": "PROG-DOLOR", "perfil": "DOLOR_HIPERTONIA", "duracionSemanas": 12,
+      "resumenFrecuencias": [
+        { "tipo": "Respiración + posturas de relajación", "frecuencia": "Diario", "duracion": "14 min", "semanas": "1–12" },
+        { "tipo": "TENS alta frecuencia", "frecuencia": "Diario, 1–2 veces (en el momento de más dolor)", "duracion": "25 min", "semanas": "1–12" },
+        { "tipo": "TENS baja frecuencia", "frecuencia": "3 veces por semana (M-J-S), alternando", "duracion": "25 min", "semanas": "1–12" },
+        { "tipo": "Biofeedback de relajación", "frecuencia": "2 veces por semana si la sonda no duele", "duracion": "8 min", "semanas": "1–12" },
+        { "tipo": "Ejercicio de conciencia (suave)", "frecuencia": "Desde la semana 5, solo si el dolor bajó", "duracion": "8 min", "semanas": "5–12" }
+      ],
+      "semanaTipo": {
+        "L": [ { "tipo": "RELAJ-RESP" }, { "tipo": "RELAJ-POSTURAS" }, { "tipo": "TENS-ALTA" } ],
+        "M": [ { "tipo": "RELAJ-RESP" }, { "tipo": "RELAJ-POSTURAS" }, { "tipo": "TENS-BAJA" }, { "tipo": "BIO-RELAJ" } ],
+        "X": [ { "tipo": "RELAJ-RESP" }, { "tipo": "RELAJ-POSTURAS" }, { "tipo": "TENS-ALTA" } ],
+        "J": [ { "tipo": "RELAJ-RESP" }, { "tipo": "RELAJ-POSTURAS" }, { "tipo": "TENS-BAJA" }, { "tipo": "BIO-RELAJ" } ],
+        "V": [ { "tipo": "RELAJ-RESP" }, { "tipo": "RELAJ-POSTURAS" }, { "tipo": "TENS-ALTA" } ],
+        "S": [ { "tipo": "RELAJ-RESP" }, { "tipo": "RELAJ-POSTURAS" }, { "tipo": "TENS-BAJA" } ],
+        "D": [ { "tipo": "RELAJ-RESP" }, { "tipo": "TENS-ALTA" }, { "tipo": "HAB-SEMANAL" } ]
+      },
+      "desdeSemana5": [ { "tipo": "PFMT-CONCIENCIA", "dias": ["L", "X", "V"], "condicion": "dolorSemanalMenor" } ],
+      "reevaluaciones": { "fuerza": [], "iciq": [4, 8, 12], "diario": [], "dolorEVA": [0, 2, 4, 6, 8, 10, 12] },
+      "despues12": { "siMejora": "DERIVAR_PARA_PROGRESAR", "siNoMejora": "DERIVAR" }
+    },
+    {
+      "id": "PROG-PROLAPSO", "perfil": "PROLAPSO", "duracionSemanas": 12,
+      "resumenFrecuencias": [
+        { "tipo": "Serie de ejercicios (acostada al inicio)", "frecuencia": "Diario, 3 series", "duracion": "6–8 min por serie", "semanas": "1–12" },
+        { "tipo": "Respiración", "frecuencia": "Diario", "duracion": "6 min", "semanas": "1–12" },
+        { "tipo": "Estimulación de activación", "frecuencia": "3 veces por semana solo si fuerza 0–1 y sin contraindicación", "duracion": "12 min", "semanas": "1–4" },
+        { "tipo": "Hábitos (estreñimiento, cargas)", "frecuencia": "Semanal", "duracion": "3 min", "semanas": "1–12" }
+      ],
+      "semanaTipo": {
+        "L": [ { "tipo": "EST-SENS", "nivelMax": 0 }, { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "RELAJ-RESP" } ],
+        "M": [ { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "BIO-LENTAS" } ],
+        "X": [ { "tipo": "EST-SENS", "nivelMax": 0 }, { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "RELAJ-RESP" } ],
+        "J": [ { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "BIO-RESIST", "nivelMin": 2 } ],
+        "V": [ { "tipo": "EST-SENS", "nivelMax": 0 }, { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "RELAJ-RESP" } ],
+        "S": [ { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "PFMT-KNACK", "nivelMin": 4 } ],
+        "D": [ { "tipo": "PFMT-SERIE", "series": 1 }, { "tipo": "RELAJ-RESP" }, { "tipo": "HAB-SEMANAL" } ]
+      },
+      "reevaluaciones": { "fuerza": [2, 4, 6, 8, 10, 12], "iciq": [4, 8, 12], "diario": [] },
+      "despues12": { "siMejora": "PROG-MANTENIMIENTO", "siNoMejora": "DERIVAR" }
+    },
+    {
+      "id": "PROG-POSTPARTO", "perfil": "POSTPARTO", "duracionSemanas": 12,
+      "resumenFrecuencias": [
+        { "tipo": "Conciencia + respiración", "frecuencia": "Diario", "duracion": "14 min", "semanas": "1–4" },
+        { "tipo": "Estimulación de activación", "frecuencia": "3 veces por semana solo si fuerza 0–1, ≥ 12 semanas postparto", "duracion": "12 min", "semanas": "1–4" },
+        { "tipo": "Serie de ejercicios por nivel", "frecuencia": "Diario, 3 series", "duracion": "6–8 min", "semanas": "5–12" },
+        { "tipo": "Biofeedback", "frecuencia": "2 veces por semana", "duracion": "8 min", "semanas": "5–12" }
+      ],
+      "semanaTipo": {
+        "L": [ { "tipo": "EST-SENS", "nivelMax": 0 }, { "tipo": "PFMT-CONCIENCIA", "nivelMax": 1 }, { "tipo": "PFMT-SERIE", "series": 3, "nivelMin": 2 }, { "tipo": "RELAJ-RESP" } ],
+        "M": [ { "tipo": "PFMT-CONCIENCIA", "nivelMax": 1 }, { "tipo": "PFMT-SERIE", "series": 3, "nivelMin": 2 }, { "tipo": "BIO-LENTAS", "nivelMin": 1 } ],
+        "X": [ { "tipo": "EST-SENS", "nivelMax": 0 }, { "tipo": "PFMT-CONCIENCIA", "nivelMax": 1 }, { "tipo": "PFMT-SERIE", "series": 3, "nivelMin": 2 }, { "tipo": "RELAJ-RESP" } ],
+        "J": [ { "tipo": "PFMT-CONCIENCIA", "nivelMax": 1 }, { "tipo": "PFMT-SERIE", "series": 3, "nivelMin": 2 }, { "tipo": "BIO-RAPIDAS", "nivelMin": 2 } ],
+        "V": [ { "tipo": "EST-SENS", "nivelMax": 0 }, { "tipo": "PFMT-CONCIENCIA", "nivelMax": 1 }, { "tipo": "PFMT-SERIE", "series": 3, "nivelMin": 2 }, { "tipo": "RELAJ-RESP" } ],
+        "S": [ { "tipo": "PFMT-CONCIENCIA", "nivelMax": 1 }, { "tipo": "PFMT-SERIE", "series": 3, "nivelMin": 2 }, { "tipo": "PFMT-KNACK", "nivelMin": 4 } ],
+        "D": [ { "tipo": "RELAJ-RESP" }, { "tipo": "HAB-SEMANAL" } ]
+      },
+      "reevaluaciones": { "fuerza": [2, 4, 6, 8, 10, 12], "iciq": [4, 8, 12], "diario": [] },
+      "despues12": { "siMejora": "PROG-MANTENIMIENTO", "siNoMejora": "DERIVAR" }
+    },
+    {
+      "id": "PROG-PREVENCION", "perfil": "PREVENCION", "duracionSemanas": 12,
+      "resumenFrecuencias": [
+        { "tipo": "Serie de ejercicios", "frecuencia": "Diario, 1–3 series", "duracion": "6–8 min", "semanas": "siempre" },
+        { "tipo": "Knack", "frecuencia": "Diario desde nivel 4", "duracion": "3 min", "semanas": "siempre" },
+        { "tipo": "Hábitos", "frecuencia": "Semanal", "duracion": "3 min", "semanas": "siempre" }
+      ],
+      "semanaTipo": {
+        "L": [ { "tipo": "PFMT-SERIE", "series": 2 } ],
+        "M": [ { "tipo": "PFMT-SERIE", "series": 2 }, { "tipo": "PFMT-KNACK", "nivelMin": 4 } ],
+        "X": [ { "tipo": "PFMT-SERIE", "series": 2 } ],
+        "J": [ { "tipo": "PFMT-SERIE", "series": 2 }, { "tipo": "PFMT-KNACK", "nivelMin": 4 } ],
+        "V": [ { "tipo": "PFMT-SERIE", "series": 2 } ],
+        "S": [ { "tipo": "PFMT-SERIE", "series": 2 }, { "tipo": "PFMT-FUNCIONAL", "nivelMin": 5 } ],
+        "D": [ { "tipo": "RELAJ-RESP" }, { "tipo": "HAB-SEMANAL" } ]
+      },
+      "reevaluaciones": { "fuerza": [4, 8, 12], "iciq": [12], "diario": [] },
+      "despues12": { "siMejora": "PROG-MANTENIMIENTO", "siNoMejora": "PROG-MANTENIMIENTO" }
+    },
+    {
+      "id": "PROG-MANTENIMIENTO", "perfil": "MANTENIMIENTO", "duracionSemanas": 52,
+      "resumenFrecuencias": [
+        { "tipo": "Serie de ejercicios (nivel mantenimiento)", "frecuencia": "1 serie al día, al menos 3–5 días por semana, de por vida", "duracion": "6 min", "semanas": "siempre" },
+        { "tipo": "Knack", "frecuencia": "Siempre que vayas a toser, estornudar o cargar", "duracion": "—", "semanas": "siempre" },
+        { "tipo": "Estimulación de tono (opcional)", "frecuencia": "1 vez por semana", "duracion": "15 min", "semanas": "primeras 4" },
+        { "tipo": "Re-evaluación", "frecuencia": "Cada 3 meses (fuerza + ICIQ)", "duracion": "7 min", "semanas": "12, 24, 36, 48" }
+      ],
+      "semanaTipo": {
+        "L": [ { "tipo": "PFMT-SERIE", "series": 1 }, { "tipo": "EST-TONO", "semanasMax": 4 } ],
+        "M": [ { "tipo": "PFMT-SERIE", "series": 1 } ],
+        "X": [ { "tipo": "PFMT-SERIE", "series": 1 }, { "tipo": "PFMT-KNACK" } ],
+        "J": [ { "tipo": "PFMT-SERIE", "series": 1 } ],
+        "V": [ { "tipo": "PFMT-SERIE", "series": 1 }, { "tipo": "PFMT-KNACK" } ],
+        "S": [ { "tipo": "PFMT-FUNCIONAL" } ],
+        "D": [ { "tipo": "HAB-SEMANAL" } ]
+      },
+      "reevaluaciones": { "fuerza": [12, 24, 36, 48], "iciq": [12, 24, 36, 48], "diario": [] },
+      "despues12": { "siMejora": "PROG-MANTENIMIENTO", "siNoMejora": "DERIVAR" }
+    }
+  ],
+
+  "reglasPlanificador": {
+    "reemplazoSinEST": { "EST-IUE": "BIO-LENTAS", "EST-URG": "VES-SUPRESION", "EST-MIX": "BIO-LENTAS", "EST-FEC": "BIO-LENTAS", "EST-SENS": "PFMT-CONCIENCIA", "EST-TONO": "PFMT-SERIE", "TENS-ALTA": "RELAJ-RESP", "TENS-BAJA": "RELAJ-POSTURAS" },
+    "reemplazoSinEMG": { "BIO-LENTAS": "PFMT-SERIE", "BIO-RAPIDAS": "PFMT-SERIE", "BIO-RESIST": "PFMT-SERIE", "BIO-RELAJ": "RELAJ-RESP" },
+    "reemplazoSinSondaAnal": { "EST-FEC": "BIO-LENTAS" },
+    "reemplazoSinElectrodos": { "TENS-ALTA": "RELAJ-RESP", "TENS-BAJA": "RELAJ-POSTURAS" },
+    "banderaRojaActiva": "Mientras haya una bandera roja sin marcar como consultada, el plan solo incluye PFMT-CONCIENCIA, RELAJ-RESP y HAB-SEMANAL.",
+    "insercionDiario": "VES-DIARIO se inserta en los 3 primeros días de cada semana listada en reevaluaciones.diario (la semana 0 = los 3 días previos al inicio del plan).",
+    "insercionReevaluaciones": "La autoevaluación de fuerza se inserta el lunes de cada semana listada en reevaluaciones.fuerza; el ICIQ, el domingo de cada semana listada en reevaluaciones.iciq; el EVA de dolor (0–10), el domingo de las semanas en reevaluaciones.dolorEVA.",
+    "filtrosPorNivel": "Cada entrada de semanaTipo puede llevar nivelMin / nivelMax / semanasMax: se incluye solo si el nivel actual del plan y la semana cumplen esos límites.",
+    "mantenimientoNivel": 9,
+    "mejoraParaMantenimiento": "ICIQ final ≤ ICIQ inicial − 2 puntos, o perfil sin escapes; en DOLOR, EVA final ≤ EVA inicial − 2."
+  },
+
+  "reglasProgresion": {
+    "minSemanasNivel": 2,
+    "adherenciaMin": 0.7,
+    "semanasAdherencia": 2,
+    "autoevaluacionesConsecutivas": 2,
+    "sesionesSinDolor": 3,
+    "bajar": { "dolorConsecutivo": 2, "fraccionRepsMinima": 0.5, "sesionesConRepsBajas": 3 },
+    "nivelMaximo": 5,
+    "mensajes": {
+      "subir": "¡Subes al nivel {nivel}! En las últimas 2 semanas cumpliste tu plan y tus metas de resistencia y rapidez sin dolor.",
+      "bajar": "Bajamos al nivel {nivel} para cuidar tu suelo pélvico: registraste dolor o no lograste las repeticiones. Si el dolor sigue, consulta con tu profesional.",
+      "mantener": "Sigues en el nivel {nivel}: {motivo}."
+    },
+    "fuentes": ["NICE-NG123", "LAYCOCK-2001"]
+  },
+
+  "entrenamientoVesical": {
+    "diasDiario": 3,
+    "incrementoMinPorSemana": 15,
+    "objetivoMin": 180,
+    "objetivoMaxMin": 240,
+    "liquidosLitrosDia": [1.5, 2.0],
+    "irritantes": ["café", "té negro", "gaseosas", "alcohol", "edulcorantes artificiales", "cítricos en exceso", "picantes"],
+    "consejos": [ "Ve al baño solo cuando tengas ganas reales, no «por si acaso».", "Distribuye los líquidos durante el día y reduce 2 horas antes de dormir.", "Si llega la urgencia antes de tu hora objetivo, usa la técnica de supresión y espera 5 minutos más cada vez." ],
+    "fuentes": ["NICE-NG123"]
+  },
+
+  "educacion": [
+    { "id": "EDU-01", "titulo": "¿Qué es el suelo pélvico?", "ilustracion": "IL-01", "texto": "Es un conjunto de músculos que cierra la pelvis por abajo, como una hamaca. Sostiene la vejiga, el útero y el recto, cierra la uretra y el ano, y participa en la función sexual. Cuando está débil aparecen escapes y pesadez; cuando está demasiado tenso, dolor." },
+    { "id": "EDU-02", "titulo": "Cómo contraer correctamente", "ilustracion": "IL-02", "texto": "Imagina que quieres evitar que se escapen gases y orina a la vez: la zona se cierra y se eleva hacia adentro. Los glúteos, los muslos y el abdomen deben quedarse relajados y la respiración debe seguir fluyendo. Errores comunes: apretar glúteos, meter la barriga con fuerza, aguantar la respiración o empujar hacia abajo (como al evacuar). Si tienes dudas, el biofeedback del equipo te muestra si la contracción sube la curva." },
+    { "id": "EDU-03", "titulo": "Lentas y rápidas: por qué las dos", "ilustracion": "IL-09", "texto": "Las contracciones lentas entrenan las fibras de resistencia que sostienen los órganos todo el día; las rápidas entrenan las fibras que reaccionan en un instante cuando toses, estornudas o te llega la urgencia. Por eso cada serie incluye ambas." },
+    { "id": "EDU-04", "titulo": "El Knack: adelántate al esfuerzo", "ilustracion": "IL-10", "texto": "Contrae el suelo pélvico justo antes de toser, estornudar, reír o levantar peso y mantenlo durante el esfuerzo. Es un hábito que reduce los escapes desde el primer día." },
+    { "id": "EDU-05", "titulo": "Cómo funciona la electroestimulación", "ilustracion": "IL-12", "texto": "Una corriente pequeña y segura llega al músculo a través de una sonda. A 35–50 Hz produce una contracción completa que fortalece; a 10 Hz calma la vejiga a través de los nervios. El ancho de pulso (µs) regula cuánto «empuja» cada impulso; los segundos ON/OFF son el trabajo y el descanso; la rampa suaviza el inicio. La intensidad (mA) la eliges tú: hasta sentir contracción, nunca dolor." },
+    { "id": "EDU-06", "titulo": "Biofeedback: ver lo que no se ve", "ilustracion": "IL-09", "texto": "En modo biofeedback (EMG) el equipo mide la actividad eléctrica de tus músculos y la muestra como una curva o un número. Sirve para comprobar que contraes el músculo correcto, para medir tu progreso (pico en µV) y, en caso de tensión, para aprender a relajar (reposo en µV)." },
+    { "id": "EDU-07", "titulo": "Hábitos que protegen", "ilustracion": "", "texto": "Toma 1,5 a 2 litros de agua al día, reduce café, gaseosas y alcohol, evita el estreñimiento con fibra y sin hacer fuerza, no vayas al baño por si acaso, cuida el peso y contrae antes de cargar. Pequeños cambios suman tanto como los ejercicios." },
+    { "id": "EDU-08", "titulo": "Cuidado de la sonda e higiene", "ilustracion": "IL-07", "texto": "Equipo en 0 antes de colocar y retirar la sonda. Usa gel a base de agua. Lava la sonda con agua tibia y jabón neutro después de cada uso, sécala y guárdala en su estuche. Es de uso personal: nunca la compartas. Cámbiala cuando el fabricante lo indique (suele ser cada 6 meses)." },
+    { "id": "EDU-09", "titulo": "Cuándo consultar", "ilustracion": "", "texto": "Sangre en la orina, dolor con fiebre, adormecimiento genital, no poder orinar, un bulto que sale por la vagina, dolor o sangrado con la sonda, o no mejorar tras 12 semanas: en todos estos casos consulta a un profesional. PELVIA te acompaña, no reemplaza esa consulta." }
+  ],
+
+  "equiposConocidos": [
+    { "marca": "TensCare", "modelos": ["Elise", "Elise 2", "Viva", "itouch Sure", "Sure Pro", "iTouch Go"], "ajusteManual": false, "sondas": ["vaginal", "anal (opcional)", "electrodos (opcional)"], "mAMax": 90, "programas": { "STRESS": "EST-IUE", "URGE": "EST-URG", "MIXED": "EST-MIX", "TONE": "EST-TONO", "PAIN": "TENS-ALTA", "SENSITIVITY": "EST-SENS" }, "nota": "Sure Pro permite programas manuales (frecuencia y ancho de pulso ajustables). Verificar con el manual del modelo exacto." },
+    { "marca": "NeuroTrac", "modelos": ["Simplex", "Pelvitone", "MyoPlus 2 Pro", "MyoPlus 4 Pro"], "ajusteManual": true, "sondas": ["vaginal", "anal", "electrodos"], "mAMax": 90, "programas": { "Stress incontinence": "EST-IUE", "Urge incontinence": "EST-URG", "Mixed incontinence": "EST-MIX", "Lack of sensitivity": "EST-SENS", "Pain": "TENS-ALTA" }, "nota": "Los MyoPlus incluyen EMG biofeedback. Verificar numeración de programas en el manual." },
+    { "marca": "iStim / Kegel8", "modelos": ["iStim V2", "Kegel8 Ultra 20", "Kegel8 Tight & Tone"], "ajusteManual": true, "sondas": ["vaginal", "anal (opcional)"], "mAMax": 80, "programas": { "Stress": "EST-IUE", "Urge": "EST-URG", "Mixed": "EST-MIX", "Toning": "EST-TONO" }, "nota": "Verificar con el manual." },
+    { "marca": "Genérico EMS/TENS", "modelos": ["EMS/TENS con sonda vaginal"], "ajusteManual": true, "sondas": ["vaginal", "anal", "electrodos"], "mAMax": 100, "programas": {}, "nota": "Configura manualmente Hz, µs, ON/OFF según la ficha de cada sesión." }
+  ],
+
+  "casoEjemplo": {
+    "etiqueta": "DEMO — datos ficticios",
+    "perfil": { "alias": "Ana (ejemplo)", "edad": 34, "demo": true, "consentimiento": true },
+    "equipo": { "marca": "Genérico EMS/TENS", "modelo": "EMS con sonda vaginal y modo EMG", "tipoSonda": "vaginal", "mAMax": 100, "ajusteManual": true, "tieneEMG": true, "programas": {} },
+    "evaluacionInicial": {
+      "fecha": "2026-10-05",
+      "seguridad": { "contraindicaciones": [], "precauciones": [], "banderasRojas": [] },
+      "sintomas": { "esf": 3, "urg": 0, "frec": 0, "fec": 0, "prol": 0, "dol": 0, "vac": 0 },
+      "contexto": { "ctxPostparto": false, "ctxMenopausia": false, "ctxDiagnostico": "" },
+      "iciq": { "q1": 2, "q2": 2, "q3": 7, "total": 11, "severidad": "moderada", "situaciones": ["Al toser o estornudar", "Al hacer ejercicio"] },
+      "fuerza": { "P": 2, "E": 4, "R": 6, "F": 4 }
+    },
+    "resultadoEsperado": { "perfil": "IUE", "severidad": "moderada", "derivar": false, "contraindicacionEST": false, "nivelInicial": 2, "programa": "PROG-IUE", "motivoNivel": "Sostén de 3 a 5 segundos." },
+    "narrativa": "Ana tiene 34 años, un parto vaginal hace 3 años y escapes de orina casi siempre al estornudar y al correr. No tiene urgencia ni dolor. Su cuestionario de seguridad no muestra contraindicaciones. El ICIQ da 11 (moderada). En la autoevaluación percibe que aprieta sin elevar (P = 2), sostiene 4 s, logra 6 repeticiones y 4 rápidas: nivel 2. Su equipo es un EMS genérico con sonda vaginal y modo EMG, así que la app le muestra los parámetros exactos.",
+    "sesionPasoAPaso": {
+      "titulo": "Ejemplo: lunes de la semana 1 — Estimulación de fortalecimiento (EST-IUE) + 2 series de ejercicios",
+      "pasos": [
+        "Ana abre PELVIA; en «Hoy» ve: EST-IUE 15 min y PFMT-SERIE (2 series).",
+        "Toca EST-IUE. Lee el checklist de seguridad y marca «Confirmo».",
+        "La ficha indica: 35 Hz · 250 µs · ON 5 s / OFF 10 s · rampa 1 s · 15 min · intensidad hasta contracción clara y cómoda · sonda vaginal · acostada con rodillas flexionadas.",
+        "Con el equipo en 0 coloca la sonda con gel, configura 35 Hz, 250 µs, ON 5 / OFF 10 y sube la intensidad poco a poco: a 28 mA siente una contracción clara.",
+        "Toca «Empezar». La app muestra CONTRAE 5 s (ella aprieta y eleva con el equipo) y RELAJA 10 s (suelta del todo), con vibración en cada cambio. 60 ciclos en 15 min.",
+        "Al terminar baja a 0, apaga, retira y lava la sonda. Registra: 28 mA, esfuerzo 6/10, dolor no.",
+        "Más tarde hace la serie de nivel 2 (8 contracciones de 5 s con 10 s de descanso + 5 rápidas) por la tarde y por la noche."
+      ]
+    },
+    "semanasEjemplo": [
+      { "semana": 1, "nivel": 2, "planificadas": 14, "hechas": 12, "mAPromedio": 28, "dolor": 0 },
+      { "semana": 2, "nivel": 2, "planificadas": 14, "hechas": 13, "mAPromedio": 31, "dolor": 0, "autoevaluacion": { "P": 2, "E": 5, "R": 7, "F": 5 } },
+      { "semana": 3, "nivel": 2, "planificadas": 14, "hechas": 12, "mAPromedio": 33, "dolor": 0 },
+      { "semana": 4, "nivel": 3, "planificadas": 14, "hechas": 13, "mAPromedio": 35, "dolor": 0, "autoevaluacion": { "P": 3, "E": 6, "R": 8, "F": 7 }, "iciq": { "q1": 1, "q2": 2, "q3": 5, "total": 8, "severidad": "moderada" }, "cambioNivel": { "desde": 2, "hasta": 3, "motivo": "Adherencia 89 %, E ≥ 6 s y F ≥ 5 en dos autoevaluaciones, sin dolor." } }
+    ],
+    "mensajeFinalEjemplo": "A las 4 semanas Ana pasó al nivel 3: sostiene 6 s, hace 7 rápidas y su ICIQ bajó de 11 a 8. El plan sigue hasta la semana 12 y luego pasa a mantenimiento."
+  }
+}

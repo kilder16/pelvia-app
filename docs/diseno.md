@@ -234,9 +234,14 @@ erDiagram
     EQUIPO {
         string marca
         string modelo
+        string tipo
         string tipoSonda
         number mAMax
         boolean ajusteManual
+        boolean tieneEstimulacion
+        boolean tieneEMG
+        boolean aplicaFicha
+        json parametrosFijos
         json programas
     }
     EVALUACION {
@@ -334,7 +339,9 @@ Si una fila no aplica exactamente, se toma el **nivel más bajo** compatible (cr
 ### 6.4 Planificador (`planificador.js`)
 Entrada: perfil, nivel, seguridad, equipo, fechaInicio. Salida: 12 semanas, cada una con 7 días y lista de `tipoSesionId`.
 - Toma la `semanaTipo` del programa del perfil (`protocolos.json → programas`).
-- Filtra sesiones EST-*/TENS-* si `contraindicacionEST`; sustituye EST-IUE por PFMT-SERIE extra.
+- Filtra sesiones EST-*/TENS-* si `contraindicacionEST` **o** si `equipo.tieneEstimulacion = false` (biofeedback Bluetooth sin estimulación), aplicando `reemplazoSinEST`.
+- Si `equipo.aplicaFicha = false` y existe `equipo.parametrosFijos` (p. ej. Innovo: 50 Hz / 620 µs / 5 s–5 s / 30 min), la ficha muestra "tu equipo fija sus parámetros" y la línea de tiempo de la sesión usa `parametrosFijos` en lugar de los del catálogo.
+- `tipo` del equipo proviene de `tiposEquipo` (estimulador-sonda, estimulador-sonda-emg, estimulacion-externa, biofeedback-presion, tens-ems-generico, clinico) y fija los valores por defecto de `tieneEstimulacion`, `tieneEMG` y `aplicaFicha`; la usuaria puede corregirlos en "Mi equipo".
 - Ajusta parámetros PFMT según nivel (`niveles[nivel].pfmt`).
 - Si el equipo no tiene sonda anal y el perfil es FECAL → EST-FEC marcada "requiere sonda anal" y se omite del día.
 - Inserta re-evaluaciones: fuerza semanas 2, 4, 6, 8, 10, 12; ICIQ semanas 4, 8, 12; diario miccional semanas 0, 4, 8 (URGENCIA/MIXTA).

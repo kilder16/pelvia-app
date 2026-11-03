@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Mujer de pie, erguida, con los pies separados al ancho de las caderas">
+<title>Posición de pie</title>
+<rect width="400" height="300" rx="16" fill="#FFFFFF"/>
+<g stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<path d="M120 254 L280 254" fill="none" stroke="#C9D3D0"/>
+<g fill="none" stroke="#2A7F7A"><path d="M188 98 L172 160" stroke-width="16"/><path d="M212 98 L228 160" stroke-width="16"/><path d="M200 90 L200 160" stroke-width="30"/><path d="M192 160 L187 244 L175 246" stroke-width="19"/><path d="M208 160 L213 244 L225 246" stroke-width="19"/></g><g fill="none" stroke="#C9D3D0"><path d="M188 98 L172 160" stroke-width="10"/><path d="M212 98 L228 160" stroke-width="10"/><path d="M200 90 L200 160" stroke-width="24"/><path d="M192 160 L187 244 L175 246" stroke-width="13"/><path d="M208 160 L213 244 L225 246" stroke-width="13"/></g>
+<circle cx="200" cy="46" r="7" fill="#2A7F7A" stroke="#2A7F7A"/>
+<circle cx="200" cy="64" r="14" fill="#FFFFFF" stroke="#2A7F7A"/>
+<path d="M187 262 L187 272" fill="none" stroke="#E26D5A"/>
+<path d="M213 262 L213 272" fill="none" stroke="#E26D5A"/>
+<path d="M200 267 L189 267 M194.1 263.9 L189 267 L194.1 270.1" fill="none" stroke="#E26D5A"/>
+<path d="M200 267 L211 267 M205.9 270.1 L211 267 L205.9 263.9" fill="none" stroke="#E26D5A"/>
+<text x="90" y="130" font-size="18" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">De pie,</text>
+<text x="90" y="154" font-size="16" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">erguida</text>
+<text x="315" y="130" font-size="16" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Pies al ancho</text>
+<text x="315" y="154" font-size="16" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">de caderas</text>
+</g>
+</svg>

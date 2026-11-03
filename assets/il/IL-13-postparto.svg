@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Postparto: silueta de mujer con un bebé en brazos">
+<title>Perfil: Postparto</title>
+<rect width="400" height="300" rx="16" fill="#FFFFFF"/>
+<g stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="149" cy="90.8" r="12.2" fill="#2A7F7A" stroke="#2A7F7A"/>
+<path d="M113 215 C113 117 237 117 237 215 Z" fill="#C9D3D0" stroke="#2A7F7A"/>
+<circle cx="175" cy="110" r="32" fill="#FFFFFF" stroke="#2A7F7A"/>
+<ellipse cx="214" cy="186" rx="42" ry="17" transform="rotate(-15 214 186)" fill="#FFFFFF" stroke="#2A7F7A"/>
+<circle cx="258" cy="170" r="14" fill="#FFFFFF" stroke="#2A7F7A"/>
+<path d="M140 202 Q196 224 250 194" fill="none" stroke="#2A7F7A"/>
+<path d="M282 122 C266 110 268 95 282 104 C296 95 298 110 282 122 Z" fill="#E26D5A" stroke="#E26D5A"/>
+<text x="200" y="264" font-size="28" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Postparto</text>
+</g>
+</svg>

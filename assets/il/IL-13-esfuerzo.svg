@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Incontinencia de esfuerzo: figura tosiendo con una gota">
+<title>Perfil: Esfuerzo</title>
+<rect width="400" height="300" rx="16" fill="#FFFFFF"/>
+<g stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="159" cy="94.6" r="12.9" fill="#2A7F7A" stroke="#2A7F7A"/>
+<path d="M125 215 C125 124 245 124 245 215 Z" fill="#C9D3D0" stroke="#2A7F7A"/>
+<circle cx="185" cy="115" r="34" fill="#FFFFFF" stroke="#2A7F7A"/>
+<path d="M232 100 L250 92 M236 115 L258 115 M232 130 L250 138" fill="none" stroke="#E26D5A"/>
+<path d="M282 151 C290 163 298 171 298 181 A16 16 0 0 1 266 181 C266 171 274 163 282 151 Z" fill="#E26D5A" stroke="#E26D5A"/>
+<text x="200" y="264" font-size="28" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Esfuerzo</text>
+</g>
+</svg>

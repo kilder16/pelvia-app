@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Incontinencia de urgencia: reloj con una gota">
+<title>Perfil: Urgencia</title>
+<rect width="400" height="300" rx="16" fill="#FFFFFF"/>
+<g stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="180" cy="125" r="62" fill="#FFFFFF" stroke="#2A7F7A"/>
+<path d="M180 69 L180 75 M236 125 L230 125 M180 181 L180 175 M124 125 L130 125" fill="none" stroke="#2A7F7A"/>
+<path d="M180 125 L180 86.6 M180 125 L211 140.5" fill="none" stroke="#2A7F7A"/>
+<circle cx="180" cy="125" r="4" fill="#2A7F7A" stroke="#2A7F7A"/>
+<path d="M272 146.8 C282.4 162.4 292.8 172.8 292.8 185.8 A20.8 20.8 0 0 1 251.2 185.8 C251.2 172.8 261.6 162.4 272 146.8 Z" fill="#E26D5A" stroke="#E26D5A"/>
+<text x="200" y="264" font-size="28" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Urgencia</text>
+</g>
+</svg>

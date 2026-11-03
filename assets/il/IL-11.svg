@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Dos posturas de relajación del suelo pélvico: mariposa acostada con las plantas juntas y las rodillas abiertas, y bebé feliz con las rodillas al pecho y los pies hacia el techo">
+<title>Posturas de relajación</title>
+<rect width="400" height="300" rx="16" fill="#FFFFFF"/>
+<g stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<path d="M200 20 L200 280" fill="none" stroke="#C9D3D0" stroke-dasharray="6 8"/>
+<rect x="25" y="12" width="150" height="215" rx="12" fill="none" stroke="#C9D3D0"/>
+<g fill="none" stroke="#2A7F7A"><path d="M100 58 L100 135" stroke-width="26"/><path d="M92 68 L62 122" stroke-width="15"/><path d="M108 68 L138 122" stroke-width="15"/><path d="M94 135 L56 178 L96 212" stroke-width="18"/><path d="M106 135 L144 178 L104 212" stroke-width="18"/></g><g fill="none" stroke="#C9D3D0"><path d="M100 58 L100 135" stroke-width="20"/><path d="M92 68 L62 122" stroke-width="9"/><path d="M108 68 L138 122" stroke-width="9"/><path d="M94 135 L56 178 L96 212" stroke-width="12"/><path d="M106 135 L144 178 L104 212" stroke-width="12"/></g>
+<circle cx="100" cy="22" r="6" fill="#2A7F7A" stroke="#2A7F7A"/>
+<circle cx="100" cy="38" r="13" fill="#FFFFFF" stroke="#2A7F7A"/>
+<path d="M48 168 L34 168 M40 164.3 L34 168 L40 171.7" fill="none" stroke="#E26D5A"/>
+<path d="M152 168 L166 168 M160 171.7 L166 168 L160 164.3" fill="none" stroke="#E26D5A"/>
+<rect x="215" y="217" width="170" height="8" rx="4" fill="#C9D3D0"/>
+<g fill="none" stroke="#2A7F7A"><path d="M258 205 L325 205" stroke-width="24"/><path d="M325 205 L298 152" stroke-width="19"/><path d="M298 152 L304 96 L322 94" stroke-width="17"/></g><g fill="none" stroke="#C9D3D0"><path d="M258 205 L325 205" stroke-width="18"/><path d="M325 205 L298 152" stroke-width="13"/><path d="M298 152 L304 96 L322 94" stroke-width="11"/></g>
+<g fill="none" stroke="#2A7F7A"><path d="M266 200 L300 106" stroke-width="15"/></g><g fill="none" stroke="#C9D3D0"><path d="M266 200 L300 106" stroke-width="9"/></g>
+<circle cx="226" cy="199" r="5.4" fill="#2A7F7A" stroke="#2A7F7A"/><circle cx="238" cy="203" r="12" fill="#FFFFFF" stroke="#2A7F7A"/>
+<text x="100" y="250" font-size="17" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Mariposa</text>
+<text x="100" y="268" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">plantas juntas,</text>
+<text x="100" y="286" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">rodillas abiertas</text>
+<text x="300" y="250" font-size="17" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Bebé feliz</text>
+<text x="300" y="268" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">rodillas al pecho,</text>
+<text x="300" y="286" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">pies al techo</text>
+</g>
+</svg>

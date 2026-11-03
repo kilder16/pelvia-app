@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Mujer acostada boca arriba sobre una colchoneta, con las rodillas flexionadas y los pies apoyados">
+<title>Posición acostada boca arriba</title>
+<rect width="400" height="300" rx="16" fill="#FFFFFF"/>
+<g stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="226" width="340" height="10" rx="5" fill="#C9D3D0"/>
+<ellipse cx="66" cy="222" rx="24" ry="6" fill="#C9D3D0" stroke="#2A7F7A"/>
+<g fill="none" stroke="#2A7F7A"><path d="M96 211 L205 211" stroke-width="26"/><path d="M205 211 L262 158" stroke-width="20"/><path d="M262 158 L292 212 L318 214" stroke-width="18"/></g><g fill="none" stroke="#C9D3D0"><path d="M96 211 L205 211" stroke-width="20"/><path d="M205 211 L262 158" stroke-width="14"/><path d="M262 158 L292 212 L318 214" stroke-width="12"/></g>
+<circle cx="55" cy="196" r="6.3" fill="#2A7F7A" stroke="#2A7F7A"/><circle cx="70" cy="202" r="14" fill="#FFFFFF" stroke="#2A7F7A"/>
+<path d="M286 228 L324 228" fill="none" stroke="#E26D5A" stroke-width="4"/>
+<text x="200" y="60" font-size="18" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Acostada boca arriba</text>
+<text x="200" y="84" font-size="15" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">rodillas flexionadas, pies apoyados</text>
+</g>
+</svg>

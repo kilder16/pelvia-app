@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Pantalla de un equipo de electroestimulación genérico con valores de ejemplo: 35 Hz, 250 µs, ON 5 s / OFF 10 s, rampa 1 s y 28 mA">
+<title>Parámetros del equipo</title>
+<rect width="400" height="300" rx="16" fill="#FFFFFF"/>
+<g stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<rect x="30" y="20" width="340" height="262" rx="22" fill="#C9D3D0" stroke="#2A7F7A"/>
+<rect x="50" y="40" width="300" height="175" rx="12" fill="#FFFFFF" stroke="#2A7F7A"/>
+<path d="M50 100 L350 100 M50 155 L350 155 M200 40 L200 100 M200 155 L200 215" fill="none" stroke="#C9D3D0"/>
+<text x="125" y="62" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Frecuencia</text>
+<text x="125" y="90" font-size="24" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">35 Hz</text>
+<text x="275" y="62" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Ancho de pulso</text>
+<text x="275" y="90" font-size="24" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">250 µs</text>
+<text x="200" y="121" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Ciclo</text>
+<text x="200" y="146" font-size="22" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">ON 5 s / OFF 10 s</text>
+<text x="125" y="176" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Subida y bajada</text>
+<text x="125" y="204" font-size="22" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Rampa 1 s</text>
+<text x="275" y="176" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Intensidad</text>
+<text x="275" y="204" font-size="24" font-weight="bold" text-anchor="middle" fill="#E26D5A" font-family="system-ui, sans-serif">28 mA</text>
+<circle cx="270" cy="248" r="16" fill="#FFFFFF" stroke="#2A7F7A"/>
+<circle cx="320" cy="248" r="16" fill="#FFFFFF" stroke="#2A7F7A"/>
+<path d="M262 248 L278 248 M312 248 L328 248 M320 240 L320 256" fill="none" stroke="#2A7F7A"/>
+<text x="54" y="254" font-size="16" font-weight="bold" text-anchor="start" fill="#2A7F7A" font-family="system-ui, sans-serif">Ejemplo ilustrativo</text>
+</g>
+</svg>

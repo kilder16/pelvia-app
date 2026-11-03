@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Incontinencia fecal: círculo abstracto protegido por un escudo">
+<title>Perfil: Fecal</title>
+<rect width="400" height="300" rx="16" fill="#FFFFFF"/>
+<g stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="165" cy="115" r="55" fill="#C9D3D0" stroke="#2A7F7A"/>
+<circle cx="165" cy="115" r="22" fill="#FFFFFF" stroke="#2A7F7A"/>
+<path d="M165 85 L165 79 M195 115 L201 115 M165 145 L165 151 M135 115 L129 115" fill="none" stroke="#2A7F7A"/>
+<path d="M250 100 l40 15 l0 35 c0 28 -18 45 -40 55 c-22 -10 -40 -27 -40 -55 l0 -35 Z" fill="#2A7F7A" stroke="#2A7F7A"/>
+<path d="M237 150 L246.1 160.4 L265.6 138.3" fill="none" stroke="#FFFFFF"/>
+<text x="200" y="264" font-size="28" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Fecal</text>
+</g>
+</svg>

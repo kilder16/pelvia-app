@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Incontinencia mixta: reloj, gota y figura tosiendo">
+<title>Perfil: Mixta</title>
+<rect width="400" height="300" rx="16" fill="#FFFFFF"/>
+<g stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="135" cy="118" r="44" fill="#FFFFFF" stroke="#2A7F7A"/>
+<path d="M135 80 L135 86 M173 118 L167 118 M135 156 L135 150 M97 118 L103 118" fill="none" stroke="#2A7F7A"/>
+<path d="M135 118 L135 90.7 M135 118 L157 129" fill="none" stroke="#2A7F7A"/>
+<circle cx="135" cy="118" r="4" fill="#2A7F7A" stroke="#2A7F7A"/>
+<circle cx="290" cy="111.2" r="10.6" fill="#2A7F7A" stroke="#2A7F7A"/>
+<path d="M218 215 C218 131 318 131 318 215 Z" fill="#C9D3D0" stroke="#2A7F7A"/>
+<circle cx="268" cy="128" r="28" fill="#FFFFFF" stroke="#2A7F7A"/>
+<path d="M228 115 L214 108 M226 128 L208 128 M228 141 L214 148" fill="none" stroke="#E26D5A"/>
+<path d="M190 166 C198 178 206 186 206 196 A16 16 0 0 1 174 196 C174 186 182 178 190 166 Z" fill="#E26D5A" stroke="#E26D5A"/>
+<text x="200" y="264" font-size="28" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Mixta</text>
+</g>
+</svg>

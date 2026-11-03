@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Prolapso: flecha hacia abajo sobre la hamaca del suelo pélvico y flechas de soporte hacia arriba">
+<title>Perfil: Prolapso</title>
+<rect width="400" height="300" rx="16" fill="#FFFFFF"/>
+<g stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="200" cy="160" r="24" fill="#C9D3D0" stroke="#2A7F7A"/>
+<path d="M200 50 L200 126 M192.7 114.1 L200 126 L207.3 114.1" fill="none" stroke="#E26D5A"/>
+<path d="M110 160 Q200 212 290 160 L290 172 Q200 226 110 172 Z" fill="#E26D5A" stroke="#E26D5A"/>
+<circle cx="110" cy="166" r="7" fill="#2A7F7A" stroke="#2A7F7A"/>
+<circle cx="290" cy="166" r="7" fill="#2A7F7A" stroke="#2A7F7A"/>
+<path d="M160 234 L160 204 M165.2 212.5 L160 204 L154.8 212.5" fill="none" stroke="#2A7F7A"/>
+<path d="M240 234 L240 204 M245.2 212.5 L240 204 L234.8 212.5" fill="none" stroke="#2A7F7A"/>
+<text x="200" y="264" font-size="28" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Prolapso</text>
+</g>
+</svg>

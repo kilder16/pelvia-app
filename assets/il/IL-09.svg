@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Línea de tiempo del equipo: 5 segundos encendido con rampa de 1 segundo, en los que contraes con el equipo, y 10 segundos apagado, en los que relajas">
+<title>Ciclo ON/OFF del equipo</title>
+<rect width="400" height="300" rx="16" fill="#FFFFFF"/>
+<g stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<path d="M60 210 L70 110 L100 110 L110 210 Z" fill="#E26D5A" stroke="none" fill-opacity="0.25"/>
+<path d="M210 210 L220 110 L250 110 L260 210 Z" fill="#E26D5A" stroke="none" fill-opacity="0.25"/>
+<path d="M60 210 L70 110 L100 110 L110 210 L210 210 L220 110 L250 110 L260 210 L360 210" fill="none" stroke="#2A7F7A"/>
+<path d="M55 235 L372 235" fill="none" stroke="#1F2A2E"/>
+<path d="M60 235 L60 242" fill="none" stroke="#1F2A2E"/>
+<text x="60" y="258" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">0</text>
+<path d="M110 235 L110 242" fill="none" stroke="#1F2A2E"/>
+<text x="110" y="258" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">5</text>
+<path d="M160 235 L160 242" fill="none" stroke="#1F2A2E"/>
+<text x="160" y="258" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">10</text>
+<path d="M210 235 L210 242" fill="none" stroke="#1F2A2E"/>
+<text x="210" y="258" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">15</text>
+<path d="M260 235 L260 242" fill="none" stroke="#1F2A2E"/>
+<text x="260" y="258" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">20</text>
+<path d="M310 235 L310 242" fill="none" stroke="#1F2A2E"/>
+<text x="310" y="258" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">25</text>
+<path d="M360 235 L360 242" fill="none" stroke="#1F2A2E"/>
+<text x="360" y="258" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">30</text>
+<text x="85" y="80" font-size="15" font-weight="bold" text-anchor="middle" fill="#E26D5A" font-family="system-ui, sans-serif">CONTRAE</text>
+<text x="85" y="98" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">con el equipo</text>
+<text x="235" y="80" font-size="15" font-weight="bold" text-anchor="middle" fill="#E26D5A" font-family="system-ui, sans-serif">CONTRAE</text>
+<text x="235" y="98" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">con el equipo</text>
+<text x="160" y="196" font-size="15" font-weight="bold" text-anchor="middle" fill="#2A7F7A" font-family="system-ui, sans-serif">RELAJA</text>
+<text x="310" y="196" font-size="15" font-weight="bold" text-anchor="middle" fill="#2A7F7A" font-family="system-ui, sans-serif">RELAJA</text>
+<text x="210" y="284" font-size="15" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">segundos</text>
+<text x="200" y="34" font-size="17" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">ON 5 s / OFF 10 s · rampa 1 s</text>
+</g>
+</svg>

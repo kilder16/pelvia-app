@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Corte lateral esquemático de la pelvis femenina con vejiga, útero y recto apoyados sobre el suelo pélvico, que funciona como una hamaca de soporte">
+<title>Pelvis femenina: corte lateral esquemático</title>
+<rect width="400" height="300" rx="16" fill="#FFFFFF"/>
+<g stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<path d="M305 55 Q350 130 300 215 L286 206 Q326 130 289 62 Z" fill="#C9D3D0" stroke="#2A7F7A"/>
+<ellipse cx="112" cy="195" rx="13" ry="22" fill="#C9D3D0" stroke="#2A7F7A"/>
+<ellipse cx="150" cy="163" rx="34" ry="27" fill="#C9D3D0" stroke="#2A7F7A"/>
+<path d="M140 190 L132 226" fill="none" stroke="#2A7F7A"/>
+<ellipse cx="205" cy="128" rx="24" ry="42" transform="rotate(-35 205 128)" fill="#E26D5A" fill-opacity="0.3" stroke="#2A7F7A"/>
+<path d="M228 160 Q222 195 212 226" fill="none" stroke="#2A7F7A"/>
+<path d="M250 85 C265 130 255 175 248 226 L272 226 C280 175 290 130 274 85 Z" fill="#C9D3D0" stroke="#2A7F7A"/>
+<path d="M112 205 Q205 268 298 205 L296 218 Q205 282 114 218 Z" fill="#E26D5A" stroke="#E26D5A"/>
+<path d="M80 127 L122 150" fill="none" stroke="#1F2A2E"/>
+<path d="M162 70 L182 94" fill="none" stroke="#1F2A2E"/>
+<text x="55" y="124" font-size="16" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Vejiga</text>
+<text x="150" y="64" font-size="16" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Útero</text>
+<text x="262" y="72" font-size="16" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Recto</text>
+<text x="205" y="287" font-size="17" font-weight="bold" text-anchor="middle" fill="#E26D5A" font-family="system-ui, sans-serif">Suelo pélvico</text>
+<text x="92" y="200" font-size="14" text-anchor="end" fill="#1F2A2E" font-family="system-ui, sans-serif">Pubis</text>
+<text x="368" y="140" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Sacro</text>
+<text x="36" y="30" font-size="14" text-anchor="start" fill="#1F2A2E" font-family="system-ui, sans-serif">Delante</text>
+<text x="364" y="30" font-size="14" text-anchor="end" fill="#1F2A2E" font-family="system-ui, sans-serif">Detrás</text>
+</g>
+</svg>

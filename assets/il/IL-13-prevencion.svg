@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Prevención: escudo con una marca de verificación">
+<title>Perfil: Prevención</title>
+<rect width="400" height="300" rx="16" fill="#FFFFFF"/>
+<g stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<path d="M200 45 l62 23.2 l0 54.2 c0 43.4 -27.9 69.8 -62 85.2 c-34.1 -15.5 -62 -41.9 -62 -85.2 l0 -54.2 Z" fill="#2A7F7A" stroke="#2A7F7A"/>
+<path d="M174 128 L192.2 148.8 L231.2 104.6" fill="none" stroke="#FFFFFF" stroke-width="8"/>
+<text x="200" y="264" font-size="28" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Prevención</text>
+</g>
+</svg>

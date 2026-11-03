@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Dolor pélvico: pelvis estilizada con líneas de tensión">
+<title>Perfil: Dolor</title>
+<rect width="400" height="300" rx="16" fill="#FFFFFF"/>
+<g stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<path d="M120 85 C140 60 175 75 185 100 L215 100 C225 75 260 60 280 85 C300 120 270 170 240 195 L160 195 C130 170 100 120 120 85 Z" fill="#C9D3D0" stroke="#2A7F7A"/>
+<ellipse cx="200" cy="150" rx="28" ry="22" fill="#FFFFFF" stroke="#2A7F7A"/>
+<path d="M100 95 L90 108 L102 118 L92 131 M300 95 L310 108 L298 118 L308 131 M178 50 L189 62 L200 48 L211 62 L222 50" fill="none" stroke="#E26D5A"/>
+<text x="200" y="264" font-size="28" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Dolor</text>
+</g>
+</svg>

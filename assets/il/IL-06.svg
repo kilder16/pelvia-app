@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Respiración diafragmática. Al inhalar el abdomen se expande y el suelo pélvico baja y se relaja. Al exhalar el suelo pélvico sube suave">
+<title>Respiración diafragmática</title>
+<rect width="400" height="300" rx="16" fill="#FFFFFF"/>
+<g stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<path d="M200 20 L200 280" fill="none" stroke="#C9D3D0" stroke-dasharray="6 8"/>
+<text x="100" y="38" font-size="20" font-weight="bold" text-anchor="middle" fill="#2A7F7A" font-family="system-ui, sans-serif">INHALA</text>
+<rect x="55" y="55" width="90" height="140" rx="36" fill="#FFFFFF" stroke="#2A7F7A"/>
+<path d="M57 102 Q100 92 143 102" fill="none" stroke="#2A7F7A"/>
+<path d="M100 110 L100 132 M94.8 123.5 L100 132 L105.2 123.5" fill="none" stroke="#2A7F7A"/>
+<path d="M55 118 Q28 150 55 182" fill="none" stroke="#E26D5A" stroke-dasharray="5 7"/>
+<path d="M72 150 L48 150 M54.8 145.8 L48 150 L54.8 154.2" fill="none" stroke="#E26D5A"/>
+<path d="M60 182 Q100 206 140 182" fill="none" stroke="#E26D5A"/>
+<path d="M100 200 L100 218 M95.8 211.2 L100 218 L104.2 211.2" fill="none" stroke="#E26D5A"/>
+<text x="100" y="242" font-size="15" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Abdomen se expande</text>
+<text x="100" y="261" font-size="15" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Suelo pélvico baja</text>
+<text x="100" y="280" font-size="15" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">y se relaja</text>
+<text x="300" y="38" font-size="20" font-weight="bold" text-anchor="middle" fill="#E26D5A" font-family="system-ui, sans-serif">EXHALA</text>
+<rect x="255" y="55" width="90" height="140" rx="36" fill="#FFFFFF" stroke="#2A7F7A"/>
+<path d="M257 104 Q300 62 343 104" fill="none" stroke="#2A7F7A"/>
+<path d="M300 118 L300 92 M305.2 100.5 L300 92 L294.8 100.5" fill="none" stroke="#2A7F7A"/>
+<path d="M260 188 Q300 168 340 188" fill="none" stroke="#E26D5A"/>
+<path d="M300 214 L300 186 M304.2 192.8 L300 186 L295.8 192.8" fill="none" stroke="#E26D5A"/>
+<text x="300" y="242" font-size="15" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Abdomen vuelve</text>
+<text x="300" y="261" font-size="15" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Suelo pélvico sube</text>
+<text x="300" y="280" font-size="15" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">suave</text>
+<text x="100" y="80" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Diafragma</text>
+</g>
+</svg>

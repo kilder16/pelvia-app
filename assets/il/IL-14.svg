@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Diario miccional con columnas de hora, micción, urgencia y escape, junto a un reloj que indica aumentar el intervalo entre micciones 15 minutos por semana">
+<title>Diario miccional e intervalo</title>
+<rect width="400" height="300" rx="16" fill="#FFFFFF"/>
+<g stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<rect x="10" y="30" width="252" height="245" rx="12" fill="#FFFFFF" stroke="#2A7F7A"/>
+<circle cx="46" cy="30" r="6" fill="#FFFFFF" stroke="#2A7F7A"/>
+<circle cx="91" cy="30" r="6" fill="#FFFFFF" stroke="#2A7F7A"/>
+<circle cx="136" cy="30" r="6" fill="#FFFFFF" stroke="#2A7F7A"/>
+<circle cx="181" cy="30" r="6" fill="#FFFFFF" stroke="#2A7F7A"/>
+<circle cx="226" cy="30" r="6" fill="#FFFFFF" stroke="#2A7F7A"/>
+<text x="135" y="62" font-size="16" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Diario miccional</text>
+<text x="42" y="92" font-size="14" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Hora</text>
+<text x="100" y="92" font-size="14" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Micción</text>
+<text x="168" y="92" font-size="14" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Urgencia</text>
+<text x="232" y="92" font-size="14" font-weight="bold" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">Escape</text>
+<path d="M20 102 L252 102" fill="none" stroke="#2A7F7A"/>
+<text x="42" y="133" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">8:00</text>
+<path d="M92 128 L97.6 134.4 L109.6 120.8" fill="none" stroke="#2A7F7A"/>
+<path d="M162 128 L174 128" fill="none" stroke="#C9D3D0"/>
+<path d="M226 128 L238 128" fill="none" stroke="#C9D3D0"/>
+<path d="M20 145 L252 145" fill="none" stroke="#C9D3D0"/>
+<text x="42" y="168" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">10:30</text>
+<path d="M92 163 L97.6 169.4 L109.6 155.8" fill="none" stroke="#2A7F7A"/>
+<circle cx="168" cy="163" r="6" fill="#E26D5A" stroke="#E26D5A"/>
+<path d="M226 163 L238 163" fill="none" stroke="#C9D3D0"/>
+<path d="M20 180 L252 180" fill="none" stroke="#C9D3D0"/>
+<text x="42" y="203" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">13:00</text>
+<path d="M92 198 L97.6 204.4 L109.6 190.8" fill="none" stroke="#2A7F7A"/>
+<path d="M162 198 L174 198" fill="none" stroke="#C9D3D0"/>
+<path d="M226 198 L238 198" fill="none" stroke="#C9D3D0"/>
+<path d="M20 215 L252 215" fill="none" stroke="#C9D3D0"/>
+<text x="42" y="238" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">15:30</text>
+<path d="M92 233 L97.6 239.4 L109.6 225.8" fill="none" stroke="#2A7F7A"/>
+<circle cx="168" cy="233" r="6" fill="#E26D5A" stroke="#E26D5A"/>
+<path d="M232 224.2 C235.6 229.6 239.2 233.2 239.2 237.7 A7.2 7.2 0 0 1 224.8 237.7 C224.8 233.2 228.4 229.6 232 224.2 Z" fill="#E26D5A" stroke="#E26D5A"/>
+<path d="M325 135 L325 87 A48 48 0 0 1 373 135 Z" fill="#E26D5A" stroke="none" fill-opacity="0.25"/>
+<circle cx="325" cy="135" r="48" fill="#FFFFFF" stroke="#2A7F7A"/>
+<path d="M325 93 L325 99 M367 135 L361 135 M325 177 L325 171 M283 135 L289 135" fill="none" stroke="#2A7F7A"/>
+<path d="M325 135 L325 105.2 M325 135 L349 147" fill="none" stroke="#2A7F7A"/>
+<circle cx="325" cy="135" r="4" fill="#2A7F7A" stroke="#2A7F7A"/>
+<path d="M325 75 A60 60 0 0 1 385 135" fill="none" stroke="#E26D5A"/>
+<path d="M377 126 L385 136 L393 126" fill="none" stroke="#E26D5A"/>
+<text x="325" y="220" font-size="18" font-weight="bold" text-anchor="middle" fill="#E26D5A" font-family="system-ui, sans-serif">+15 min</text>
+<text x="325" y="242" font-size="15" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">por semana</text>
+<text x="325" y="264" font-size="14" text-anchor="middle" fill="#1F2A2E" font-family="system-ui, sans-serif">intervalo objetivo</text>
+</g>
+</svg>

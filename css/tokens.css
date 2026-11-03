@@ -1,0 +1,91 @@
+/* Tokens de diseño de PELVIA (docs/diseno.md §8). Paleta calmada, contraste AA. */
+:root {
+  color-scheme: light dark;
+  --fondo: #F7F9F8;
+  --superficie: #FFFFFF;
+  --superficie-2: #EEF3F2;
+  --texto: #1F2A2E;
+  --texto-suave: #4A5A5F;
+  --borde: #E1E8E6;
+  --borde-fuerte: #B9C7C4;
+
+  --primario: #2A7F7A;
+  --primario-oscuro: #1F625E;
+  --primario-claro: #DDEFED;
+  --sobre-primario: #FFFFFF;
+  --acento: #E26D5A;          /* fase CONTRAE */
+  --acento-texto: #A53D2C;
+  --relaja: #5B9AA9;          /* fase RELAJA */
+  --relaja-texto: #2F6A78;
+  --descanso: #7A8A8E;
+  --exito: #3A8E5C;
+  --exito-texto: #2C6E47;
+  --alerta: #C9A227;
+  --alerta-fondo: #FFF6D6;
+  --alerta-texto: #6B5310;
+  --peligro: #B23A48;
+  --peligro-fondo: #FBE9EB;
+  --sobre-peligro: #FFFFFF;
+  --info-fondo: #E6F1F3;
+  --demo: #FFD84D;
+  --sobre-demo: #2B2300;
+
+  --fuente: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --t-16: 1rem;
+  --t-18: 1.125rem;
+  --t-20: 1.25rem;
+  --t-24: 1.5rem;
+  --t-32: 2rem;
+  --t-48: 3rem;
+  --t-96: 6rem;
+
+  --esp-1: 4px;
+  --esp-2: 8px;
+  --esp-3: 12px;
+  --esp-4: 16px;
+  --esp-5: 24px;
+  --esp-6: 32px;
+
+  --radio: 16px;
+  --radio-chico: 10px;
+  --sombra: 0 1px 2px rgba(31, 42, 46, .06), 0 4px 14px rgba(31, 42, 46, .06);
+  --foco: 0 0 0 3px #FFFFFF, 0 0 0 6px #1F625E;
+  --toque: 48px;
+  --toque-sesion: 60px;
+  --nav-alto: 64px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fondo: #111A1C;
+    --superficie: #1A2629;
+    --superficie-2: #223135;
+    --texto: #E8EFEE;
+    --texto-suave: #B3C2C0;
+    --borde: #2E3F43;
+    --borde-fuerte: #4A5E62;
+
+    --primario: #4FB3AC;
+    --primario-oscuro: #7FD0C9;
+    --primario-claro: #1D3A3A;
+    --sobre-primario: #08201E;
+    --acento: #F08A78;
+    --acento-texto: #F6A596;
+    --relaja: #7DB9C7;
+    --relaja-texto: #9CCFDB;
+    --descanso: #9AA9AD;
+    --exito: #5DBB83;
+    --exito-texto: #7DD3A0;
+    --alerta: #E2BE4A;
+    --alerta-fondo: #3A3214;
+    --alerta-texto: #F1DB8E;
+    --peligro: #F07E8B;
+    --peligro-fondo: #3D1F24;
+    --sobre-peligro: #2A0A0F;
+    --info-fondo: #1C3237;
+    --demo: #FFD84D;
+    --sobre-demo: #2B2300;
+    --sombra: 0 1px 2px rgba(0, 0, 0, .4);
+    --foco: 0 0 0 3px #111A1C, 0 0 0 6px #7FD0C9;
+  }
+}

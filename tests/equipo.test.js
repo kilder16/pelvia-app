@@ -11,7 +11,8 @@ test('rf17_tenscareElise_mapeo', () => {
   assert.equal(eq.tipoSonda, 'vaginal');
   assert.equal(eq.tieneEstimulacion, true);
   const nombre = (tipo) => catalogo.equivalenciaEquipo(tipo, eq);
-  assert.match(nombre('EST-IUE'), /STRESS/);
+  assert.equal(nombre('EST-IUE'), 'STRESS', 'catálogo 1.0.1: clave STRESS (y alias STRE)');
+  assert.equal(eq.programas.STRE, 'EST-IUE');
   assert.equal(nombre('EST-URG'), 'URGE');
   assert.equal(nombre('EST-MIX'), 'MIXED');
   assert.equal(nombre('EST-TONO'), 'TONE');
@@ -20,26 +21,29 @@ test('rf17_tenscareElise_mapeo', () => {
 });
 
 test('rf17_tiposDeEquipo_recalculanPlan', () => {
-  // Globus: los mapeos a texto libre ("ajuste manual según ficha") no se guardan como programa.
+  // Globus: todos los programas apuntan a tipos de sesión válidos.
   const g = equipoDesdeConocido(catalogo, 'Globus', 'Genesy S2');
   assert.ok(Object.values(g.programas).every((t) => catalogo.tipoSesion(t)));
   // Innovo: fija parámetros, sin ficha.
   const inn = equipoDesdeConocido(catalogo, 'Innovo (Atlantic Therapeutics)', 'Innovo shorts');
   assert.equal(inn.aplicaFicha, false);
   assert.equal(inn.parametrosFijos.anchoPulsoUs, 620);
+  assert.equal(inn.parametrosFijos.exentoValidacion, true);
   // Sensor sin estimulación: el plan no lleva EST-*.
   const elvie = equipoDesdeConocido(catalogo, 'Biofeedback Bluetooth sin estimulación', 'Elvie Trainer');
   assert.equal(elvie.tieneEstimulacion, false);
   const plan = generarPlan({ perfil: 'IUE', nivel: 2, seguridad: seguridadLimpia(), equipo: elvie, fechaInicio: '2026-11-02' }, catalogo);
   assert.ok(!todasLasEntradas(plan).some((e) => /^(EST|TENS)-/.test(e.tipo)));
   // Elecciones de la usuaria prevalecen.
-  const nt = equipoDesdeConocido(catalogo, 'NeuroTrac (Verity Medical)', 'Simplex', { tieneEMG: false, sondas: ['vaginal', 'anal'] });
-  assert.equal(nt.tieneEMG, false);
+  const nt = equipoDesdeConocido(catalogo, 'NeuroTrac (Verity Medical) — sin EMG', 'Simplex', { sondas: ['vaginal', 'anal'] });
+  assert.equal(nt.tieneEMG, false, 'Simplex: sin EMG por catálogo');
+  assert.equal(equipoDesdeConocido(catalogo, 'NeuroTrac MyoPlus — con EMG', 'MyoPlus 2 Pro').tieneEMG, true);
+  assert.equal(equipoDesdeConocido(catalogo, 'NeuroTrac MyoPlus — con EMG', 'MyoPlus 2 Pro', { tieneEMG: false }).tieneEMG, false, 'la usuaria corrige');
   assert.deepEqual(nt.sondas, ['vaginal', 'anal']);
 });
 
-test('rf17_v2_diezFamiliasYEquipoNoIdentificado', () => {
-  assert.equal(catalogo.equiposConocidos.length, 10);
+test('rf17_v2_onceFamiliasYEquipoNoIdentificado', () => {
+  assert.equal(catalogo.equiposConocidos.length, 11, 'catálogo 1.0.1: NeuroTrac separado en sin EMG / MyoPlus con EMG');
   assert.match(catalogo.equipoNoIdentificado, /Genérico EMS\/TENS digital con sonda/);
   const tiposValidos = new Set(catalogo.tiposEquipo().map((t) => t.id));
   for (const c of catalogo.equiposConocidos) {

@@ -92,6 +92,11 @@ export function normalizarEntrada(entrada, ctx, catalogo, traza) {
       traza.push(`nivel ${nivel} > nivelMax de ${e.tipo}: se omite`);
       return false;
     }
+    // Límite de semanas del propio tipo (p. ej. EST-SENS: máximo 4 semanas, también cuando entra como sugerida).
+    if (t.semanasMax != null && semana > t.semanasMax) {
+      traza.push(`semana ${semana} > semanasMax ${t.semanasMax} de ${e.tipo}: se omite`);
+      return false;
+    }
     return true;
   };
 

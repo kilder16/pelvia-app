@@ -9,7 +9,7 @@ import { construirLineaTiempo } from '../engine/sesion.js';
 import { cerrarSemana } from '../engine/progresion.js';
 import { DIAS, lunesDe, sumarDias, fechaDePlan, hoyISO, semanaDelPlan } from '../util/fechas.js';
 
-export const APP_VERSION = '0.1.0';
+export const APP_VERSION = '0.1.1';
 export const ESQUEMA = 1;
 export const PREFIJO = 'pelvia.';
 export const CLAVES = ['meta', 'perfil', 'equipo', 'evaluaciones', 'plan', 'sesiones', 'cambiosNivel', 'diario', 'ajustes'];

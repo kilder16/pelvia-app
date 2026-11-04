@@ -27,7 +27,7 @@ test('rf13_adherenciaSemanal', () => {
 
 test('rf13_seriesEF', () => {
   const r = resumen(demo(), catalogo);
-  assert.deepEqual(r.series.E.map((x) => x.valor), [4, 5, 6]);
+  assert.deepEqual(r.series.E.map((x) => x.valor), [4, 6, 6]);
   assert.deepEqual(r.series.F.map((x) => x.valor), [4, 5, 7]);
   assert.deepEqual(r.series.ICIQ.map((x) => x.valor), [11, 8]);
   assert.ok(r.series.mA.length > 0);

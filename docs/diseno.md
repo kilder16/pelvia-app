@@ -316,20 +316,21 @@ dificultad para relajar), `vac` (dificultad para vaciar), `ctx` (postparto ≤ 1
 | Orden | Condición | Perfil | Nota |
 |---|---|---|---|
 | 1 | `dol ≥ 2` | DOLOR_HIPERTONIA | Prioridad: no fortalecer con EST; plan de relajación + TENS (si permitido) + derivar |
-| 2 | `prol ≥ 3` o bandera "bulto visible" | PROLAPSO (derivar) | Plan PFMT suave sin sonda; derivar |
+| 2 | `prol ≥ 3` (el bulto visible es bandera roja BR-BULTO y se trata en §6.1) | PROLAPSO (derivar) | Plan PFMT suave sin sonda; derivar |
 | 3 | `fec ≥ 2` | FECAL (+ componente urinario si aplica) | EST-FEC con sonda anal + BIO |
 | 4 | `esf ≥ 2` y `urg ≥ 2` | MIXTA, predominio = mayor puntaje (empate → ESFUERZO) | EST-MIX + vesical |
 | 5 | `esf ≥ 2` | IUE | EST-IUE |
 | 6 | `urg ≥ 2` o `frec ≥ 2` | URGENCIA | EST-URG + entrenamiento vesical |
 | 7 | `ctx` postparto y todo < 2 | POSTPARTO | PFMT progresivo; EST-SENS solo si P ≤ 1 y ≥ 12 semanas |
 | 8 | todo < 2 | PREVENCION | Mantenimiento + Aprende |
-Severidad = categoría ICIQ (Klovning 2009). `derivar = true` si severidad ∈ {severa, muy severa} o perfil ∈ {DOLOR_HIPERTONIA, PROLAPSO} o `vac ≥ 2`.
+Severidad = categoría ICIQ (Klovning 2009). `derivar = true` si severidad ∈ {severa, muy severa} o perfil ∈ {DOLOR_HIPERTONIA, PROLAPSO, FECAL} o `vac ≥ 2`.
 
 ### 6.3 Nivel inicial (`nivel.js`) — PERFECT simplificado
 | P (0–5, autopercibido) | E (s) | F (rápidas) | Nivel |
 |---|---|---|---|
 | 0–1 | — | — | 0 Conciencia (+ EST-SENS si permitido) |
 | 2 | < 3 | — | 1 Iniciación |
+| 2 (aprieta sin elevar) | cualquiera | cualquiera | 2 Fuerza básica como máximo |
 | ≥ 2 | 3–5 | < 5 | 2 Fuerza básica |
 | ≥ 3 | 6–8 | 5–9 | 3 Resistencia |
 | ≥ 4 | ≥ 9 | ≥ 10 (y R ≥ 8) | 4 Potencia |

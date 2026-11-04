@@ -63,7 +63,7 @@ sesión con temporizador** y **mida el progreso**, con calidad de contenido equi
 | RF-11 | Progresión automática de nivel por reglas (mínimo 2 semanas por nivel, adherencia ≥ 70 %, metas de E y F alcanzadas, sin dolor en las últimas 3 sesiones) y regresión ante dolor en 2 sesiones consecutivas o < 50 % de repeticiones en 3 sesiones; notificación en pantalla del cambio y del motivo | Alta |
 | RF-12 | Pantalla "Hoy": sesiones planificadas del día, estado (pendiente/hecha), próxima re-evaluación, racha semanal | Alta |
 | RF-13 | Progreso: adherencia semanal (hechas/planificadas), evolución de E, F, intensidad (mA) y ICIQ; gráficas sin librerías externas | Media |
-| RF-14 | Re-evaluaciones programadas: fuerza cada 2 semanas; ICIQ en semanas 0, 4, 8 y 12; comparación con la evaluación anterior y mensaje de "consulta al profesional" si a las 12 semanas no hay mejora (ICIQ sin bajar ≥ 2 puntos) | Media |
+| RF-14 | Re-evaluaciones programadas según el programa del perfil: fuerza cada 2 semanas e ICIQ en semanas 0, 4, 8 y 12 en los programas de incontinencia; en PREVENCIÓN fuerza cada 4 semanas e ICIQ solo en la semana 12; en DOLOR/HIPERTONÍA, EVA de dolor cada 2 semanas en lugar de la fuerza; comparación con la evaluación anterior y mensaje de "consulta al profesional" si a las 12 semanas no hay mejora (ICIQ sin bajar ≥ 2 puntos, o EVA sin bajar ≥ 2 en DOLOR) | Media |
 | RF-15 | Entrenamiento vesical para URGENCIA/MIXTA: diario miccional de 3 días (micciones, urgencias, escapes), intervalo objetivo que sube 15 min por semana hasta 3–4 h, y guía de la técnica de supresión de urgencia | Media |
 | RF-16 | Caso ejemplo: botón "Ver ejemplo" que carga un perfil ficticio completo (evaluación, plan, 4 semanas de sesiones y progreso) claramente marcado como DEMO, y botón "Restablecer" que lo borra | Media |
 | RF-17 | "Mi equipo": marca/modelo elegidos de una lista precargada de equipos conocidos (TensCare, NeuroTrac, Neen, Kegel8/iStim, Globus, I-Tech, Innovo, biofeedback Bluetooth, clínicos, genéricos), tipo de equipo (con sonda, con sonda y EMG, externo sin sonda, biofeedback sin estimulación, genérico, clínico), tipo de sonda, mA máximo y programas preconfigurados (nombre → tipo de sesión equivalente) con edición manual; el plan se recalcula al cambiar el equipo | Media |
@@ -126,12 +126,16 @@ RF-05
 RF-06
   Dado perfil IUE moderada, nivel 2, equipo con sonda vaginal y sin contraindicaciones
   Cuando se genera el plan
-  Entonces la semana tipo contiene 3 sesiones EST-IUE (L-X-V), PFMT diario (3 series) y BIO 2 veces (M-J), con re-evaluaciones en semanas 2, 4, 6, 8, 10, 12 (fuerza) y 4, 8, 12 (ICIQ)
+  Entonces la semana tipo contiene 3 sesiones EST-IUE (L-X-V), PFMT diario (3 series en M-J-S, 2 en días con estimulación porque la contracción activa durante la sesión cuenta como una, y 1 serie suave el domingo) y BIO 2 veces (M-J), con re-evaluaciones en semanas 2, 4, 6, 8, 10, 12 (fuerza) y 4, 8, 12 (ICIQ)
 
 RF-07
-  Dado una sesión EST-IUE en semanas 1–4
+  Dado una sesión EST-IUE en semanas 3–4
   Cuando se abre la ficha
   Entonces muestra 35 Hz, 250 µs, ON 5 s / OFF 10 s, rampa 1 s, 20 min, intensidad "hasta notar contracción, cómoda, nunca dolor"; y si "Mi equipo" tiene un programa mapeado a EST-IUE, muestra "En tu equipo: programa STRESS"
+  Dado una sesión EST-IUE en semanas 1–2
+  Entonces muestra 15 min (misma frecuencia y pulso)
+  Dado una sesión EST-IUE desde la semana 5
+  Entonces muestra 50 Hz, con la nota de mantener 35 Hz si el equipo no permite cambiarla
 
 RF-08
   Dado una sesión con ON 5 s / OFF 10 s y 20 min

@@ -27,6 +27,11 @@ test('rf05_maximoInicial4', () => {
   assert.equal(nivelInicial({ P: 4, E: 7, R: 8, F: 8 }, catalogo).nivel, 3);
   assert.equal(nivelInicial({ P: 3, E: 9, R: 9, F: 10 }, catalogo).nivel, 3, 'P < 4 → 3');
   assert.equal(nivelInicial({ P: 4, E: 9, R: 7, F: 10 }, catalogo).nivel, 3, 'R < 8 → 3');
+  // Catálogo 1.0.1: P ≤ 2 (aprieta sin elevar) limita el nivel inicial a 2.
+  assert.equal(nivelInicial({ P: 2, E: 7, R: 8, F: 6 }, catalogo).nivel, 2);
+  const fuerte = nivelInicial({ P: 2, E: 10, R: 10, F: 10 }, catalogo);
+  assert.equal(fuerte.nivel, 2);
+  assert.match(fuerte.motivo, /aprieta sin elevar/);
 });
 
 test('rf05_negativo_valoresFueraDeRango', () => {

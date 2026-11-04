@@ -23,7 +23,7 @@ export function equipoDesdeConocido(catalogo, marca, modelo, elecciones = {}) {
   const base = sondasBase(c);
   const sondas = elecciones.sondas ?? base;
   const tipoSonda = elecciones.tipoSonda ?? sondas[0] ?? null;
-  // Solo mapeos a tipos de sesión existentes (p. ej. "ajuste manual según ficha" queda como nota).
+  // Solo mapeos a tipos de sesión existentes (defensa por si un catálogo futuro trae texto libre).
   const programas = {};
   for (const [nombre, tipo] of Object.entries(c.programas ?? {})) {
     if (catalogo.tipoSesion(tipo)) programas[nombre] = tipo;

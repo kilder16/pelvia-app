@@ -118,6 +118,11 @@ test('rf06_filtroNivelMin', () => {
   // Nivel 0 en IUE: EST-IUE (nivelMin 1) → EST-SENS sugerida; PFMT-SERIE → PFMT-CONCIENCIA.
   const i0 = generarPlan(base({ nivel: 0 }), catalogo);
   assert.deepEqual(tiposDia(i0, 1, 'L'), ['EST-SENS', 'PFMT-CONCIENCIA']);
+  // Catálogo 1.0.1: EST-SENS como máximo 4 semanas (entrada del programa y tipo sugerido).
+  assert.ok(tiposDia(p0, 4, 'L').includes('EST-SENS'));
+  assert.ok(!tiposDia(p0, 5, 'L').includes('EST-SENS'), 'PROLAPSO nivel 0: sin EST-SENS desde la semana 5');
+  assert.ok(!tiposDia(i0, 5, 'L').includes('EST-SENS'), 'IUE nivel 0: la sugerida también respeta semanasMax');
+  assert.ok(tiposDia(i0, 5, 'L').includes('PFMT-CONCIENCIA'));
   // Mantenimiento: EST-TONO solo las 4 primeras semanas (semanasMax).
   const m = planMantenimiento(generarPlan(base(), catalogo), { iciqFinal: 8 }, catalogo).plan;
   assert.ok(m.semanas.find((s) => s.numero === 13).dias.L.some((e) => e.tipo === 'EST-TONO'));

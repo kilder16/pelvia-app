@@ -107,7 +107,10 @@ export function construirLineaTiempo(tipoSesionId, { nivel = 0, semana = 1, seri
     const fijos = t.categoria === 'electroestimulacion' && eq?.aplicaFicha === false && eq?.parametrosFijos
       ? eq.parametrosFijos : null;
     if (fijos) {
-      parametros = { ...parametros, ...fijos, fijadosPorEquipo: true };
+      // exentoValidacion / porQue son metadatos del catálogo, no parámetros que se muestren a la usuaria.
+      const { exentoValidacion, porQue, ...valores } = fijos;
+      parametros = { ...parametros, ...valores, fijadosPorEquipo: true };
+      if (porQue) parametros.porQueFijos = porQue;
       fases.push(...fasesEST(parametros));
     } else if (Array.isArray(t.bloques)) {
       // EST-MIX: bloque 1 → pausa automática para cambiar de programa → bloque 2.

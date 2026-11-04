@@ -13,7 +13,11 @@ test('rf07_estIue_sem1_35hz15min', () => {
   assert.equal(p.duracionMin, 15, 'semanas 1–2: 15 min (progresionSemanal)');
   assert.match(p.intensidad.guia, /contracción clara/);
   assert.match(p.intensidad.nunca, /Nunca dolor/);
-  assert.equal(catalogo.parametrosParaSemana('EST-IUE', 3).duracionMin, 20);
+  assert.equal(catalogo.parametrosParaSemana('EST-IUE', 2).duracionMin, 15);
+  for (const s of [3, 4]) {
+    const q = catalogo.parametrosParaSemana('EST-IUE', s);
+    assert.deepEqual([q.frecuenciaHz, q.anchoPulsoUs, q.onS, q.offS, q.rampaS, q.duracionMin], [35, 250, 5, 10, 1, 20], `semana ${s}`);
+  }
   assert.equal(catalogo.parametrosParaSemana('EST-IUE', 1).semanas, undefined);
   assert.equal(catalogo.parametrosParaSemana('BIO-LENTAS', 1), null, 'sin parámetros eléctricos');
   assert.equal(catalogo.parametrosParaSemana('NO-EXISTE', 1), null);
@@ -27,10 +31,12 @@ test('rf07_estIue_sem5_50hz', () => {
   assert.equal(p.duracionMin, 20);
   assert.match(p.nota, /50 Hz/);
   assert.equal(catalogo.parametrosParaSemana('EST-IUE', 12).frecuenciaHz, 50);
+  assert.match(p.nota, /35 Hz/, 'nota: mantener 35 Hz si el equipo no permite cambiarla');
   assert.equal(catalogo.parametrosParaSemana('EST-IUE', 13).frecuenciaHz, 35, 'fuera de las filas → base');
 });
 
 test('rf07_equivalenciaProgramaEquipo', () => {
+  assert.equal(catalogo.equipoConocido('TensCare').programas.STRESS, 'EST-IUE', 'catálogo 1.0.1: clave STRESS');
   const equipo = { programas: { STRESS: 'EST-IUE', URGE: 'EST-URG' } };
   assert.equal(catalogo.equivalenciaEquipo('EST-IUE', equipo), 'STRESS');
   assert.equal(catalogo.equivalenciaEquipo('EST-MIX', equipo), null);
@@ -102,9 +108,48 @@ test('rnf07_jsonValido_referenciasYRangos', () => {
       if (f.duracionMin != null && f.duracionMin > 30) errores.push(`${t.id} progresión duración`);
     }
   }
+  // rangosAceptables coherentes: [min, max] con min <= max y el valor base dentro del rango.
+  for (const t of j.tiposSesion.filter((x) => x.rangosAceptables && x.parametros)) {
+    for (const [k, r] of Object.entries(t.rangosAceptables)) {
+      if (!Array.isArray(r)) continue;
+      if (r.length !== 2 || r[0] > r[1]) errores.push(`${t.id}: rango ${k} inválido`);
+      const v = t.parametros[k];
+      if (typeof v === 'number' && !t.parametros.continuo && (v < r[0] || v > r[1])) errores.push(`${t.id}: ${k} ${v} fuera de ${r}`);
+    }
+  }
+  // EST-SENS: máximo 4 semanas, en el tipo y en cada programa que la usa.
+  const sens = j.tiposSesion.find((t) => t.id === 'EST-SENS');
+  if (sens.semanasMax !== 4) errores.push('EST-SENS sin semanasMax 4');
+  for (const p of j.programas) for (const [d, l] of Object.entries(p.semanaTipo)) for (const e of l) {
+    if (e.tipo === 'EST-SENS' && e.semanasMax !== 4) errores.push(`${p.id}.${d}: EST-SENS sin semanasMax 4`);
+  }
+  // parametrosFijos de equipos: mismos rangos, salvo exentoValidacion = true.
+  for (const c of j.equiposConocidos ?? []) {
+    const p = c.parametrosFijos;
+    if (!p || p.exentoValidacion === true) continue;
+    if (p.frecuenciaHz < 1 || p.frecuenciaHz > 120) errores.push(`${c.marca}: Hz ${p.frecuenciaHz}`);
+    if (p.anchoPulsoUs < 50 || p.anchoPulsoUs > 500) errores.push(`${c.marca}: µs ${p.anchoPulsoUs}`);
+    if (p.onS / p.offS > 0.5) errores.push(`${c.marca}: ON:OFF ${p.onS}:${p.offS} > 1:2`);
+    if (p.duracionMin > 30) errores.push(`${c.marca}: ${p.duracionMin} min`);
+  }
+  // Mapeos de programas de equipos: siempre a tipos de sesión existentes.
+  for (const c of j.equiposConocidos ?? []) for (const [k, v] of Object.entries(c.programas ?? {})) {
+    if (!tipos.has(v)) errores.push(`${c.marca}: programa ${k} → ${v}`);
+  }
   // Ilustraciones referenciadas con nombre válido.
   for (const t of j.tiposSesion) for (const il of t.ilustraciones ?? []) if (!/^IL-\d{2}$/.test(il)) errores.push(`${t.id}: ${il}`);
   assert.deepEqual(errores, []);
+});
+
+test('rnf07_parametrosFijos_exentoValidacion', () => {
+  const innovo = jsonCatalogo().equiposConocidos.find((c) => c.parametrosFijos);
+  assert.equal(innovo.parametrosFijos.exentoValidacion, true);
+  assert.ok(innovo.parametrosFijos.porQue);
+  // Sin la marca de exención, 620 µs y ON:OFF 1:1 sí se detectarían.
+  assert.ok(innovo.parametrosFijos.anchoPulsoUs > 500 && innovo.parametrosFijos.onS / innovo.parametrosFijos.offS > 0.5);
+  // EST-URG 1.0.1: rangos acotados y modo continuo declarado aparte.
+  const urg = catalogo.tipoSesion('EST-URG').rangosAceptables;
+  assert.deepEqual([urg.onS, urg.offS, urg.continuoPermitido], [[5, 10], [5, 10], true]);
 });
 
 test('rnf07_compatibilidadEsquema_y_carga', async () => {

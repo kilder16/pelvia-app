@@ -16,7 +16,7 @@ evidencia y con la revisión de un profesional. Si viven en el código, cada aju
 Opción 1. Estructura de alto nivel: `version, fecha, aviso, fuentes[], seguridad, cuestionarioSintomas, iciq, perfiles[],
 autoevaluacionFuerza, niveles[], tiposSesion[], programas[], reglasProgresion, entrenamientoVesical, educacion[],
 equiposConocidos[], casoEjemplo`. Un test valida: JSON parseable, todos los `tipoSesionId` referenciados existen, rangos de
-seguridad (Hz 1–120, µs 50–500, ON ≥ 3 s cuando hay contracción, ON:OFF ≤ 1:1 para fortalecimiento, duración ≤ 30 min).
+seguridad (Hz 1–120, µs 50–500, ON ≥ 3 s cuando hay contracción, ON:OFF de al menos 1:2 — OFF ≥ 2 × ON — en fortalecimiento, duración ≤ 30 min). Los `parametrosFijos` de equipos externos en `equiposConocidos` (p. ej. Innovo) no se validan: llevan `exentoValidacion = true` porque la app no los recomienda, solo sincroniza el temporizador con ellos.
 
 ## Consecuencias
 + Un profesional puede revisar `protocolos.json` (o su versión tabulada en `docs/spec.md §10` y la biblioteca de la app) sin leer código.

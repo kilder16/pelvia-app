@@ -4,7 +4,7 @@
 //   node tools/generar-precache.mjs
 // para regenerar la lista PRECACHE. La UI muestra "Nueva versión disponible — recargar".
 
-const CACHE_VERSION = 1;
+const CACHE_VERSION = 2;
 const CACHE = `pelvia-v${CACHE_VERSION}`;
 
 // <precache> (generado por tools/generar-precache.mjs; no editar a mano)

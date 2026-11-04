@@ -32,9 +32,12 @@ test('rf16_cargaDemoConEtiqueta', () => {
   assert.deepEqual([...semanas].sort(), [1, 2, 3, 4]);
   assert.ok(e.sesiones.every((s) => s.demo === true));
   assert.equal(e.evaluaciones.length, 3, 'inicial + semanas 2 y 4');
-  // El nivel lo decide el motor real (ver informe: incoherencia del ejemplo en semana 4).
-  assert.ok(Array.isArray(e.cambiosNivel));
-  assert.equal(e.plan.nivelActual, 2);
+  // Catálogo 1.0.1: E = 6 en las semanas 2 y 4 → el motor real sube a nivel 3 al cerrar la semana 4.
+  assert.equal(e.plan.nivelActual, catalogo.casoEjemplo.semanasEjemplo[3].nivel);
+  assert.equal(e.plan.nivelActual, 3);
+  const cambio = e.cambiosNivel.find((c) => c.nivelDesde === 2 && c.nivelHasta === 3);
+  assert.ok(cambio, 'cambio 2 → 3 registrado');
+  assert.equal(cambio.semana, 4);
   assert.ok(e.plan.semanas[0].dias.L.some((x) => x.estado === 'hecha'));
   // Fechas desplazadas: otro "hoy" mantiene la semana 5.
   configurarAlmacen(almacenMemoria());

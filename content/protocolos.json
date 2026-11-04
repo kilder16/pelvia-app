@@ -1,13 +1,14 @@
 {
   "meta": {
     "nombre": "Catálogo clínico PELVIA",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "esquema": 1,
     "fecha": "2026-11-03",
     "idioma": "es-PE",
     "aviso": "PELVIA es una herramienta de apoyo para la rehabilitación conservadora del suelo pélvico. No diagnostica, no sustituye la valoración de un médico ni de un fisioterapeuta especializado y no controla el electroestimulador. Si tienes dudas, dolor, sangrado o no mejoras, consulta a un profesional.",
     "avisoCorto": "No sustituye la valoración de un profesional de salud.",
     "revisionProfesionalPendiente": true,
+    "notaValidacion": "Los rangos de seguridad (Hz 1–120, µs 50–500, ON:OFF ≥ 1:2 en fortalecimiento) se validan sobre tiposSesion[].parametros, que son los que la app recomienda. Los parametrosFijos de equiposConocidos son los que cada fabricante aplica por su cuenta y solo se usan para sincronizar el temporizador; llevan exentoValidacion = true y no se validan.",
     "notaRevision": "Los parámetros provienen de guías y ensayos publicados (ver fuentes). Antes de usar la app con la usuaria, se recomienda que un fisioterapeuta de suelo pélvico revise este catálogo."
   },
 
@@ -186,6 +187,7 @@
         { "nivel": 1, "si": [["E", "<", 3]], "motivo": "La contracción se mantiene menos de 3 segundos." },
         { "nivel": 2, "si": [["E", "<=", 5]], "motivo": "Sostén de 3 a 5 segundos." },
         { "nivel": 2, "si": [["F", "<", 5]], "motivo": "Menos de 5 contracciones rápidas." },
+        { "nivel": 2, "si": [["P", "<=", 2]], "motivo": "Fuerza percibida débil (aprieta sin elevar)." },
         { "nivel": 3, "si": [["E", "<=", 8]], "motivo": "Sostén de 6 a 8 segundos." },
         { "nivel": 3, "si": [["F", "<", 10]], "motivo": "Menos de 10 rápidas." },
         { "nivel": 3, "si": [["P", "<", 4]], "motivo": "Fuerza percibida moderada." },
@@ -204,7 +206,7 @@
     { "id": 3, "nombre": "Resistencia", "objetivo": "Sostener 8 segundos con descanso igual, 10 repeticiones, en posición sentada y de pie.", "pfmt": { "sostenS": 8, "descansoS": 8, "reps": 10, "series": 3, "rapidas": 10, "rapidasOnS": 1, "rapidasOffS": 1, "posiciones": ["sentada", "de pie"], "ilustraciones": ["IL-04", "IL-05"] }, "metas": { "E": 9, "F": 10 }, "minSemanas": 2, "fuentes": ["IUJ-2021"] },
     { "id": 4, "nombre": "Potencia", "objetivo": "Sostener 10 segundos, 15 rápidas, y aprender el Knack (contraer antes de toser o levantar peso).", "pfmt": { "sostenS": 10, "descansoS": 10, "reps": 10, "series": 3, "rapidas": 15, "rapidasOnS": 1, "rapidasOffS": 1, "posiciones": ["de pie"], "ilustraciones": ["IL-05", "IL-10"] }, "sesionesExtra": ["PFMT-KNACK"], "metas": { "E": 10, "F": 10 }, "minSemanas": 2, "fuentes": ["NICE-NG123"] },
     { "id": 5, "nombre": "Funcional", "objetivo": "Integrar la contracción en movimientos de la vida diaria: sentadillas, levantar peso, caminar, toser.", "pfmt": { "sostenS": 10, "descansoS": 5, "reps": 10, "series": 3, "rapidas": 15, "rapidasOnS": 1, "rapidasOffS": 1, "posiciones": ["de pie", "en movimiento"], "ilustraciones": ["IL-05", "IL-10"] }, "sesionesExtra": ["PFMT-KNACK", "PFMT-FUNCIONAL"], "metas": { "E": 10, "F": 15 }, "minSemanas": 2, "fuentes": ["NICE-NG123"] },
-    { "id": 9, "nombre": "Mantenimiento", "objetivo": "Conservar lo ganado con una rutina corta, de por vida.", "pfmt": { "sostenS": 8, "descansoS": 8, "reps": 10, "series": 1, "rapidas": 10, "rapidasOnS": 1, "rapidasOffS": 1, "posiciones": ["de pie"], "ilustraciones": ["IL-05"] }, "sesionesExtra": ["PFMT-KNACK"], "metas": {}, "minSemanas": 0, "fuentes": ["NICE-NG123"] }
+    { "id": 9, "nombre": "Mantenimiento", "objetivo": "Conservar lo ganado con una rutina corta, de por vida.", "pfmt": { "sostenS": 8, "descansoS": 8, "reps": 10, "series": 1, "rapidas": 10, "rapidasOnS": 1, "rapidasOffS": 1, "posiciones": ["de pie"], "ilustraciones": ["IL-05"] }, "sesionesExtra": ["PFMT-KNACK"], "metas": { "E": 9, "F": 10 }, "minSemanas": 0, "fuentes": ["NICE-NG123"] }
   ],
 
   "tiposSesion": [
@@ -214,11 +216,11 @@
       "paraQue": "Niveles 0 (fuerza percibida 0–1). Máximo 4 semanas; luego se pasa a fortalecimiento.",
       "perfilesRecomendados": ["IUE", "MIXTA", "POSTPARTO", "PROLAPSO", "FECAL"],
       "perfilesNoRecomendados": [ { "perfil": "DOLOR_HIPERTONIA", "motivo": "Con dolor o tensión no se estimula para contraer." } ],
-      "requiere": { "equipo": "sonda-vaginal-o-anal" }, "nivelMin": 0, "nivelMax": 0, "duracionMin": 12,
+      "requiere": { "equipo": "sonda-vaginal-o-anal" }, "nivelMin": 0, "nivelMax": 0, "semanasMax": 4, "duracionMin": 12,
       "parametros": { "frecuenciaHz": 35, "anchoPulsoUs": 200, "onS": 5, "offS": 10, "rampaS": 1, "duracionMin": 12, "formaOnda": "bifásica simétrica", "intensidad": { "guia": "Sube hasta la primera contracción visible o perceptible y quédate ahí.", "nunca": "Nunca dolor ni ardor." }, "sonda": "vaginal (o anal según indicación)", "posicion": "acostada con rodillas flexionadas", "participacionActiva": true, "instruccionActiva": "Cuando el equipo contraiga, intenta acompañar la contracción; cuando pare, suelta del todo." },
       "rangosAceptables": { "frecuenciaHz": [30, 50], "anchoPulsoUs": [150, 300], "onS": [4, 6], "offS": [8, 12] },
       "progresionSemanal": [ { "semanas": [1, 2], "duracionMin": 10 }, { "semanas": [3, 4], "duracionMin": 12 } ],
-      "frecuenciaSemanal": { "veces": 3, "diasAlternos": true, "maxPorDia": 1 },
+      "frecuenciaSemanal": { "veces": 3, "diasAlternos": true, "maxPorDia": 1, "semanas": 4 },
       "pasos": [ "Vacía la vejiga.", "Acuéstate con rodillas flexionadas (IL-03).", "Con el equipo en 0, coloca la sonda con gel (IL-07).", "Configura el programa indicado y sube la intensidad despacio hasta sentir la contracción.", "Sigue el temporizador: CONTRAE con el equipo, RELAJA cuando pare.", "Al terminar, baja a 0, apaga, retira y lava la sonda." ],
       "seguridad": [ "Si no sientes nada a intensidad media-alta, no sigas subiendo: consulta a tu profesional.", "Máximo 4 semanas con este programa." ],
       "ilustraciones": ["IL-03", "IL-07", "IL-09"], "fuentes": ["POGP-2021"]
@@ -247,7 +249,7 @@
       "perfilesNoRecomendados": [ { "perfil": "DOLOR_HIPERTONIA", "motivo": "Solo bajo indicación profesional." } ],
       "requiere": { "equipo": "sonda-vaginal" }, "nivelMin": 0, "nivelMax": 9, "duracionMin": 20,
       "parametros": { "frecuenciaHz": 10, "anchoPulsoUs": 200, "onS": 5, "offS": 10, "rampaS": 1, "duracionMin": 20, "formaOnda": "bifásica simétrica", "intensidad": { "guia": "Sensación clara de hormigueo o latido con una contracción leve; cómoda. No busca una contracción fuerte.", "nunca": "Nunca dolor." }, "sonda": "vaginal", "posicion": "acostada con rodillas flexionadas", "participacionActiva": false, "instruccionActiva": "Relájate y respira; no es necesario contraer." },
-      "rangosAceptables": { "frecuenciaHz": [5, 20], "anchoPulsoUs": [100, 300], "onS": [5, 1200], "offS": [0, 10] },
+      "rangosAceptables": { "frecuenciaHz": [5, 20], "anchoPulsoUs": [100, 300], "onS": [5, 10], "offS": [5, 10], "continuoPermitido": true },
       "progresionSemanal": [ { "semanas": [1, 12], "duracionMin": 20 } ],
       "frecuenciaSemanal": { "veces": 3, "diasAlternos": true, "maxPorDia": 1, "semanas": 10, "nota": "Los ensayos usaron 2–5 sesiones/semana hasta completar 20 sesiones." },
       "equivalenciaProgramas": ["URGE", "OAB", "Urge incontinence", "P2"],
@@ -268,11 +270,11 @@
       ],
       "parametros": { "frecuenciaHz": 10, "anchoPulsoUs": 200, "onS": 5, "offS": 10, "rampaS": 1, "duracionMin": 20, "formaOnda": "bifásica simétrica", "intensidad": { "guia": "Bloque 1: hormigueo cómodo. Bloque 2: contracción clara y cómoda.", "nunca": "Nunca dolor." }, "sonda": "vaginal", "posicion": "acostada con rodillas flexionadas", "participacionActiva": true, "instruccionActiva": "Relaja en el bloque 1; contrae con el equipo en el bloque 2." },
       "rangosAceptables": { "frecuenciaHz": [5, 50], "anchoPulsoUs": [100, 500], "onS": [4, 8], "offS": [8, 16] },
-      "progresionSemanal": [ { "semanas": [1, 4], "nota": "Bloque 2 a 35 Hz" }, { "semanas": [5, 12], "nota": "Bloque 2 a 50 Hz si el equipo lo permite" } ],
+      "progresionSemanal": [ { "semanas": [1, 12] } ],
       "frecuenciaSemanal": { "veces": 3, "diasAlternos": true, "maxPorDia": 1, "semanas": 12 },
       "equivalenciaProgramas": ["MIXED", "MIX", "Mixed incontinence", "P3"],
-      "pasos": [ "Vacía la vejiga.", "Acuéstate cómoda y coloca la sonda con el equipo en 0 (IL-07).", "Bloque 1 (10 min): programa URGE o 10 Hz / 200 µs.", "La app te avisa a los 10 min: pausa, cambia al programa STRESS (35–50 Hz / 250 µs) y reanuda.", "Bloque 2 (10 min): contrae con el equipo en cada ON.", "Baja a 0, apaga, retira y lava la sonda." ],
-      "seguridad": [ "Si tu equipo tiene programa MIXED, úsalo y sigue solo el temporizador." ],
+      "pasos": [ "Vacía la vejiga.", "Acuéstate cómoda y coloca la sonda con el equipo en 0 (IL-07).", "Bloque 1 (10 min): programa URGE o 10 Hz / 200 µs.", "La app te avisa a los 10 min: pausa, cambia al programa STRESS (35 Hz / 250 µs) y reanuda.", "Bloque 2 (10 min): contrae con el equipo en cada ON.", "Baja a 0, apaga, retira y lava la sonda." ],
+      "seguridad": [ "Si tu equipo tiene programa MIXED, úsalo y sigue solo el temporizador.", "El bloque 2 queda fijo a 35 Hz; desde la semana 5 puedes subir a 50 Hz solo si el equipo lo permite y la contracción sigue siendo cómoda." ],
       "ilustraciones": ["IL-03", "IL-07", "IL-09", "IL-12"], "fuentes": ["POGP-2021", "TENSCARE-SUREPRO"]
     },
     {
@@ -398,7 +400,7 @@
       "resumen": "La serie base del programa: contracciones sostenidas y luego rápidas, con los tiempos y repeticiones de tu nivel. 3 series repartidas en el día.",
       "paraQue": "Todos los perfiles excepto dolor en fase inicial. Es el tratamiento de primera línea.",
       "perfilesRecomendados": ["IUE", "MIXTA", "URGENCIA", "POSTPARTO", "PROLAPSO", "FECAL", "PREVENCION"],
-      "perfilesNoRecomendados": [ { "perfil": "DOLOR_HIPERTONIA", "motivo": "Se introduce solo desde la semana 5 y si el dolor ha bajado." } ],
+      "perfilesNoRecomendados": [ { "perfil": "DOLOR_HIPERTONIA", "motivo": "No mientras haya dolor. Desde la semana 5 se introduce primero el ejercicio de conciencia (PFMT-CONCIENCIA); esta serie, solo cuando el profesional lo indique." } ],
       "requiere": { "equipo": "ninguno" }, "nivelMin": 1, "nivelMax": 9, "duracionMin": 6,
       "estructura": { "usaPfmtNivel": true, "registra": ["repsLogradas"] },
       "pasos": [ "Adopta la posición de tu nivel (IL-03, IL-04 o IL-05).", "Lentas: contrae (aprieta y eleva) el tiempo indicado, respirando; suelta por completo el descanso indicado.", "Rápidas: aprieta fuerte 1 s y suelta 1 s.", "Si no completas las repeticiones con buena calidad, detente: calidad antes que cantidad.", "Haz 3 series al día (mañana, tarde, noche); en días de electroestimulación, 2." ],
@@ -601,11 +603,11 @@
         { "tipo": "Hábitos (estreñimiento, cargas)", "frecuencia": "Semanal", "duracion": "3 min", "semanas": "1–12" }
       ],
       "semanaTipo": {
-        "L": [ { "tipo": "EST-SENS", "nivelMax": 0 }, { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "RELAJ-RESP" } ],
+        "L": [ { "tipo": "EST-SENS", "nivelMax": 0, "semanasMax": 4 }, { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "RELAJ-RESP" } ],
         "M": [ { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "BIO-LENTAS" } ],
-        "X": [ { "tipo": "EST-SENS", "nivelMax": 0 }, { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "RELAJ-RESP" } ],
+        "X": [ { "tipo": "EST-SENS", "nivelMax": 0, "semanasMax": 4 }, { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "RELAJ-RESP" } ],
         "J": [ { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "BIO-RESIST", "nivelMin": 2 } ],
-        "V": [ { "tipo": "EST-SENS", "nivelMax": 0 }, { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "RELAJ-RESP" } ],
+        "V": [ { "tipo": "EST-SENS", "nivelMax": 0, "semanasMax": 4 }, { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "RELAJ-RESP" } ],
         "S": [ { "tipo": "PFMT-SERIE", "series": 3 }, { "tipo": "PFMT-KNACK", "nivelMin": 4 } ],
         "D": [ { "tipo": "PFMT-SERIE", "series": 1 }, { "tipo": "RELAJ-RESP" }, { "tipo": "HAB-SEMANAL" } ]
       },
@@ -621,11 +623,11 @@
         { "tipo": "Biofeedback", "frecuencia": "2 veces por semana", "duracion": "8 min", "semanas": "5–12" }
       ],
       "semanaTipo": {
-        "L": [ { "tipo": "EST-SENS", "nivelMax": 0 }, { "tipo": "PFMT-CONCIENCIA", "nivelMax": 1 }, { "tipo": "PFMT-SERIE", "series": 3, "nivelMin": 2 }, { "tipo": "RELAJ-RESP" } ],
+        "L": [ { "tipo": "EST-SENS", "nivelMax": 0, "semanasMax": 4 }, { "tipo": "PFMT-CONCIENCIA", "nivelMax": 1 }, { "tipo": "PFMT-SERIE", "series": 3, "nivelMin": 2 }, { "tipo": "RELAJ-RESP" } ],
         "M": [ { "tipo": "PFMT-CONCIENCIA", "nivelMax": 1 }, { "tipo": "PFMT-SERIE", "series": 3, "nivelMin": 2 }, { "tipo": "BIO-LENTAS", "nivelMin": 1 } ],
-        "X": [ { "tipo": "EST-SENS", "nivelMax": 0 }, { "tipo": "PFMT-CONCIENCIA", "nivelMax": 1 }, { "tipo": "PFMT-SERIE", "series": 3, "nivelMin": 2 }, { "tipo": "RELAJ-RESP" } ],
+        "X": [ { "tipo": "EST-SENS", "nivelMax": 0, "semanasMax": 4 }, { "tipo": "PFMT-CONCIENCIA", "nivelMax": 1 }, { "tipo": "PFMT-SERIE", "series": 3, "nivelMin": 2 }, { "tipo": "RELAJ-RESP" } ],
         "J": [ { "tipo": "PFMT-CONCIENCIA", "nivelMax": 1 }, { "tipo": "PFMT-SERIE", "series": 3, "nivelMin": 2 }, { "tipo": "BIO-RAPIDAS", "nivelMin": 2 } ],
-        "V": [ { "tipo": "EST-SENS", "nivelMax": 0 }, { "tipo": "PFMT-CONCIENCIA", "nivelMax": 1 }, { "tipo": "PFMT-SERIE", "series": 3, "nivelMin": 2 }, { "tipo": "RELAJ-RESP" } ],
+        "V": [ { "tipo": "EST-SENS", "nivelMax": 0, "semanasMax": 4 }, { "tipo": "PFMT-CONCIENCIA", "nivelMax": 1 }, { "tipo": "PFMT-SERIE", "series": 3, "nivelMin": 2 }, { "tipo": "RELAJ-RESP" } ],
         "S": [ { "tipo": "PFMT-CONCIENCIA", "nivelMax": 1 }, { "tipo": "PFMT-SERIE", "series": 3, "nivelMin": 2 }, { "tipo": "PFMT-KNACK", "nivelMin": 4 } ],
         "D": [ { "tipo": "RELAJ-RESP" }, { "tipo": "HAB-SEMANAL" } ]
       },
@@ -735,13 +737,14 @@
   ],
 
   "equiposConocidos": [
-    { "marca": "TensCare", "pais": "Reino Unido", "tipo": "estimulador-sonda", "modelos": ["Elise", "Elise 2", "Viva", "itouch Sure", "Sure Pro", "iTouch Go", "Perfect PFE"], "ajusteManual": false, "tieneEMG": false, "sondas": ["vaginal", "anal (opcional)", "electrodos (opcional)"], "mAMax": 90, "programas": { "STRESS / STRE": "EST-IUE", "URGE": "EST-URG", "MIXED": "EST-MIX", "TONE": "EST-TONO", "PAIN": "TENS-ALTA", "SENSITIVITY": "EST-SENS" }, "nota": "Sure Pro permite programas manuales (frecuencia y ancho de pulso ajustables). Verificar con el manual del modelo exacto.", "fuentes": ["TENSCARE-SUREPRO"] },
-    { "marca": "NeuroTrac (Verity Medical)", "pais": "Reino Unido", "tipo": "estimulador-sonda-emg", "modelos": ["Simplex", "Pelvitone", "Continence", "MyoPlus 2 Pro", "MyoPlus 4 Pro"], "ajusteManual": true, "tieneEMG": true, "sondas": ["vaginal", "anal", "electrodos"], "mAMax": 90, "programas": { "Stress incontinence": "EST-IUE", "Urge incontinence": "EST-URG", "Mixed incontinence": "EST-MIX", "Lack of sensitivity": "EST-SENS", "Pain": "TENS-ALTA" }, "nota": "Simplex y Pelvitone no tienen EMG (marcar tieneEMG = false); los MyoPlus sí. Verificar numeración de programas en el manual." },
+    { "marca": "TensCare", "pais": "Reino Unido", "tipo": "estimulador-sonda", "modelos": ["Elise", "Elise 2", "Viva", "itouch Sure", "Sure Pro", "iTouch Go", "Perfect PFE"], "ajusteManual": false, "tieneEMG": false, "sondas": ["vaginal", "anal (opcional)", "electrodos (opcional)"], "mAMax": 90, "programas": { "STRESS": "EST-IUE", "STRE": "EST-IUE", "URGE": "EST-URG", "MIXED": "EST-MIX", "TONE": "EST-TONO", "PAIN": "TENS-ALTA", "SENSITIVITY": "EST-SENS" }, "nota": "Sure Pro permite programas manuales (frecuencia y ancho de pulso ajustables). Verificar con el manual del modelo exacto.", "fuentes": ["TENSCARE-SUREPRO"] },
+    { "marca": "NeuroTrac (Verity Medical) — sin EMG", "pais": "Reino Unido", "tipo": "estimulador-sonda", "modelos": ["Simplex", "Pelvitone", "Continence"], "ajusteManual": true, "tieneEMG": false, "sondas": ["vaginal", "anal", "electrodos"], "mAMax": 90, "programas": { "Stress incontinence": "EST-IUE", "Urge incontinence": "EST-URG", "Mixed incontinence": "EST-MIX", "Lack of sensitivity": "EST-SENS", "Pain": "TENS-ALTA" }, "nota": "Estimuladores sin biofeedback. Verificar numeración de programas en el manual." },
+    { "marca": "NeuroTrac MyoPlus — con EMG", "pais": "Reino Unido", "tipo": "estimulador-sonda-emg", "modelos": ["MyoPlus 2 Pro", "MyoPlus 4 Pro", "MyoPlus Pro"], "ajusteManual": true, "tieneEMG": true, "sondas": ["vaginal", "anal", "electrodos"], "mAMax": 90, "programas": { "Stress incontinence": "EST-IUE", "Urge incontinence": "EST-URG", "Mixed incontinence": "EST-MIX", "Lack of sensitivity": "EST-SENS", "Pain": "TENS-ALTA", "EMG / ETS": "BIO-LENTAS" }, "nota": "Incluyen biofeedback EMG y modo ETS (estimulación disparada por la contracción). Verificar numeración de programas en el manual." },
     { "marca": "Neen (PeriCalm)", "pais": "Reino Unido", "tipo": "estimulador-sonda", "modelos": ["PeriCalm", "PeriCalm Plus"], "ajusteManual": false, "tieneEMG": false, "sondas": ["vaginal", "anal (opcional)"], "mAMax": 90, "programas": { "STR 1 / STR 2 (Stress)": "EST-IUE", "URG (Urge / frequency)": "EST-URG", "MIX (Mixed)": "EST-MIX", "PAIN": "TENS-ALTA", "SENS (Sensitivity)": "EST-SENS" }, "nota": "Los programas aparecen en pantalla con etiquetas abreviadas (STR 1, STR 2...). Verificar con el manual." },
     { "marca": "iStim / Kegel8", "pais": "Reino Unido", "tipo": "estimulador-sonda", "modelos": ["iStim V2", "Kegel8 Ultra 20", "Kegel8 Tight & Tone", "Kegel8 V for Men (sonda anal)"], "ajusteManual": true, "tieneEMG": false, "sondas": ["vaginal", "anal (opcional)"], "mAMax": 80, "programas": { "Stress": "EST-IUE", "Urge": "EST-URG", "Mixed": "EST-MIX", "Toning": "EST-TONO" }, "nota": "Verificar con el manual." },
-    { "marca": "Globus", "pais": "Italia (habitual en España y Latinoamérica)", "tipo": "estimulador-sonda", "modelos": ["Genesy S2", "Genesy 300 Pro", "Genesy 600", "Genesy 1500", "Genesy 3000", "Tens Elite S2"], "ajusteManual": true, "tieneEMG": false, "sondas": ["vaginal (opcional, conector 2 mm)", "anal (opcional, conector 2 mm)", "electrodos"], "mAMax": 100, "programas": { "Incontinencia por estrés (Genesy S2: P58)": "EST-IUE", "Incontinencia urge (Genesy S2: P59)": "EST-URG", "Incontinencia mixta (Genesy S2: P57 / Tens Elite S2: P100)": "EST-MIX", "Incontinencia urinaria de esfuerzo (Genesy 300/600/1500/3000)": "EST-IUE", "Incontinencia urinaria de urgencia": "EST-URG", "Incontinencia urinaria mixta": "EST-MIX", "PED1–PED6 (programación manual)": "ajuste manual según ficha" }, "nota": "Los manuales no publican Hz/µs de los programas de incontinencia; usar los modos de programación manual (PED) con la ficha de PELVIA cuando el modelo lo permita. Sondas se compran aparte." },
-    { "marca": "I-Tech Medical Division", "pais": "Italia (habitual en España)", "tipo": "estimulador-sonda", "modelos": ["I-Tech Physio", "Mio-Care TENS", "Mio-Care Fitness", "T-One Rehab", "T-One Medi Pro"], "ajusteManual": true, "tieneEMG": false, "sondas": ["vaginal (opcional, conector 2 mm)", "anal (opcional, conector 2 mm)", "electrodos"], "mAMax": 100, "programas": { "Incontinencia urinaria de esfuerzo 1 / 2 / 3": "EST-IUE", "Incontinencia urinaria de urgencia 2 / 3": "EST-URG", "Incontinencia urinaria mixta 1 / 2 / 3": "EST-MIX", "Incontinencia urinaria de esfuerzo y fecal 1": "EST-FEC (con sonda anal) o EST-IUE" }, "nota": "La ficha técnica lista 9 programas de incontinencia sin publicar sus parámetros; los números 1/2/3 suelen ser niveles de intensidad del programa. Verificar con el manual." },
-    { "marca": "Innovo (Atlantic Therapeutics)", "pais": "Irlanda", "tipo": "estimulacion-externa", "modelos": ["Innovo shorts"], "ajusteManual": false, "tieneEMG": false, "sondas": ["ninguna: electrodos integrados en los shorts"], "mAMax": 0, "parametrosFijos": { "frecuenciaHz": 50, "anchoPulsoUs": 620, "onS": 5, "offS": 5, "rampaS": 0.5, "duracionMin": 30 }, "programas": { "Stress": "EST-IUE", "Urge": "EST-URG", "Mixed": "EST-MIX" }, "nota": "Sin sonda. El equipo fija 50 Hz / 620 µs / 5 s-5 s / 30 min: PELVIA no muestra ficha de parámetros, solo guía el temporizador (5/5) y el registro. Frecuencia recomendada por el fabricante: 5 sesiones/semana.", "fuentes": ["DMOCHOWSKI-2019"] },
+    { "marca": "Globus", "pais": "Italia (habitual en España y Latinoamérica)", "tipo": "estimulador-sonda", "modelos": ["Genesy S2", "Genesy 300 Pro", "Genesy 600", "Genesy 1500", "Genesy 3000", "Tens Elite S2"], "ajusteManual": true, "tieneEMG": false, "sondas": ["vaginal (opcional, conector 2 mm)", "anal (opcional, conector 2 mm)", "electrodos"], "mAMax": 100, "programas": { "Incontinencia por estrés (Genesy S2: P58)": "EST-IUE", "Incontinencia urge (Genesy S2: P59)": "EST-URG", "Incontinencia mixta (Genesy S2: P57 / Tens Elite S2: P100)": "EST-MIX", "Incontinencia urinaria de esfuerzo (Genesy 300/600/1500/3000)": "EST-IUE", "Incontinencia urinaria de urgencia": "EST-URG", "Incontinencia urinaria mixta": "EST-MIX" }, "nota": "Los manuales no publican Hz/µs de los programas de incontinencia; usar los modos de programación manual (PED) con la ficha de PELVIA cuando el modelo lo permita. Sondas se compran aparte." },
+    { "marca": "I-Tech Medical Division", "pais": "Italia (habitual en España)", "tipo": "estimulador-sonda", "modelos": ["I-Tech Physio", "Mio-Care TENS", "Mio-Care Fitness", "T-One Rehab", "T-One Medi Pro"], "ajusteManual": true, "tieneEMG": false, "sondas": ["vaginal (opcional, conector 2 mm)", "anal (opcional, conector 2 mm)", "electrodos"], "mAMax": 100, "programas": { "Incontinencia urinaria de esfuerzo 1 / 2 / 3": "EST-IUE", "Incontinencia urinaria de urgencia 2 / 3": "EST-URG", "Incontinencia urinaria mixta 1 / 2 / 3": "EST-MIX", "Incontinencia urinaria de esfuerzo y fecal 1": "EST-IUE" }, "nota": "El programa «esfuerzo y fecal» equivale a EST-FEC cuando se usa con sonda anal. La ficha técnica lista 9 programas de incontinencia sin publicar sus parámetros; los números 1/2/3 suelen ser niveles de intensidad del programa. Verificar con el manual." },
+    { "marca": "Innovo (Atlantic Therapeutics)", "pais": "Irlanda", "tipo": "estimulacion-externa", "modelos": ["Innovo shorts"], "ajusteManual": false, "tieneEMG": false, "sondas": ["electrodos-externos"], "mAMax": 0, "parametrosFijos": { "frecuenciaHz": 50, "anchoPulsoUs": 620, "onS": 5, "offS": 5, "rampaS": 0.5, "duracionMin": 30, "exentoValidacion": true, "porQue": "Electrodos externos sobre la piel: necesitan pulsos más largos (620 µs) que una sonda interna, y el ciclo 5 s/5 s es el protocolo del fabricante validado en el ensayo Dmochowski 2019; la app no lo recomienda, solo lo sigue." }, "programas": { "Stress": "EST-IUE", "Urge": "EST-URG", "Mixed": "EST-MIX" }, "nota": "Sin sonda. El equipo fija 50 Hz / 620 µs / 5 s-5 s / 30 min: PELVIA no muestra ficha de parámetros, solo guía el temporizador (5/5) y el registro. Frecuencia recomendada por el fabricante: 5 sesiones/semana.", "fuentes": ["DMOCHOWSKI-2019"] },
     { "marca": "Biofeedback Bluetooth sin estimulación", "pais": "varios", "tipo": "biofeedback-presion", "modelos": ["Elvie Trainer", "Perifit", "Emy (Fizimed)", "kGoal"], "ajusteManual": false, "tieneEMG": false, "tieneEstimulacion": false, "sondas": ["sensor de presión vaginal con app propia"], "mAMax": 0, "programas": {}, "nota": "No electroestimulan: el plan omite las sesiones EST-* (se reemplazan por BIO-*/PFMT). En las sesiones BIO-* anota el puntaje o la presión que muestra la app del sensor en lugar de µV." },
     { "marca": "Equipos clínicos (consultorio)", "pais": "varios", "tipo": "clinico", "modelos": ["Enraf-Nonius Myomed 632 / 932", "Chattanooga Intelect", "Phenix USB", "Mega Electronics FemiScan"], "ajusteManual": true, "tieneEMG": true, "sondas": ["vaginal", "anal", "electrodos"], "mAMax": 100, "programas": {}, "nota": "Si el fisioterapeuta te presta uno, usa los parámetros de la ficha salvo que él indique otros.", "fuentes": ["IVES-OAB-2021", "IVES-SUI-2024"] },
     { "marca": "Genérico EMS/TENS digital con sonda", "pais": "varios", "tipo": "tens-ems-generico", "modelos": ["Beurer EM 49 / EM 59", "Sanitas SEM 43 / SEM 44", "Omron / Medisana TENS-EMS", "TENS 7000", "EMS/TENS de Amazon o AliExpress"], "ajusteManual": true, "tieneEMG": false, "sondas": ["vaginal (comprada aparte, conector 2 mm)", "anal (comprada aparte)", "electrodos"], "mAMax": 100, "programas": {}, "nota": "Requisitos mínimos: frecuencia ajustable (10 Hz y 35–50 Hz), ancho de pulso ≥ 200 µs, modo EMS con contracción/descanso ≈ 5/10 s y corriente bifásica. Si el equipo solo tiene programas numerados, elige el EMS de fortalecimiento con ON/OFF más parecido a 5/10 y anótalo en Mi equipo." }
@@ -751,7 +754,7 @@
   "casoEjemplo": {
     "etiqueta": "DEMO — datos ficticios",
     "perfil": { "alias": "Ana (ejemplo)", "edad": 34, "demo": true, "consentimiento": true },
-    "equipo": { "marca": "Genérico EMS/TENS", "modelo": "EMS con sonda vaginal y modo EMG", "tipoSonda": "vaginal", "mAMax": 100, "ajusteManual": true, "tieneEMG": true, "programas": {} },
+    "equipo": { "marca": "Genérico EMS/TENS digital con sonda", "modelo": "EMS/TENS de Amazon o AliExpress", "tipo": "tens-ems-generico", "tipoSonda": "vaginal", "mAMax": 100, "ajusteManual": true, "tieneEstimulacion": true, "tieneEMG": true, "aplicaFicha": true, "programas": {} },
     "evaluacionInicial": {
       "fecha": "2026-10-05",
       "seguridad": { "contraindicaciones": [], "precauciones": [], "banderasRojas": [] },
@@ -776,10 +779,10 @@
     },
     "semanasEjemplo": [
       { "semana": 1, "nivel": 2, "planificadas": 14, "hechas": 12, "mAPromedio": 28, "dolor": 0 },
-      { "semana": 2, "nivel": 2, "planificadas": 14, "hechas": 13, "mAPromedio": 31, "dolor": 0, "autoevaluacion": { "P": 2, "E": 5, "R": 7, "F": 5 } },
+      { "semana": 2, "nivel": 2, "planificadas": 14, "hechas": 13, "mAPromedio": 31, "dolor": 0, "autoevaluacion": { "P": 2, "E": 6, "R": 7, "F": 5 } },
       { "semana": 3, "nivel": 2, "planificadas": 14, "hechas": 12, "mAPromedio": 33, "dolor": 0 },
       { "semana": 4, "nivel": 3, "planificadas": 14, "hechas": 13, "mAPromedio": 35, "dolor": 0, "autoevaluacion": { "P": 3, "E": 6, "R": 8, "F": 7 }, "iciq": { "q1": 1, "q2": 2, "q3": 5, "total": 8, "severidad": "moderada" }, "cambioNivel": { "desde": 2, "hasta": 3, "motivo": "Adherencia 89 %, E ≥ 6 s y F ≥ 5 en dos autoevaluaciones, sin dolor." } }
     ],
-    "mensajeFinalEjemplo": "A las 4 semanas Ana pasó al nivel 3: sostiene 6 s, hace 7 rápidas y su ICIQ bajó de 11 a 8. El plan sigue hasta la semana 12 y luego pasa a mantenimiento."
+    "mensajeFinalEjemplo": "A las 4 semanas Ana pasó al nivel 3: ya sostenía 6 s en las dos últimas autoevaluaciones, hace 7 rápidas y su ICIQ bajó de 11 a 8. El plan sigue hasta la semana 12 y luego pasa a mantenimiento."
   }
 }

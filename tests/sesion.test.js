@@ -41,6 +41,11 @@ test('rf08_bloquesMix_10y10', () => {
   assert.equal(lt.fases.find((f) => f.bloque === 1).pasiva, true);
   assert.equal(lt.fases.find((f) => f.bloque === 2 && f.nombre === 'CONTRAE').pasiva, false);
   assert.equal(lt.totalSeg, 20 * 60 + 30);
+  // Catálogo 1.0.1: sin progresión de Hz; el bloque 2 queda a 35 Hz también desde la semana 5.
+  const s5 = construirLineaTiempo('EST-MIX', { nivel: 2, semana: 5 }, catalogo);
+  assert.deepEqual(s5.bloques.map((b) => b.parametros.frecuenciaHz), lt.bloques.map((b) => b.parametros.frecuenciaHz));
+  assert.equal(s5.bloques[1].parametros.frecuenciaHz, 35);
+  assert.equal(catalogo.tipoSesion('EST-MIX').progresionSemanal.some((f) => f.frecuenciaHz != null || /Hz/.test(f.nota ?? '')), false);
 });
 
 test('rf08_tensContinuo_y_parametrosFijos', () => {
@@ -50,9 +55,11 @@ test('rf08_tensContinuo_y_parametrosFijos', () => {
   assert.equal(t.totalSeg, 25 * 60);
   assert.deepEqual(t.avisosSeg, [300, 600, 900, 1200]);
   // Equipo que fija sus parámetros (shorts externos): 5/5 × 30 min = 180 ciclos.
-  const innovo = { tipo: 'estimulacion-externa', parametrosFijos: { frecuenciaHz: 50, anchoPulsoUs: 620, onS: 5, offS: 5, rampaS: 0.5, duracionMin: 30 } };
+  const innovo = { tipo: 'estimulacion-externa', parametrosFijos: { frecuenciaHz: 50, anchoPulsoUs: 620, onS: 5, offS: 5, rampaS: 0.5, duracionMin: 30, exentoValidacion: true, porQue: 'Protocolo del fabricante.' } };
   const f = construirLineaTiempo('EST-IUE', { nivel: 2, semana: 1, equipo: innovo }, catalogo);
   assert.equal(f.parametros.fijadosPorEquipo, true);
+  assert.equal(f.parametros.exentoValidacion, undefined, 'el metadato no llega a la ficha');
+  assert.equal(f.parametros.porQueFijos, 'Protocolo del fabricante.');
   assert.equal(cuenta(f, 'CONTRAE'), 180);
   assert.equal(f.totalSeg, 30 * 60);
   assert.match(f.fases[0].instruccion, /0,5 s/);
@@ -84,7 +91,7 @@ test('rf09_pfmtNivel2_8x5s10s_5rapidas', () => {
   const res = construirLineaTiempo('BIO-RESIST', { nivel: 2 }, catalogo);
   assert.ok(res.fases.filter((f) => f.nombre === 'CONTRAE').every((f) => f.seg === 8));
   assert.equal(cuenta(res, 'CONTRAE'), 5);
-  assert.equal(construirLineaTiempo('BIO-RESIST', { nivel: 9 }, catalogo).parametros.sostenS, 10, 'sin metas → sostén del nivel + 2');
+  assert.equal(construirLineaTiempo('BIO-RESIST', { nivel: 9 }, catalogo).parametros.sostenS, 11, 'catálogo 1.0.1: nivel 9 con metaE 9 → 11 s');
   // BIO-RAPIDAS nivel 2: 2 series de 5 rápidas.
   const rap = construirLineaTiempo('BIO-RAPIDAS', { nivel: 2 }, catalogo);
   assert.equal(cuenta(rap, 'RAPIDA'), 10);

@@ -1,4 +1,4 @@
-# Manual técnico — PELVIA 0.1.0
+# Manual técnico — PELVIA 0.1.1
 Para quien mantenga la app (Kilder). Complementa `docs/diseno.md` (no lo repite) y `README.md`.
 
 ## 1. Arquitectura en una página
@@ -71,7 +71,7 @@ borrar nada.
 - `node tools/generar-precache.mjs --check` falla si la lista está desactualizada o el peso supera 2 MB (hoy ≈ 460 KB).
 
 ## 6. Pruebas
-`node --test "tests/*.test.js"` (76 tests) y cobertura con `--experimental-test-coverage` (≈ 99 % de líneas en `js/engine/`).
+`node --test "tests/*.test.js"` (77 tests) y cobertura con `--experimental-test-coverage` (≈ 99 % de líneas en `js/engine/`).
 Detalle por requisito en `docs/plan-pruebas.md`; trazabilidad en `docs/matriz-trazabilidad.md`. Los módulos de UI con lógica pura
 (`onboarding`, `biblioteca`, `equipo`, `pin`, `temporizador`, `grafica-svg`) se prueban en Node: **ningún módulo de `js/ui/` puede
 tocar `document`/`window` al importarse**.
@@ -89,33 +89,35 @@ tocar `document`/`window` al importarse**.
 | El temporizador se desfasa | Pestaña en segundo plano (navegador congela rAF) | Se recalcula con `performance.now()` al volver; verificar en el celular real (PENDIENTES #5) |
 | Datos "raros" tras importar | Respaldo de otra versión | `importar()` migra; si el esquema es mayor que el de la app, actualizar la app |
 
-## 8. Incoherencias del catálogo clínico detectadas (no modificadas)
-Para revisar con el profesional (PENDIENTES-EXTERNOS #2). La app usa siempre el valor del catálogo.
-1. **RF-07 vs. catálogo**: la spec dice EST-IUE 20 min en semanas 1–4; `progresionSemanal` da 15 min en semanas 1–2 (coherente con
-   `PROG-IUE.resumenFrecuencias` y el caso ejemplo).
-2. **Caso ejemplo, semana 4**: `cambioNivel 2 → 3` dice "E ≥ 6 s y F ≥ 5 en dos autoevaluaciones", pero la autoevaluación de la semana 2
-   tiene E = 5 s (< meta 6 s). Las reglas mantienen el nivel 2; `mensajeFinalEjemplo` y `semanasEjemplo[3].nivel = 3` no se cumplen (ADR-0008).
-3. **Caso ejemplo, equipo**: marca "Genérico EMS/TENS" no coincide con ningún `equiposConocidos` ("Genérico EMS/TENS digital con sonda") ni trae `tipo`.
-4. **RF-06 vs. catálogo**: la spec dice "PFMT diario (3 series)"; PROG-IUE da 2 series los días de estimulación y 1 el domingo.
-5. **ADR-0005 vs. POGP/PROMPT**: ADR-0005 dice "ON:OFF ≤ 1:1 para fortalecimiento"; POGP y el PROMPT piden descanso mínimo 1:2. El
-   test aplica 1:2 (todas las EST del catálogo son 5/10).
-6. **Innovo `parametrosFijos`**: 620 µs (fuera del rango de seguridad 50–500 µs de RNF-07) y ON:OFF 5/5 (1:1). No es un tipo de
-   sesión, así que el test de rangos no lo cubre; la app lo usa tal cual cuando se elige ese equipo.
-7. **NeuroTrac**: la familia es `estimulador-sonda-emg` con `tieneEMG = true`, pero su nota dice que Simplex y Pelvitone no tienen EMG;
-   la usuaria debe desmarcarlo.
-8. **Mapeos no válidos**: Globus "PED1–PED6 → ajuste manual según ficha" e I-Tech "… → EST-FEC (con sonda anal) o EST-IUE" no son IDs de
-   tipo; la UI los muestra como notas del fabricante. Innovo `sondas: ["ninguna: …"]` no es un valor de sonda.
-9. **RF-17 vs. catálogo**: la spec habla del programa "STRESS"; la clave de TensCare es "STRESS / STRE".
-10. **EST-SENS**: su seguridad dice "Máximo 4 semanas", pero PROG-PROLAPSO y PROG-POSTPARTO la incluyen con `nivelMax: 0` sin
-    `semanasMax: 4`; si la usuaria sigue en nivel 0 después de la semana 4, el plan mantiene EST-SENS (y `progresionSemanal` solo cubre 1–4).
-11. **diseno §6.2 vs. catálogo**: el diseño deriva {DOLOR, PROLAPSO}; el catálogo también FECAL. El diseño asigna PROLAPSO con
-    "bandera bulto visible"; el catálogo solo con `prol ≥ 3` (el bulto es bandera roja BR-BULTO).
-12. **diseno §6.3 vs. catálogo**: el diseño exige P ≥ 3 para nivel 3; con las reglas del catálogo P = 2, E = 7, F = 6 da nivel 3.
-13. **PROG-PREVENCION / PROG-DOLOR**: re-evaluación de fuerza en 4/8/12 y ninguna, respectivamente, frente a RF-14 "fuerza cada 2 semanas".
-14. **PFMT-SERIE en DOLOR**: el motivo dice "se introduce solo desde la semana 5", pero `desdeSemana5` introduce PFMT-CONCIENCIA.
-15. **BIO-RESIST** en mantenimiento (nivel 9, `metas: {}`): "metaE + 2" no está definido; el motor usa `pfmt.sostenS + 2` (ADR-0007).
-16. **EST-MIX** semanas 5–12: "bloque 2 a 50 Hz" está solo como nota; el bloque 2 conserva 35 Hz en los parámetros.
-17. **EST-URG** `rangosAceptables`: `onS [5, 1200]`, `offS [0, 10]` (admite modo continuo); conviene confirmarlo.
+## 8. Incoherencias del catálogo clínico — resueltas en el catálogo 1.0.1
+El revisor de la v0.1.0 detectó 17 incoherencias entre `protocolos.json` 1.0.0, `docs/spec.md`, `docs/diseno.md` y ADR-0005. El
+autor las resolvió en el catálogo **1.0.1** y en esos documentos (v3); la app no cambió ningún parámetro clínico por su cuenta. Cada
+fila indica el test que fija el comportamiento nuevo. Sigue pendiente la revisión profesional del catálogo (PENDIENTES-EXTERNOS #2).
+
+| # | Incoherencia (1.0.0) | Resolución (1.0.1) | Test | Estado |
+|---|---|---|---|---|
+| 1 | RF-07 decía 20 min en semanas 1–4; el catálogo da 15 min en 1–2 | spec RF-07: 15 min en 1–2, 20 min en 3–4, 50 Hz desde la 5 (nota: 35 Hz si el equipo no lo permite) | `rf07_estIue_sem1_35hz15min`, `rf07_estIue_sem5_50hz` | ✅ Resuelta |
+| 2 | Caso ejemplo: E = 5 s en la semana 2 impedía subir a nivel 3 | `semanasEjemplo[1].autoevaluacion.E = 6`; el motor sube 2 → 3 en la semana 4 | `rf16_cargaDemoConEtiqueta`, `rf13_seriesEF` | ✅ Resuelta |
+| 3 | Equipo del ejemplo sin `tipo` y con marca inexistente | marca "Genérico EMS/TENS digital con sonda", `tipo: tens-ems-generico` | `rf16_cargaDemoConEtiqueta` | ✅ Resuelta |
+| 4 | RF-06 "PFMT diario (3 series)" vs 2/1 del catálogo | spec RF-06 explica 3 series M-J-S, 2 en días con estimulación, 1 el domingo | `rf06_iueNivel2_semanaTipo` | ✅ Resuelta |
+| 5 | ADR-0005 ON:OFF ≤ 1:1 vs POGP 1:2 | ADR-0005: ON:OFF de al menos 1:2 (OFF ≥ 2 × ON) | `rnf07_jsonValido_referenciasYRangos` | ✅ Resuelta |
+| 6 | Innovo 620 µs y ON:OFF 1:1 fuera de rangos | `parametrosFijos.exentoValidacion = true` + `porQue`; la validación los omite y la ficha no muestra el metadato | `rnf07_parametrosFijos_exentoValidacion`, `rf08_tensContinuo_y_parametrosFijos` | ✅ Resuelta |
+| 7 | NeuroTrac marcado con EMG aunque Simplex/Pelvitone no lo tienen | Separado en "NeuroTrac — sin EMG" y "NeuroTrac MyoPlus — con EMG" (11 entradas) | `rf17_tiposDeEquipo_recalculanPlan`, `rf17_v2_onceFamiliasYEquipoNoIdentificado` | ✅ Resuelta |
+| 8 | Mapeos de Globus/I-Tech a texto libre; Innovo sonda "ninguna: …" | Todos los programas apuntan a tipos válidos; Innovo `sondas: ["electrodos-externos"]` | `rnf07_jsonValido_referenciasYRangos` (mapeos), `rf17_v2_onceFamiliasYEquipoNoIdentificado` | ✅ Resuelta |
+| 9 | RF-17 "STRESS" vs clave "STRESS / STRE" | Claves separadas `STRESS` y `STRE` → EST-IUE | `rf17_tenscareElise_mapeo`, `rf07_equivalenciaProgramaEquipo` | ✅ Resuelta |
+| 10 | EST-SENS "máx. 4 semanas" sin `semanasMax` | `semanasMax: 4` en el tipo y en cada entrada de PROLAPSO/POSTPARTO; el planificador también lo aplica cuando EST-SENS entra como sugerida del nivel 0 | `rf06_filtroNivelMin`, `rnf07_jsonValido_referenciasYRangos` | ✅ Resuelta |
+| 11 | diseno §6.2: derivación sin FECAL y bulto como criterio de PROLAPSO | diseno §6.2: derivar incluye FECAL; el bulto es bandera roja BR-BULTO (§6.1) | `rf04_prolapsoDeriva`, `rf04_otrasReglas_urgenciaFecalDerivarSeveridad` | ✅ Resuelta |
+| 12 | diseno §6.3 P ≥ 3 para nivel 3 vs catálogo (P = 2 daba nivel 3) | Nueva regla del catálogo `P ≤ 2 → nivel 2` ("aprieta sin elevar"); diseno §6.3 actualizado | `rf05_maximoInicial4` | ✅ Resuelta |
+| 13 | Re-evaluaciones de PREVENCION/DOLOR distintas de RF-14 | spec RF-14 describe el calendario por programa (PREVENCIÓN cada 4 semanas; DOLOR con EVA) | `rf06_reevaluacionesInsertadas`, `rf14_pendienteSemana4` | ✅ Resuelta |
+| 14 | Motivo de PFMT-SERIE en DOLOR vs `desdeSemana5` | El motivo explica que desde la semana 5 entra PFMT-CONCIENCIA y la serie solo con indicación profesional | `rf06_dolorDesdeSemana5_condicional` | ✅ Resuelta |
+| 15 | BIO-RESIST en nivel 9 sin metas | Nivel 9 con `metas {E: 9, F: 10}` → sostén 11 s | `rf17_v2_tipoFijaValoresPorDefecto_usuariaCorrige` | ✅ Resuelta |
+| 16 | EST-MIX "bloque 2 a 50 Hz" solo como nota | Sin progresión de Hz (`progresionSemanal` 1–12 sin cambios); el bloque 2 queda a 35 Hz y la seguridad explica cuándo subir a 50 Hz | `rf08_bloquesMix_10y10` | ✅ Resuelta |
+| 17 | EST-URG `onS [5, 1200]`, `offS [0, 10]` | `onS [5, 10]`, `offS [5, 10]`, `continuoPermitido: true` | `rnf07_parametrosFijos_exentoValidacion`, `rnf07_jsonValido_referenciasYRangos` (rangos coherentes) | ✅ Resuelta |
+
+Cambios en el código por la 1.0.1 (sin tocar parámetros): el planificador respeta `semanasMax` del tipo de sesión y `sesion.js`
+no pasa `exentoValidacion`/`porQue` a la ficha (guarda `porQueFijos` para explicarlo). La validación `rnf07_*` comprueba además
+que cada `rangosAceptables` sea `[min, max]` y contenga el valor base, que EST-SENS tenga `semanasMax: 4` en todas partes y que los
+`parametrosFijos` sin `exentoValidacion` cumplan los rangos de seguridad.
 
 ## 9. Deuda técnica
 - Sin prueba automatizada de extremo a extremo en el repo (los recorridos de Playwright se hicieron durante la implementación; se

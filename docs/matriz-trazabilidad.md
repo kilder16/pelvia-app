@@ -1,6 +1,6 @@
 # Matriz de trazabilidad — PELVIA
-Estado al cierre de la Fase 5 (2026-11-03, v0.1.0). Las columnas Código y Test tienen el archivo y el test reales.
-✅ = test automático verde (`node --test "tests/*.test.js"`, 76/76) o verificación del revisor hecha.
+Estado al cierre de la Fase 5 (2026-11-03), actualizado a v0.1.1 con el catálogo 1.0.1. Las columnas Código y Test tienen el archivo y el test reales.
+✅ = test automático verde (`node --test "tests/*.test.js"`, 77/77) o verificación del revisor hecha.
 ⚠️ = implementado, pero falta una verificación que solo puede hacerse en el celular real o tras publicar (PENDIENTES-EXTERNOS #4/#5).
 
 | Req | Diseño (`docs/diseno.md`) | Catálogo (`protocolos.json`) | Código | Test (`tests/`) | Doc (manual usuario §) | Estado |
@@ -21,7 +21,7 @@ Estado al cierre de la Fase 5 (2026-11-03, v0.1.0). Las columnas Código y Test 
 | RF-14 | §4.3 | programas[].reevaluaciones, iciq.mejoraMinimaPuntos | js/engine/progresion.js (`reevaluacionesPendientes`, `compararIciq`), js/engine/planificador.js (`REEVAL`) | progresion.test.js → `rf14_pendienteSemana4`, `rf14_mejoraInsuficiente_11a10` | 13. Re-evaluaciones | ✅ |
 | RF-15 | §6.6 | entrenamientoVesical.*, tiposSesion[VES-*] | js/engine/vesical.js, js/ui/vistas/vesical.js | vesical.test.js → `rf15_intervaloObjetivo_90a105`, `rf15_tope240`, `rf15_diario_bordes` | 14. Entrenamiento vesical | ✅ |
 | RF-16 | §5, ADR-0008 | casoEjemplo.* | js/store/repo.js (`cargarDemo`, `restablecer`, `esDemo`) | repo.test.js → `rf16_cargaDemoConEtiqueta`, `rf16_restablecerBorraTodo`, `rf16_store_leerGuardarMigrar` | 15. Ver ejemplo | ✅ |
-| RF-17 | §5, §6.4 | equiposConocidos.*, tiposEquipo, equipoNoIdentificado | js/ui/vistas/equipo.js (`equipoDesdeConocido`), js/engine/catalogo.js (`resolverEquipo`), js/engine/planificador.js (`regenerarConEquipo`) | equipo.test.js → `rf17_tenscareElise_mapeo`, `rf17_tiposDeEquipo_recalculanPlan`, `rf17_v2_diezFamiliasYEquipoNoIdentificado`, `rf17_v2_tipoFijaValoresPorDefecto_usuariaCorrige`; planificador.test.js → `rf17_v2_planificador_parametrosFijosYCambioDeEquipo` | 16. Mi equipo | ✅ |
+| RF-17 | §5, §6.4 | equiposConocidos.*, tiposEquipo, equipoNoIdentificado | js/ui/vistas/equipo.js (`equipoDesdeConocido`), js/engine/catalogo.js (`resolverEquipo`), js/engine/planificador.js (`regenerarConEquipo`) | equipo.test.js → `rf17_tenscareElise_mapeo`, `rf17_tiposDeEquipo_recalculanPlan`, `rf17_v2_onceFamiliasYEquipoNoIdentificado`, `rf17_v2_tipoFijaValoresPorDefecto_usuariaCorrige`; planificador.test.js → `rf17_v2_planificador_parametrosFijosYCambioDeEquipo` | 16. Mi equipo | ✅ |
 | RF-18 | §4.4 | — | js/store/respaldo.js, js/ui/vistas/informe.js, js/ui/vistas/ajustes.js | respaldo.test.js → `rf18_exportImportIdentico`, `rf18_rechazaSinMeta` | 17. Respaldo e informe | ✅ |
 | RF-19 | §5 | — | js/ui/componentes/pin.js | pin.test.js → `rf19_hashYVerifica`, `rf19_5fallosOfreceRestablecer` | 18. PIN | ✅ |
 | RF-20 | §9 | educacion.* | js/ui/vistas/aprende.js, js/ui/vistas/acerca.js, assets/il/IL-01..IL-14 | revisión visual del revisor (Edge/Playwright, IL-07/IL-08 incluidas) | 19. Aprende | ✅ |
@@ -32,7 +32,7 @@ Estado al cierre de la Fase 5 (2026-11-03, v0.1.0). Las columnas Código y Test 
 | RNF-04 | §8 | textos del catálogo en es-PE | toda la UI y `content/protocolos.json` | revisor: lectura de todas las pantallas (capturas 01–19) | Manual usuario | ✅ |
 | RNF-05 | §7, §8 | — | css/tokens.css, css/app.css, componentes | botones ≥ 44 px y `aria-label` en cada SVG (grafica.test.js, tools/verificar_svg.py) | Manual usuario | ⚠️ Lighthouse Accesibilidad ≥ 90 pendiente sobre la URL publicada |
 | RNF-06 | §10 | — | js/ui/componentes/temporizador.js | temporizador.test.js → `rf08_temporizadorSinDesfase` (reloj inyectado, 20 min sin desfase) | Manual técnico | ⚠️ prueba de 20 min con cronómetro externo en el celular real (PENDIENTES #5) |
-| RNF-07 | ADR-0005 | meta.version | js/engine/catalogo.js (`validarCatalogo`) | catalogo.test.js → `rnf07_jsonValido_referenciasYRangos`, `rnf07_compatibilidadEsquema_y_carga` | Manual técnico | ✅ |
+| RNF-07 | ADR-0005 | meta.version | js/engine/catalogo.js (`validarCatalogo`) | catalogo.test.js → `rnf07_jsonValido_referenciasYRangos`, `rnf07_parametrosFijos_exentoValidacion`, `rnf07_compatibilidadEsquema_y_carga` | Manual técnico | ✅ |
 | RNF-08 | §6.1 | seguridad.vigenciaDias | js/engine/seguridad.js, js/engine/planificador.js, js/ui/vistas/sesion.js | seguridad.test.js → `rnf08_noIniciaESTconContraindicacion`, `rnf08_negativo_respuestasVaciasOIncompletas` | 7. Sesión guiada | ✅ |
 | RNF-09 | ADR-0004 | — | tests/ con `node --test` | `node --test --experimental-test-coverage "tests/*.test.js"` → engine/ ≈ 99 % líneas (≥ 80 %) | README | ✅ |
 | RNF-10 | ADR-0001 | — | GitHub Pages | docs/runbook.md, docs/despliegues.md | Runbook | ⚠️ publicación pendiente (PENDIENTES #4) |

@@ -34,7 +34,7 @@ Para probarla desde el celular en la misma red Wi-Fi: `http://<IP-de-la-PC>:8080
 
 ## Tests
 ```powershell
-node --test "tests/*.test.js"                                  # 76 tests, uno o más por requisito (rfNN_…)
+node --test "tests/*.test.js"                                  # 77 tests, uno o más por requisito (rfNN_…)
 node --test --experimental-test-coverage "tests/*.test.js"     # cobertura (js/engine/ ≈ 99 % de líneas)
 node tools/generar-precache.mjs --check                        # lista de precache del service worker al día y peso < 2 MB
 ```

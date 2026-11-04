@@ -18,6 +18,6 @@ Además, las fechas fijas del ejemplo (octubre 2026) harían que "Hoy" mostrara 
 
 ## Consecuencias
 + El DEMO es una prueba de integración visible del motor.
-− Si el catálogo describe un resultado que las reglas no producen, el DEMO muestra lo que dicen las reglas. Ocurre hoy con el cambio
-  de nivel de la semana 4 (ver informe y `docs/manual-tecnico.md` → incoherencias del catálogo): la autoevaluación de la semana 2
-  tiene E = 5 s (< meta 6 s del nivel 2), así que el motor mantiene el nivel 2 en lugar de subir a 3.
+− Si el catálogo describe un resultado que las reglas no producen, el DEMO muestra lo que dicen las reglas. Con el catálogo 1.0.0
+  ocurría en la semana 4 (E = 5 s en la semana 2 impedía subir); el catálogo 1.0.1 corrige la autoevaluación (E = 6 s) y el motor
+  sube de nivel 2 a 3 al cerrar la semana 4, como describe `mensajeFinalEjemplo` (test `rf16_cargaDemoConEtiqueta`).

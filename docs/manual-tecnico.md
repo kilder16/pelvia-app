@@ -27,13 +27,13 @@ Para quien mantenga la app (Kilder). Complementa `docs/diseno.md` (no lo repite)
 | Módulo | Funciones públicas |
 |---|---|
 | `catalogo.js` | `cargarCatalogo`, `crearCatalogo`, `validarCatalogo`; accesores `tipoSesion, nivel, perfil, programa, programaDePerfil, parametrosParaSemana, equivalenciaEquipo, equipoConocido, tiposEquipo, tipoEquipo, resolverEquipo, usaCorriente, fuente` |
-| `seguridad.js` | `evaluarSeguridad`, `seguridadVigente`, `banderaRojaActiva`, `puedeIniciarEST` |
+| `seguridad.js` | `evaluarSeguridad`, `seguridadVigente`, `banderaRojaActiva`, `puedeIniciarEST` (sin `checklistConfirmado` evalúa solo la puerta previa; con `false` bloquea con código `checklist`; la UI siempre pasa por la puerta y luego por el checklist) |
 | `reglas.js` | `cumpleCondicion`, `cumpleTodas`, `textoCondicion` (operadores `>= > <= < == !=`) |
 | `clasificador.js` | `puntajeIciq`, `severidadDeTotal`, `clasificar` |
 | `nivel.js` | `validarFuerza`, `nivelInicial` |
 | `planificador.js` | `generarPlan`, `construirSemana`, `normalizarEntrada`, `capacidadesEquipo`, `regenerarSemanaActual`, `regenerarConEquipo`, `regenerarConSeguridad`, `mejoraParaMantenimiento`, `planMantenimiento`, `entradasDelDia`, `fechaEntrada`, `REEVAL` |
 | `sesion.js` | `construirLineaTiempo`, `registroDeSesion`, `ciclosEST` |
-| `progresion.js` | `cerrarSemana`, `adherencia`, `conteoSemana`, `compararIciq`, `reevaluacionesPendientes`, `semanasEnNivel`, `entradasPlanificadas` |
+| `progresion.js` | `cerrarSemana`, `adherencia`, `conteoSemana`, `compararIciq`, `reevaluacionesPendientes`, `semanasEnNivel`, `entradasPlanificadas`, `evaluacionesCon` |
 | `vesical.js` | `intervaloMedio`, `intervaloObjetivo`, `intervalosDelDia`, `resumenDia` |
 | `reporte.js` | `resumen` |
 
@@ -65,7 +65,7 @@ borrar nada.
   assets/il/ assets/icons/`; `assets/capturas/` no se precachea), cache-first con actualización en segundo plano, borrado de cachés
   `pelvia-*` antiguas en `activate`. No hace `skipWaiting` solo: la UI muestra "Nueva versión disponible — recargar" y envía
   `{tipo:'SKIP_WAITING'}`; en `controllerchange` recarga.
-- Tres versiones independientes: **app** (`APP_VERSION` en `js/store/repo.js`, visible en Acerca de; SemVer + tag git), **caché**
+- Cuatro versiones independientes: **app** (`APP_VERSION` en `js/store/repo.js`, visible en Acerca de; SemVer + tag git), **caché**
   (`CACHE_VERSION` en `sw.js`, entero; súbelo en cada publicación), **catálogo** (`meta.version` en `protocolos.json`) y **esquema**
   de datos (`ESQUEMA`, solo cuando cambia la forma de lo guardado).
 - `node tools/generar-precache.mjs --check` falla si la lista está desactualizada o el peso supera 2 MB (hoy ≈ 460 KB).
